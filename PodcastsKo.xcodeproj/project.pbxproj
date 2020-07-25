@@ -99,13 +99,9 @@
 		4A5AF35824CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXGroup;
 			children = (
-				4A5AF35924CCCCE700D56A0B /* AppDelegate.swift */,
-				4A5AF35B24CCCCE700D56A0B /* SceneDelegate.swift */,
-				4A5AF35D24CCCCE700D56A0B /* ViewController.swift */,
-				4A5AF35F24CCCCE700D56A0B /* Main.storyboard */,
-				4A5AF36224CCCCEB00D56A0B /* Assets.xcassets */,
-				4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */,
-				4A5AF36724CCCCEB00D56A0B /* Info.plist */,
+				4A5AF38B24CCCF4000D56A0B /* Resources */,
+				4A5AF38A24CCCF3500D56A0B /* SupportingFiles */,
+				4A5AF38924CCCF2F00D56A0B /* App */,
 			);
 			path = PodcastsKo;
 			sourceTree = "<group>";
@@ -126,6 +122,50 @@
 				4A5AF37D24CCCCEB00D56A0B /* Info.plist */,
 			);
 			path = PodcastsKoUITests;
+			sourceTree = "<group>";
+		};
+		4A5AF38924CCCF2F00D56A0B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF38D24CCD01F00D56A0B /* Main */,
+				4A5AF38C24CCD01000D56A0B /* Screens */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4A5AF38A24CCCF3500D56A0B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF36724CCCCEB00D56A0B /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		4A5AF38B24CCCF4000D56A0B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF36224CCCCEB00D56A0B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4A5AF38C24CCD01000D56A0B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF35D24CCCCE700D56A0B /* ViewController.swift */,
+				4A5AF35F24CCCCE700D56A0B /* Main.storyboard */,
+				4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4A5AF38D24CCD01F00D56A0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF35924CCCCE700D56A0B /* AppDelegate.swift */,
+				4A5AF35B24CCCCE700D56A0B /* SceneDelegate.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,7 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKo/Info.plist;
+				INFOPLIST_FILE = PodcastsKo/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKo/Info.plist;
+				INFOPLIST_FILE = PodcastsKo/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
