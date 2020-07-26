@@ -192,8 +192,8 @@
 		4A5AF39424CD0C1200D56A0B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */,
 				4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */,
+				4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

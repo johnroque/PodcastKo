@@ -18,10 +18,17 @@ class MainCoordinator: CoordinatorType, MainCoordinatorType {
     
     var childCoordinators: [CoordinatorType] = []
     
+    // MARK: - Navigation
     /// Main navigation controller of iOS App
     lazy var navigation: UINavigationController = {
-        let navigationVc = UINavigationController(rootViewController: UIViewController())
+        let navigationVc = UINavigationController(rootViewController: mainTabVc)
         return navigationVc
+    }()
+    
+    // MARK: - Screens
+    private lazy var mainTabVc: MainTabBarController = {
+        let vc = MainTabBarComposer.composeWith()
+        return vc
     }()
     
     /// Trigger start for main coordinator
