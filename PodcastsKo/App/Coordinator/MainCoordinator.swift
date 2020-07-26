@@ -22,6 +22,7 @@ class MainCoordinator: CoordinatorType, MainCoordinatorType {
     /// Main navigation controller of iOS App
     lazy var navigation: UINavigationController = {
         let navigationVc = UINavigationController(rootViewController: mainTabVc)
+        navigationVc.isNavigationBarHidden = true
         return navigationVc
     }()
     
