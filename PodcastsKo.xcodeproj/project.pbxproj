@@ -15,6 +15,8 @@
 		4A5AF36624CCCCEB00D56A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */; };
 		4A5AF37124CCCCEB00D56A0B /* PodcastsKoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF37024CCCCEB00D56A0B /* PodcastsKoTests.swift */; };
 		4A5AF37C24CCCCEB00D56A0B /* PodcastsKoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */; };
+		4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */; };
+		4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		4A5AF37724CCCCEB00D56A0B /* PodcastsKoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastsKoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsKoUITests.swift; sourceTree = "<group>"; };
 		4A5AF37D24CCCCEB00D56A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,9 @@
 		4A5AF35824CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXGroup;
 			children = (
+				4A5AF38924CCCF2F00D56A0B /* App */,
 				4A5AF38B24CCCF4000D56A0B /* Resources */,
 				4A5AF38A24CCCF3500D56A0B /* SupportingFiles */,
-				4A5AF38924CCCF2F00D56A0B /* App */,
 			);
 			path = PodcastsKo;
 			sourceTree = "<group>";
@@ -127,6 +131,7 @@
 		4A5AF38924CCCF2F00D56A0B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4A5AF38E24CCF21C00D56A0B /* Coordinator */,
 				4A5AF38D24CCD01F00D56A0B /* Main */,
 				4A5AF38C24CCD01000D56A0B /* Screens */,
 			);
@@ -166,6 +171,15 @@
 				4A5AF35B24CCCCE700D56A0B /* SceneDelegate.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		4A5AF38E24CCF21C00D56A0B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */,
+				4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +315,8 @@
 			files = (
 				4A5AF35E24CCCCE700D56A0B /* ViewController.swift in Sources */,
 				4A5AF35A24CCCCE700D56A0B /* AppDelegate.swift in Sources */,
+				4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */,
+				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
