@@ -17,6 +17,8 @@
 		4A5AF37C24CCCCEB00D56A0B /* PodcastsKoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */; };
 		4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */; };
 		4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */; };
+		4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */; };
+		4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		4A5AF37D24CCCCEB00D56A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,9 +161,10 @@
 		4A5AF38C24CCD01000D56A0B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4A5AF39424CD0C1200D56A0B /* Main */,
+				4A5AF39324CD0C0600D56A0B /* Launch */,
 				4A5AF35D24CCCCE700D56A0B /* ViewController.swift */,
 				4A5AF35F24CCCCE700D56A0B /* Main.storyboard */,
-				4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -180,6 +185,23 @@
 				4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		4A5AF39324CD0C0600D56A0B /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		4A5AF39424CD0C1200D56A0B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */,
+				4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,7 +337,9 @@
 			files = (
 				4A5AF35E24CCCCE700D56A0B /* ViewController.swift in Sources */,
 				4A5AF35A24CCCCE700D56A0B /* AppDelegate.swift in Sources */,
+				4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */,
 				4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */,
+				4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */,
 				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
 			);
