@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		4A02571E24CD85EE007A5B0C /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02571D24CD85EE007A5B0C /* SearchCoordinator.swift */; };
 		4A02572024CDC7DD007A5B0C /* DownloadsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02571F24CDC7DD007A5B0C /* DownloadsCoordinator.swift */; };
+		4A02572524CF2436007A5B0C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02572424CF2436007A5B0C /* HTTPMethod.swift */; };
+		4A02572724CF249D007A5B0C /* URLSessionHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02572624CF249D007A5B0C /* URLSessionHttpClient.swift */; };
+		4A02572924CF24E0007A5B0C /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02572824CF24E0007A5B0C /* HTTPClient.swift */; };
+		4A02572B24CF3512007A5B0C /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02572A24CF3512007A5B0C /* ApiLogger.swift */; };
+		4A02572F24CF4325007A5B0C /* PodcastGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02572E24CF4325007A5B0C /* PodcastGateway.swift */; };
+		4A02573224CF47E7007A5B0C /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573124CF47E7007A5B0C /* Podcast.swift */; };
+		4A02573524CF4C32007A5B0C /* SearchPodcastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573424CF4C31007A5B0C /* SearchPodcastUseCase.swift */; };
+		4A02573824CF7AB2007A5B0C /* ApiPodcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573724CF7AB2007A5B0C /* ApiPodcast.swift */; };
+		4A02573B24CF87E0007A5B0C /* SearchPodcastApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */; };
+		4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */; };
+		4A02574024CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -48,6 +59,17 @@
 /* Begin PBXFileReference section */
 		4A02571D24CD85EE007A5B0C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		4A02571F24CDC7DD007A5B0C /* DownloadsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsCoordinator.swift; sourceTree = "<group>"; };
+		4A02572424CF2436007A5B0C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		4A02572624CF249D007A5B0C /* URLSessionHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHttpClient.swift; sourceTree = "<group>"; };
+		4A02572824CF24E0007A5B0C /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		4A02572A24CF3512007A5B0C /* ApiLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLogger.swift; sourceTree = "<group>"; };
+		4A02572E24CF4325007A5B0C /* PodcastGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastGateway.swift; sourceTree = "<group>"; };
+		4A02573124CF47E7007A5B0C /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		4A02573424CF4C31007A5B0C /* SearchPodcastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastUseCase.swift; sourceTree = "<group>"; };
+		4A02573724CF7AB2007A5B0C /* ApiPodcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPodcast.swift; sourceTree = "<group>"; };
+		4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastApiRequest.swift; sourceTree = "<group>"; };
+		4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastMapper.swift; sourceTree = "<group>"; };
+		4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +120,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A02572124CF14B4007A5B0C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573324CF4873007A5B0C /* UseCases */,
+				4A02573024CF453F007A5B0C /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4A02572224CF2243007A5B0C /* Gateway */ = {
+			isa = PBXGroup;
+			children = (
+				4A02572324CF2426007A5B0C /* Api */,
+			);
+			path = Gateway;
+			sourceTree = "<group>";
+		};
+		4A02572324CF2426007A5B0C /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573E24CF8E42007A5B0C /* Helpers */,
+				4A02573924CF8799007A5B0C /* Requests */,
+				4A02573624CF7AA1007A5B0C /* Entities */,
+				4A02572D24CF3F18007A5B0C /* Gateways */,
+				4A02572C24CF3EC7007A5B0C /* ResponseMappers */,
+				4A02572424CF2436007A5B0C /* HTTPMethod.swift */,
+				4A02572624CF249D007A5B0C /* URLSessionHttpClient.swift */,
+				4A02572824CF24E0007A5B0C /* HTTPClient.swift */,
+				4A02572A24CF3512007A5B0C /* ApiLogger.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		4A02572C24CF3EC7007A5B0C /* ResponseMappers */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */,
+			);
+			path = ResponseMappers;
+			sourceTree = "<group>";
+		};
+		4A02572D24CF3F18007A5B0C /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				4A02572E24CF4325007A5B0C /* PodcastGateway.swift */,
+			);
+			path = Gateways;
+			sourceTree = "<group>";
+		};
+		4A02573024CF453F007A5B0C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573124CF47E7007A5B0C /* Podcast.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4A02573324CF4873007A5B0C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573424CF4C31007A5B0C /* SearchPodcastUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4A02573624CF7AA1007A5B0C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573724CF7AB2007A5B0C /* ApiPodcast.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4A02573924CF8799007A5B0C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		4A02573E24CF8E42007A5B0C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4A0EAF5A24CD7EB400CA1788 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +259,8 @@
 		4A5AF35824CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXGroup;
 			children = (
+				4A02572224CF2243007A5B0C /* Gateway */,
+				4A02572124CF14B4007A5B0C /* Domain */,
 				4A5AF38924CCCF2F00D56A0B /* App */,
 				4A5AF38B24CCCF4000D56A0B /* Resources */,
 				4A5AF38A24CCCF3500D56A0B /* SupportingFiles */,
@@ -379,21 +492,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A02573824CF7AB2007A5B0C /* ApiPodcast.swift in Sources */,
 				4A5AF35A24CCCCE700D56A0B /* AppDelegate.swift in Sources */,
 				4A02572024CDC7DD007A5B0C /* DownloadsCoordinator.swift in Sources */,
 				4A0EAF6824CD806800CA1788 /* DownloadsComposer.swift in Sources */,
 				4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */,
 				4A0EAF6624CD803000CA1788 /* SearchComposer.swift in Sources */,
+				4A02572B24CF3512007A5B0C /* ApiLogger.swift in Sources */,
 				4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */,
+				4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */,
 				4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */,
+				4A02573224CF47E7007A5B0C /* Podcast.swift in Sources */,
 				4A02571E24CD85EE007A5B0C /* SearchCoordinator.swift in Sources */,
 				4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */,
 				4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */,
 				4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */,
 				4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */,
+				4A02574024CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift in Sources */,
+				4A02572524CF2436007A5B0C /* HTTPMethod.swift in Sources */,
 				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
+				4A02572924CF24E0007A5B0C /* HTTPClient.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
 				4A0EAF6424CD7F4C00CA1788 /* FavoritesComposer.swift in Sources */,
+				4A02572724CF249D007A5B0C /* URLSessionHttpClient.swift in Sources */,
+				4A02573524CF4C32007A5B0C /* SearchPodcastUseCase.swift in Sources */,
+				4A02572F24CF4325007A5B0C /* PodcastGateway.swift in Sources */,
+				4A02573B24CF87E0007A5B0C /* SearchPodcastApiRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
