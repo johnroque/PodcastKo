@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,8 @@
 		4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */; };
 		4A02574024CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */; };
 		4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */; };
+		4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574524CFD32E007A5B0C /* RxCocoa */; };
+		4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574724CFD32E007A5B0C /* RxSwift */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -102,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */,
+				4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +393,10 @@
 			dependencies = (
 			);
 			name = PodcastsKo;
+			packageProductDependencies = (
+				4A02574524CFD32E007A5B0C /* RxCocoa */,
+				4A02574724CFD32E007A5B0C /* RxSwift */,
+			);
 			productName = PodcastsKo;
 			productReference = 4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */;
 			productType = "com.apple.product-type.application";
@@ -461,6 +469,9 @@
 				Base,
 			);
 			mainGroup = 4A5AF34D24CCCCE700D56A0B;
+			packageReferences = (
+				4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 4A5AF35724CCCCE700D56A0B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -850,6 +861,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A02574524CFD32E007A5B0C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4A02574724CFD32E007A5B0C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4A5AF34E24CCCCE700D56A0B /* Project object */;
 }
