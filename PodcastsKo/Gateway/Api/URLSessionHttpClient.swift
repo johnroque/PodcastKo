@@ -11,9 +11,11 @@ import Foundation
 final class URLSessionHttpClient: HTTPClient {
     
     private let session: URLSession
+    private let apiLogger: ApiLoggerable
     
-    public init(session: URLSession) {
+    public init(session: URLSession, logger: ApiLoggerable) {
         self.session = session
+        self.apiLogger = logger
     }
     
     private struct UnexpectedValuesRepresentation: Error {}
@@ -27,7 +29,13 @@ final class URLSessionHttpClient: HTTPClient {
     }
     
     func get(request: URLSessionRequest, completionHandler: @escaping (HTTPClient.Result) -> Void) -> HttpClientTask {
-        let task = session.dataTask(with: request.urlRequest) { (data, response, error) in
+        
+        self.apiLogger.log(request: request.urlRequest)
+        
+        let task = session.dataTask(with: request.urlRequest) { [weak self] (data, response, error) in
+            
+            self?.apiLogger.log(data: data, response: response as? HTTPURLResponse, error: error)
+            
             completionHandler(Result {
                 if let error = error {
                     throw error
