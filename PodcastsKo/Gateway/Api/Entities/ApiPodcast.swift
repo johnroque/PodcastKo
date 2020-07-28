@@ -10,7 +10,7 @@ import Foundation
 
 struct ApiPodcast: Decodable {
     
-    let trackName: String
-    let artistName: String
+    let trackName: String?
+    let artistName: String?
     
 }

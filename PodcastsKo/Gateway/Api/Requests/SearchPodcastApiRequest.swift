@@ -14,12 +14,24 @@ struct SearchPodcastApiRequest: URLSessionRequest {
     
     var urlRequest: URLRequest {
         
-        let url = URL(string: "https://itunes.apple.com/search?term=\(title)")!
-        var request = URLRequest(url: url)
+        let queryItems = [URLQueryItem(name: "term", value: title),
+                          URLQueryItem(name: "media", value: "podcast")]
+        var urlComponent = URLComponents(string: "https://itunes.apple.com/search")
+        urlComponent?.queryItems = queryItems
+        
+        var request = URLRequest(url: urlComponent!.url!) // TODO: Make this safe
         
         request.httpMethod = HTTPMethod.GET.rawValue
         
         return request
+    }
+    
+}
+
+extension String {
+    
+    func escapedString() -> String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
     
 }

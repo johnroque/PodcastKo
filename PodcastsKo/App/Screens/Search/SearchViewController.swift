@@ -28,7 +28,7 @@ class SearchViewController: UITableViewController {
 
         registerCell()
         setupSearchController()
-        setupBindings()
+            setupBindings()
     }
     
     private func setupSearchController() {
@@ -73,7 +73,7 @@ class SearchViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         
         let podcast = data[indexPath.row]
-        cell.textLabel?.text = "\(podcast.artistName)\n\(podcast.trackName)"
+        cell.textLabel?.text = "\(podcast.artistName ?? "")\n\(podcast.trackName ?? "")"
         cell.textLabel?.numberOfLines = 0
         cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         
