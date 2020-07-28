@@ -20,6 +20,7 @@
 		4A02573B24CF87E0007A5B0C /* SearchPodcastApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */; };
 		4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */; };
 		4A02574024CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */; };
+		4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -70,6 +71,7 @@
 		4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastApiRequest.swift; sourceTree = "<group>"; };
 		4A02573C24CF8CFB007A5B0C /* SearchPodcastMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastMapper.swift; sourceTree = "<group>"; };
 		4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcaseViewModel.swift; sourceTree = "<group>"; };
 		4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		4A02572124CF14B4007A5B0C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				4A02574124CFCB0F007A5B0C /* ViewModels */,
 				4A02573324CF4873007A5B0C /* UseCases */,
 				4A02573024CF453F007A5B0C /* Entities */,
 			);
@@ -207,6 +210,14 @@
 				4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4A02574124CFCB0F007A5B0C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		4A0EAF5A24CD7EB400CA1788 /* Favorites */ = {
@@ -512,6 +523,7 @@
 				4A02572524CF2436007A5B0C /* HTTPMethod.swift in Sources */,
 				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
 				4A02572924CF24E0007A5B0C /* HTTPClient.swift in Sources */,
+				4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
 				4A0EAF6424CD7F4C00CA1788 /* FavoritesComposer.swift in Sources */,
 				4A02572724CF249D007A5B0C /* URLSessionHttpClient.swift in Sources */,

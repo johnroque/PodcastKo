@@ -14,7 +14,7 @@ struct SearchPodcastApiRequest: URLSessionRequest {
     
     var urlRequest: URLRequest {
         
-        let url = URL(string: "www.google.com")!
+        let url = URL(string: "https://itunes.apple.com/search?term=\(title)")!
         var request = URLRequest(url: url)
         
         request.httpMethod = HTTPMethod.GET.rawValue
