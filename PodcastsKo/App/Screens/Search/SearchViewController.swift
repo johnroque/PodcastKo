@@ -26,9 +26,14 @@ class SearchViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureTableView()
         registerCell()
         setupSearchController()
         setupBindings()
+    }
+    
+    private func configureTableView() {
+        self.tableView.separatorStyle = .none
     }
     
     private func setupSearchController() {
@@ -64,7 +69,20 @@ class SearchViewController: UITableViewController {
     private func registerCell() {
         tableView.register(SearchPodCastTableViewCell.self, forCellReuseIdentifier: cellId)
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter a Search Term"
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
+        label.textAlignment = .center
+        return label
+    }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.data.count > 0 ? 0 : 250
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }

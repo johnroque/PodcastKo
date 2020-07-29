@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchPodCastTableViewCell: UITableViewCell {
 
@@ -89,9 +90,17 @@ class SearchPodCastTableViewCell: UITableViewCell {
     }
     
     func configure(podcast: Podcast) {
+        
         tracKNameLabel.text = podcast.trackName
         trackArtistLabel.text = podcast.artistName
         descLabel.text = "\(podcast.trackCount ?? 0) Episodes"
+        
+        if let url = URL(string: podcast.artworkUrl600 ?? "") {
+            iconImageView.sd_setImage(with: url)
+        } else {
+            iconImageView.image = nil
+        }
+        
     }
     
 }
