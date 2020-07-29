@@ -10,10 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol SearchViewControllerDelegate {
+    func showEpisodes(_ vc: SearchViewController, podCast: Podcast)
+}
+
 class SearchViewController: UITableViewController {
     
     // MARK: - Dependencies
     var viewModel: SearchViewViewModel?
+    var coordinator: SearchViewControllerDelegate?
     
     private var data: [Podcast] = []
     private let cellId = "cellId"
@@ -99,6 +104,13 @@ class SearchViewController: UITableViewController {
 //        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let podcast = data[indexPath.row]
+        self.coordinator?.showEpisodes(self, podCast: podcast)
+        
     }
     
 }

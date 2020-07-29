@@ -22,12 +22,31 @@ class SearchCoordinator: CoordinatorType {
     // MARK: - Screens
     lazy var searchVc: SearchViewController = {
         let vc = SearchComposer.composeWith()
+        vc.coordinator = self
         return vc
     }()
     
     /// Trigger to start SearchCoordinator Flow
     func start() {
         
+    }
+    
+}
+
+extension SearchCoordinator: SearchViewControllerDelegate {
+    
+    func showEpisodes(_ vc: SearchViewController, podCast: Podcast) {
+        let episodesVc = EpisodesComposer.composeWith(podCast: podCast)
+        episodesVc.coordinator = self
+        self.navigation.pushViewController(episodesVc, animated: true)
+    }
+    
+}
+
+extension SearchCoordinator: EpisodesViewControllerDelegate {
+    
+    func back(_ vc: EpisodesViewController) {
+        self.navigation.popViewController(animated: true)
     }
     
 }
