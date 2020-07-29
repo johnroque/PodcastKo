@@ -25,6 +25,7 @@
 		4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574724CFD32E007A5B0C /* RxSwift */; };
 		4A02574A24D06BD7007A5B0C /* SearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574924D06BD7007A5B0C /* SearchViewViewModel.swift */; };
 		4A02574D24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574C24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift */; };
+		4A02575024D138D1007A5B0C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574F24D138D1007A5B0C /* SDWebImage */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -108,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A02575024D138D1007A5B0C /* SDWebImage in Frameworks */,
 				4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */,
 				4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */,
 			);
@@ -410,6 +412,7 @@
 			packageProductDependencies = (
 				4A02574524CFD32E007A5B0C /* RxCocoa */,
 				4A02574724CFD32E007A5B0C /* RxSwift */,
+				4A02574F24D138D1007A5B0C /* SDWebImage */,
 			);
 			productName = PodcastsKo;
 			productReference = 4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */;
@@ -485,6 +488,7 @@
 			mainGroup = 4A5AF34D24CCCCE700D56A0B;
 			packageReferences = (
 				4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 4A5AF35724CCCCE700D56A0B /* Products */;
 			projectDirPath = "";
@@ -887,6 +891,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -899,6 +911,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		4A02574F24D138D1007A5B0C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

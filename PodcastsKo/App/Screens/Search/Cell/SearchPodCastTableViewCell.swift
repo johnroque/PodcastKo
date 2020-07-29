@@ -91,6 +91,7 @@ class SearchPodCastTableViewCell: UITableViewCell {
     func configure(podcast: Podcast) {
         tracKNameLabel.text = podcast.trackName
         trackArtistLabel.text = podcast.artistName
+        descLabel.text = "\(podcast.trackCount ?? 0) Episodes"
     }
     
 }
