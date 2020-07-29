@@ -36,6 +36,9 @@ final class SearchPodcastViewModel: SearchPodcastViewModelInputs, SearchPodcastV
     let podcasts: BehaviorRelay<[Podcast]> = BehaviorRelay(value: [])
     
     func searchPodcast(title: String) {
+        
+        self.searchRequest?.cancel()
+        
         self.searchRequest = self.useCase.searchPodcast(title: title) { [weak self] (result) in
             guard let self = self else { return }
             

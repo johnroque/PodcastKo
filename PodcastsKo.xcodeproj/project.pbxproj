@@ -24,6 +24,7 @@
 		4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574524CFD32E007A5B0C /* RxCocoa */; };
 		4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02574724CFD32E007A5B0C /* RxSwift */; };
 		4A02574A24D06BD7007A5B0C /* SearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574924D06BD7007A5B0C /* SearchViewViewModel.swift */; };
+		4A02574D24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02574C24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -76,6 +77,7 @@
 		4A02573F24CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcaseViewModel.swift; sourceTree = "<group>"; };
 		4A02574924D06BD7007A5B0C /* SearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewViewModel.swift; sourceTree = "<group>"; };
+		4A02574C24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodCastTableViewCell.swift; sourceTree = "<group>"; };
 		4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4A02574B24D0DC04007A5B0C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4A02574C24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4A0EAF5A24CD7EB400CA1788 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 		4A0EAF5B24CD7EBD00CA1788 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				4A02574B24D0DC04007A5B0C /* Cell */,
 				4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */,
 				4A0EAF6524CD803000CA1788 /* SearchComposer.swift */,
 				4A02574924D06BD7007A5B0C /* SearchViewViewModel.swift */,
@@ -277,9 +288,9 @@
 		4A5AF35824CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXGroup;
 			children = (
-				4A02572224CF2243007A5B0C /* Gateway */,
-				4A02572124CF14B4007A5B0C /* Domain */,
 				4A5AF38924CCCF2F00D56A0B /* App */,
+				4A02572124CF14B4007A5B0C /* Domain */,
+				4A02572224CF2243007A5B0C /* Gateway */,
 				4A5AF38B24CCCF4000D56A0B /* Resources */,
 				4A5AF38A24CCCF3500D56A0B /* SupportingFiles */,
 			);
@@ -528,6 +539,7 @@
 				4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */,
 				4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */,
 				4A02573224CF47E7007A5B0C /* Podcast.swift in Sources */,
+				4A02574D24D0DC26007A5B0C /* SearchPodCastTableViewCell.swift in Sources */,
 				4A02571E24CD85EE007A5B0C /* SearchCoordinator.swift in Sources */,
 				4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */,
 				4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */,

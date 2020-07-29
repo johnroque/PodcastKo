@@ -28,7 +28,7 @@ class SearchViewController: UITableViewController {
 
         registerCell()
         setupSearchController()
-            setupBindings()
+        setupBindings()
     }
     
     private func setupSearchController() {
@@ -62,7 +62,7 @@ class SearchViewController: UITableViewController {
     }
     
     private func registerCell() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(SearchPodCastTableViewCell.self, forCellReuseIdentifier: cellId)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,12 +70,15 @@ class SearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchPodCastTableViewCell
         
         let podcast = data[indexPath.row]
-        cell.textLabel?.text = "\(podcast.artistName ?? "")\n\(podcast.trackName ?? "")"
-        cell.textLabel?.numberOfLines = 0
-        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
+        
+        cell.configure(podcast: podcast)
+        
+//        cell.textLabel?.text = "\(podcast.artistName ?? "")\n\(podcast.trackName ?? "")"
+//        cell.textLabel?.numberOfLines = 0
+//        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         
         return cell
     }
