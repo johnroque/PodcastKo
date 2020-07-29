@@ -29,6 +29,7 @@
 		4A02575324D1F916007A5B0C /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02575224D1F916007A5B0C /* EpisodesViewController.swift */; };
 		4A02575524D1F97C007A5B0C /* EpisodesComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02575424D1F97C007A5B0C /* EpisodesComposer.swift */; };
 		4A02575724D20CCA007A5B0C /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02575624D20CCA007A5B0C /* Episodes.swift */; };
+		4A02575B24D21071007A5B0C /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A02575A24D21071007A5B0C /* FeedKit */; };
 		4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5D24CD7EEA00CA1788 /* FavoritesViewController.swift */; };
 		4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF5F24CD7EF700CA1788 /* SearchViewController.swift */; };
 		4A0EAF6224CD7F2200CA1788 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6124CD7F2200CA1788 /* DownloadsViewController.swift */; };
@@ -118,6 +119,7 @@
 				4A02575024D138D1007A5B0C /* SDWebImage in Frameworks */,
 				4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */,
 				4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */,
+				4A02575B24D21071007A5B0C /* FeedKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +153,7 @@
 		4A02572224CF2243007A5B0C /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
+				4A02575C24D210EE007A5B0C /* Feedkit */,
 				4A02572324CF2426007A5B0C /* Api */,
 			);
 			path = Gateway;
@@ -252,6 +255,13 @@
 				4A02575424D1F97C007A5B0C /* EpisodesComposer.swift */,
 			);
 			path = Episodes;
+			sourceTree = "<group>";
+		};
+		4A02575C24D210EE007A5B0C /* Feedkit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feedkit;
 			sourceTree = "<group>";
 		};
 		4A0EAF5A24CD7EB400CA1788 /* Favorites */ = {
@@ -430,6 +440,7 @@
 				4A02574524CFD32E007A5B0C /* RxCocoa */,
 				4A02574724CFD32E007A5B0C /* RxSwift */,
 				4A02574F24D138D1007A5B0C /* SDWebImage */,
+				4A02575A24D21071007A5B0C /* FeedKit */,
 			);
 			productName = PodcastsKo;
 			productReference = 4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */;
@@ -506,6 +517,7 @@
 			packageReferences = (
 				4A02574424CFD32E007A5B0C /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */,
 			);
 			productRefGroup = 4A5AF35724CCCCE700D56A0B /* Products */;
 			projectDirPath = "";
@@ -919,6 +931,14 @@
 				minimumVersion = 5.8.4;
 			};
 		};
+		4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nmdias/FeedKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -936,6 +956,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		4A02575A24D21071007A5B0C /* FeedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */;
+			productName = FeedKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
