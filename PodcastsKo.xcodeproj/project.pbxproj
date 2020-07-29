@@ -51,6 +51,8 @@
 		4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */; };
 		4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C324D2324100B2B263 /* FKGateway.swift */; };
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
+		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
+		4A9795CA24D2369800B2B263 /* GetEpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C924D2369800B2B263 /* GetEpisodesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarComposer.swift; sourceTree = "<group>"; };
 		4A9795C324D2324100B2B263 /* FKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKGateway.swift; sourceTree = "<group>"; };
 		4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesUseCase.swift; sourceTree = "<group>"; };
+		4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewViewModel.swift; sourceTree = "<group>"; };
+		4A9795C924D2369800B2B263 /* GetEpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				4A02574224CFCE10007A5B0C /* SearchPodcaseViewModel.swift */,
+				4A9795C924D2369800B2B263 /* GetEpisodesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			children = (
 				4A02575224D1F916007A5B0C /* EpisodesViewController.swift */,
 				4A02575424D1F97C007A5B0C /* EpisodesComposer.swift */,
+				4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -601,6 +607,7 @@
 				4A0EAF6624CD803000CA1788 /* SearchComposer.swift in Sources */,
 				4A02572B24CF3512007A5B0C /* ApiLogger.swift in Sources */,
 				4A0EAF6024CD7EF700CA1788 /* SearchViewController.swift in Sources */,
+				4A9795CA24D2369800B2B263 /* GetEpisodesViewModel.swift in Sources */,
 				4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */,
 				4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */,
 				4A02573224CF47E7007A5B0C /* Podcast.swift in Sources */,
@@ -615,6 +622,7 @@
 				4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */,
 				4A02574024CF8E5D007A5B0C /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4A02572524CF2436007A5B0C /* HTTPMethod.swift in Sources */,
+				4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */,
 				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
 				4A02572924CF24E0007A5B0C /* HTTPClient.swift in Sources */,
 				4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */,

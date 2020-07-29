@@ -11,13 +11,15 @@ import Foundation
 struct FKEpisode {
     
     let title: String?
+    let pubDate: Date?
+    let description: String?
     
 }
 
 extension FKEpisode {
     
     func toDomain() -> Episode {
-        return Episode(title: title)
+        return Episode(title: title, pubDate: pubDate, description: description)
     }
     
 }

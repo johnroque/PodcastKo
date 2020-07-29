@@ -19,6 +19,7 @@ class EpisodesViewController: UITableViewController {
     // MARK: - dependencies
     var podCast: Podcast?
     var coordinator: EpisodesViewControllerDelegate?
+    var viewModel: EpisodesViewViewModel?
     
     // MARK: - Views
     let backButton: UIBarButtonItem = {
@@ -27,12 +28,28 @@ class EpisodesViewController: UITableViewController {
     }()
     
     // MARK: - Private properties
+    private var data = [Episode]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private let cellId = "cellId"
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigation()
+        configureTableView()
+        setupBindings()
+        getEpisodes()
+    }
+    
+    private func getEpisodes() {
+        
+        self.viewModel?.getEpisodesViewModel.getEpisodes(urlString: self.podCast?.feedUrl)
+        
     }
     
     private func configureNavigation() {
@@ -47,6 +64,39 @@ class EpisodesViewController: UITableViewController {
             })
             .disposed(by: self.disposeBag)
         
+    }
+    
+    private func configureTableView() {
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellId)
+        tableView.separatorStyle = .none
+        
+    }
+    
+    private func setupBindings() {
+        
+        self.viewModel?
+            .getEpisodesViewModel
+            .getOutputs()
+            .episodes
+            .asDriver()
+            .drive(onNext: { [weak self] (data) in
+                self?.data = data
+            })
+            .disposed(by: self.disposeBag)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath)
+        
+        cell.textLabel?.text = self.data[indexPath.row].title
+        
+        return cell
     }
 
 }

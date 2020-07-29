@@ -25,7 +25,9 @@ final class FeedKitClientImp {
                 case let .rss(rssFeed):
                     var episodes = [FKEpisode]()
                     rssFeed.items?.forEach({ (feedItem) in
-                        episodes.append(FKEpisode(title: feedItem.title))
+                        episodes.append(FKEpisode(title: feedItem.title,
+                                                  pubDate: feedItem.pubDate,
+                                                  description: feedItem.description))
                     })
                     return episodes
                 default:

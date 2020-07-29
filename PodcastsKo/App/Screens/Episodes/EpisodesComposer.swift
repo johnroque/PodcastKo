@@ -13,8 +13,18 @@ final class EpisodesComposer {
     private init() {}
     
     static func composeWith(podCast: Podcast) -> EpisodesViewController {
+        
+        // setup FKClient
+        let fkClient = FeedKitClientImp()
+        let fkGateway = FKGatewayImpl(client: fkClient)
+        
+        // setup ViewModel
+        let getEpisodesViewModel = GetEpisodesViewModel(useCase: fkGateway)
+        let episodesViewViewModel = EpisodesViewViewModel(getEpisodesViewModel: getEpisodesViewModel)
+        
         let vc = EpisodesViewController()
         vc.podCast = podCast
+        vc.viewModel = episodesViewViewModel
         return vc
     }
     
