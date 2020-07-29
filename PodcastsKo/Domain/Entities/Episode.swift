@@ -1,5 +1,5 @@
 //
-//  Episodes.swift
+//  Episode.swift
 //  PodcastsKo
 //
 //  Created by John Roque Jorillo on 7/30/20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Episodes {
+struct Episode {
     
-    let title: String
+    let title: String?
     
 }
