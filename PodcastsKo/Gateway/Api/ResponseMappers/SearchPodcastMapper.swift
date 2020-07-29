@@ -37,7 +37,11 @@ final class SearchPodcastApiMapper {
 extension Array where Element == ApiPodcast {
     
     func toModels() -> [Podcast] {
-        return map { Podcast(trackName: $0.trackName, artistName: $0.artistName) }
+        return map { Podcast(trackName: $0.trackName,
+                             artistName: $0.artistName,
+                             artworkUrl600: $0.artworkUrl600,
+                             trackCount: $0.trackCount,
+                             feedUrl: $0.feedUrl) }
     }
     
 }
