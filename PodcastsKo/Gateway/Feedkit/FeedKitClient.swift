@@ -23,12 +23,19 @@ final class FeedKitClientImp {
                 
                 switch feed {
                 case let .rss(rssFeed):
+                    var imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
+                    
                     var episodes = [FKEpisode]()
                     rssFeed.items?.forEach({ (feedItem) in
+                        
+                        if feedItem.iTunes?.iTunesImage?.attributes?.href != nil {
+                            imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href
+                        }
+                        
                         episodes.append(FKEpisode(title: feedItem.title,
                                                   pubDate: feedItem.pubDate,
                                                   description: feedItem.description,
-                                                  image: feedItem.iTunes?.iTunesImage?.attributes?.href))
+                                                  image: imageUrl))
                     })
                     return episodes
                 default:
