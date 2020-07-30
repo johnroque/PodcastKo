@@ -27,7 +27,8 @@ final class FeedKitClientImp {
                     rssFeed.items?.forEach({ (feedItem) in
                         episodes.append(FKEpisode(title: feedItem.title,
                                                   pubDate: feedItem.pubDate,
-                                                  description: feedItem.description))
+                                                  description: feedItem.description,
+                                                  image: feedItem.iTunes?.iTunesImage?.attributes?.href))
                     })
                     return episodes
                 default:

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class EpisodeTableViewCell: UITableViewCell {
     
@@ -96,6 +97,12 @@ class EpisodeTableViewCell: UITableViewCell {
         pubDateLabel.text = formatDate(date: episode.pubDate ?? Date())
         titleLabel.text = episode.title
         descLabel.text = episode.description
+        
+        if let urlString = episode.image, let url = URL(string: urlString) {
+            iconImageView.sd_setImage(with: url)
+        } else {
+            iconImageView.image = nil
+        }
         
     }
     
