@@ -13,6 +13,7 @@ struct FKEpisode {
     let title: String?
     let pubDate: Date?
     let description: String?
+    let author: String?
     
     let image: String?
     
@@ -21,7 +22,11 @@ struct FKEpisode {
 extension FKEpisode {
     
     func toDomain() -> Episode {
-        return Episode(title: title, pubDate: pubDate, description: description, image: image)
+        return Episode(title: title,
+                       pubDate: pubDate,
+                       description: description,
+                       author: author,
+                       image: image)
     }
     
 }

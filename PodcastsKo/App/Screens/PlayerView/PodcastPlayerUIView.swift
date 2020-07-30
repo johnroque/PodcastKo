@@ -28,6 +28,7 @@ class PodcastPlayerUIView: UIView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.spacing = 8
         return stackView
     }()
     
@@ -51,12 +52,122 @@ class PodcastPlayerUIView: UIView {
         return slider
     }()
     
+    private lazy var timeStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    private lazy var currentTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "00:00:00"
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
+    private lazy var durationTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "69:69:00"
+        label.textColor = .darkGray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .right
+        return label
+    }()
+    
     private lazy var podcastTileLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "test"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.numberOfLines = 0
         return label
+    }()
+    
+    private lazy var authorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.textColor = .purple
+        label.text = "123"
+        label.numberOfLines = 0
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        return label
+    }()
+    
+    private lazy var playerOptionsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
+    private lazy var spacerView1: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private lazy var spacerView2: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private lazy var spacerView3: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private lazy var spacerView4: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private lazy var rewindButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "rewind15"), for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
+    private lazy var fastForwardButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "fastforward15"), for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
+    private lazy var volumeStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    
+    private lazy var muteImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "muted_volume")
+        return imageView
+    }()
+    
+    private lazy var volumeSlider: UISlider = {
+        let slider = UISlider()
+        return slider
+    }()
+    
+    private lazy var volubleImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = #imageLiteral(resourceName: "max_volume")
+        return imageView
     }()
     
     override init(frame: CGRect) {
@@ -76,11 +187,13 @@ class PodcastPlayerUIView: UIView {
         
         self.addSubview(containerStackView)
         
+        
+        
         NSLayoutConstraint.activate([
-            containerStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 44),
+            containerStackView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
             containerStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             containerStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            containerStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            containerStackView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
         ])
         
         containerStackView.addArrangedSubview(dissmissButton)
@@ -99,7 +212,45 @@ class PodcastPlayerUIView: UIView {
             sliderView.heightAnchor.constraint(equalToConstant: 44)
         ])
         
+        containerStackView.addArrangedSubview(timeStackView)
+        
+        NSLayoutConstraint.activate([
+            timeStackView.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        timeStackView.addArrangedSubview(currentTimeLabel)
+        timeStackView.addArrangedSubview(durationTimeLabel)
+        
         containerStackView.addArrangedSubview(podcastTileLabel)
+        containerStackView.addArrangedSubview(authorLabel)
+        
+        containerStackView.addArrangedSubview(playerOptionsStackView)
+
+        playerOptionsStackView.addArrangedSubview(spacerView1)
+        playerOptionsStackView.addArrangedSubview(rewindButton)
+        playerOptionsStackView.addArrangedSubview(spacerView2)
+        playerOptionsStackView.addArrangedSubview(playButton)
+        playerOptionsStackView.addArrangedSubview(spacerView3)
+        playerOptionsStackView.addArrangedSubview(fastForwardButton)
+        playerOptionsStackView.addArrangedSubview(spacerView4)
+        
+//        NSLayoutConstraint.activate([
+//            rewindButton.widthAnchor.constraint(equalToConstant: 44),
+//            fastForwardButton.widthAnchor.constraint(equalToConstant: 44),
+//            playButton.widthAnchor.constraint(equalToConstant: 54),
+//        ])
+        
+        containerStackView.addArrangedSubview(volumeStackView)
+        
+        volumeStackView.addArrangedSubview(muteImageView)
+        volumeStackView.addArrangedSubview(volumeSlider)
+        volumeStackView.addArrangedSubview(volubleImageView)
+        
+        NSLayoutConstraint.activate([
+            volumeStackView.heightAnchor.constraint(equalToConstant: 40),
+            muteImageView.widthAnchor.constraint(equalToConstant: 40),
+            volubleImageView.widthAnchor.constraint(equalToConstant: 40)
+        ])
         
     }
     
@@ -125,6 +276,7 @@ class PodcastPlayerUIView: UIView {
         }
         
         podcastTileLabel.text = episode.title
+        authorLabel.text = episode.author
         
     }
     
