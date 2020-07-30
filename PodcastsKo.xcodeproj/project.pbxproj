@@ -53,6 +53,7 @@
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
 		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
 		4A9795CA24D2369800B2B263 /* GetEpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C924D2369800B2B263 /* GetEpisodesViewModel.swift */; };
+		4A9795CD24D244E500B2B263 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesUseCase.swift; sourceTree = "<group>"; };
 		4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewViewModel.swift; sourceTree = "<group>"; };
 		4A9795C924D2369800B2B263 /* GetEpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesViewModel.swift; sourceTree = "<group>"; };
+		4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 		4A02575124D1F83C007A5B0C /* Episodes */ = {
 			isa = PBXGroup;
 			children = (
+				4A9795CB24D244CC00B2B263 /* Cell */,
 				4A02575224D1F916007A5B0C /* EpisodesViewController.swift */,
 				4A02575424D1F97C007A5B0C /* EpisodesComposer.swift */,
 				4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */,
@@ -454,6 +457,14 @@
 			path = Gateway;
 			sourceTree = "<group>";
 		};
+		4A9795CB24D244CC00B2B263 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -595,6 +606,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9795CD24D244E500B2B263 /* EpisodeTableViewCell.swift in Sources */,
 				4A02575324D1F916007A5B0C /* EpisodesViewController.swift in Sources */,
 				4A02575524D1F97C007A5B0C /* EpisodesComposer.swift in Sources */,
 				4A02573824CF7AB2007A5B0C /* ApiPodcast.swift in Sources */,

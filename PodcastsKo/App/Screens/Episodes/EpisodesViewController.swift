@@ -24,6 +24,7 @@ class EpisodesViewController: UITableViewController {
     // MARK: - Views
     let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Back", style: .plain, target: self, action: nil)
+        button.tintColor = .purple
         return button
     }()
     
@@ -68,7 +69,7 @@ class EpisodesViewController: UITableViewController {
     
     private func configureTableView() {
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellId)
+        tableView.register(EpisodeTableViewCell.self, forCellReuseIdentifier: self.cellId)
         tableView.separatorStyle = .none
         
     }
@@ -92,9 +93,10 @@ class EpisodesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellId, for: indexPath) as! EpisodeTableViewCell
         
-        cell.textLabel?.text = self.data[indexPath.row].title
+        let episode = self.data[indexPath.row]
+        cell.configure(episode: episode)
         
         return cell
     }
