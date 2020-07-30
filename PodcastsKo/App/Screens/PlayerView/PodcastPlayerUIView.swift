@@ -9,9 +9,17 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SDWebImage
 
 class PodcastPlayerUIView: UIView {
-
+    
+    // MARK: - Dependencies
+    var episode: Episode? {
+        didSet {
+            self.setEpisodeData()
+        }
+    }
+    
     // MARK: - Private properties
     let disposeBag = DisposeBag()
     
@@ -104,6 +112,19 @@ class PodcastPlayerUIView: UIView {
                 self.removeFromSuperview()
             })
             .disposed(by: disposeBag)
+        
+    }
+    
+    private func setEpisodeData() {
+        guard let episode = self.episode else { return }
+        
+        if let urlStr = episode.image, let url = URL(string: urlStr) {
+            podcastImage.sd_setImage(with: url)
+        } else {
+            podcastImage.image = nil
+        }
+        
+        podcastTileLabel.text = episode.title
         
     }
     

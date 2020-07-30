@@ -107,6 +107,7 @@ class EpisodesViewController: UITableViewController {
         let window = UIApplication.shared.keyWindow
      
         let view = PodcastPlayerUIView(frame: self.view.frame)
+        view.episode = self.data[indexPath.row]
         
         window?.addSubview(view)
         
