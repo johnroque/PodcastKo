@@ -34,7 +34,7 @@ final class FeedKitClientImp {
                         
                         episodes.append(FKEpisode(title: feedItem.title,
                                                   pubDate: feedItem.pubDate,
-                                                  description: feedItem.description,
+                                                  description: feedItem.iTunes?.iTunesSubtitle ?? feedItem.description,
                                                   image: imageUrl))
                     })
                     return episodes

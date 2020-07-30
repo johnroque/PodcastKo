@@ -101,4 +101,15 @@ class EpisodesViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // TODO: Deprecated keywindow for ios13
+        let window = UIApplication.shared.keyWindow
+     
+        let view = PodcastPlayerUIView(frame: self.view.frame)
+        
+        window?.addSubview(view)
+        
+    }
+    
 }
