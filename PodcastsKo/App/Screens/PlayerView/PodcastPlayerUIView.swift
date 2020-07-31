@@ -53,6 +53,7 @@ class PodcastPlayerUIView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Dismiss", for: .normal)
+        button.setTitleColor(UIColor(named: "textColor")!, for: .normal)
         return button
     }()
     
@@ -145,7 +146,7 @@ class PodcastPlayerUIView: UIView {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "rewind15"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor(named: "textColor")!
         return button
     }()
     
@@ -153,7 +154,7 @@ class PodcastPlayerUIView: UIView {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor(named: "textColor")!
         return button
     }()
     
@@ -161,7 +162,7 @@ class PodcastPlayerUIView: UIView {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "fastforward15"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor(named: "textColor")!
         return button
     }()
     
@@ -174,6 +175,7 @@ class PodcastPlayerUIView: UIView {
     private lazy var muteImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "muted_volume")
+        imageView.tintColor = UIColor(named: "textColor")!
         return imageView
     }()
     
@@ -188,6 +190,7 @@ class PodcastPlayerUIView: UIView {
     private lazy var volubleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "max_volume")
+        imageView.tintColor = UIColor(named: "textColor")!
         return imageView
     }()
     
