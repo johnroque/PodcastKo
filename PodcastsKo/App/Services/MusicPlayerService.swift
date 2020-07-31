@@ -12,6 +12,8 @@ import CoreMedia
 
 protocol AudioPlayerable {
     func setCurrent(url: URL)
+    func seek(to value: Float)
+    func moveTo(seconds: Int)
     func play()
     func pause()
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void)
@@ -36,6 +38,27 @@ class MusicPlayerService: AudioPlayerable {
     
     func pause() {
         avPlayer.pause()
+    }
+    
+    func seek(to value: Float) {
+        guard let duration = self.avPlayer.currentItem?.duration else { return }
+        
+        let durationInSecs = CMTimeGetSeconds(duration)
+        
+        let seekTimeInSecs = Float64(value) * durationInSecs
+        
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSecs, preferredTimescale: Int32(NSEC_PER_SEC))
+        
+        avPlayer.seek(to: seekTime)
+    }
+    
+    func moveTo(seconds: Int) {
+        
+        let secondsToMove = CMTime(value: CMTimeValue(seconds), timescale: 1)
+        let seekTime = CMTimeAdd(avPlayer.currentTime(), secondsToMove)
+        
+        avPlayer.seek(to: seekTime)
+        
     }
     
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void) {

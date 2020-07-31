@@ -284,7 +284,37 @@ class PodcastPlayerUIView: UIView {
             })
             .disposed(by: self.disposeBag)
         
+        sliderView.rx
+            .value
+            .asDriver()
+            .drive(onNext: { [unowned self] (value) in
+                self.playerService.seek(to: value)
+            })
+            .disposed(by: self.disposeBag)
+        
+//        sliderView.addTarget(self, action: #selector(playerSliderValueChanged), for: .valueChanged)
+        
+        rewindButton.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.playerService.moveTo(seconds: -15)
+            })
+            .disposed(by: self.disposeBag)
+        
+        fastForwardButton.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.playerService.moveTo(seconds: 15)
+            })
+            .disposed(by: self.disposeBag)
+        
     }
+    
+//    @objc private func playerSliderValueChanged(sender: UISlider!) {
+//        self.playerService.seek(to: sender.value)
+//    }
     
     private func setEpisodeData() {
         guard let episode = self.episode else { return }
