@@ -33,7 +33,7 @@ class MusicPlayerService: AudioPlayerable {
     }
     
     func pause() {
-        
+        avPlayer.pause()
     }
     
 }

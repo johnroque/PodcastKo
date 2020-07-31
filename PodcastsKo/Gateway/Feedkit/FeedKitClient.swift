@@ -36,6 +36,7 @@ final class FeedKitClientImp {
                                                   pubDate: feedItem.pubDate,
                                                   description: feedItem.iTunes?.iTunesSubtitle ?? feedItem.description,
                                                   author: feedItem.iTunes?.iTunesAuthor,
+                                                  streamUrl: feedItem.enclosure?.attributes?.url,
                                                   image: imageUrl))
                     })
                     return episodes

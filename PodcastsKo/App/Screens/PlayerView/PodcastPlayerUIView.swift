@@ -16,12 +16,29 @@ class PodcastPlayerUIView: UIView {
     // MARK: - Dependencies
     var episode: Episode? {
         didSet {
+            self.shrinkEpisodeImageView()
             self.setEpisodeData()
+            self.playEpisode()
         }
     }
     
     // MARK: - Private properties
     let disposeBag = DisposeBag()
+    let playerService: AudioPlayerable = MusicPlayerService()
+    // player.timeControlStatus to determine the status by using player state
+    var playing: Bool = false {
+        didSet {
+            if playing {
+                playerService.play()
+                playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+                enlargeEpisodeImageView()
+            } else {
+                playerService.pause()
+                playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+                shrinkEpisodeImageView()
+            }
+        }
+    }
     
     // MARK: - Views
     private lazy var containerStackView: UIStackView = {
@@ -43,6 +60,8 @@ class PodcastPlayerUIView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = #imageLiteral(resourceName: "appicon")
+        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -260,9 +279,17 @@ class PodcastPlayerUIView: UIView {
             .tap
             .asDriver()
             .drive(onNext: { [unowned self] in
-                self.removeFromSuperview()
+                self.closeView()
             })
             .disposed(by: disposeBag)
+        
+        playButton.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.playing.toggle()
+            })
+            .disposed(by: self.disposeBag)
         
     }
     
@@ -277,6 +304,37 @@ class PodcastPlayerUIView: UIView {
         
         podcastTileLabel.text = episode.title
         authorLabel.text = episode.author
+        
+    }
+    
+    private func playEpisode() {
+        
+        guard let streamUrlStr = self.episode?.streamUrl, let url = URL(string: streamUrlStr) else { return }
+        
+        playerService.setCurrent(url: url)
+        playing.toggle()
+    }
+    
+    private func closeView() {
+        self.removeFromSuperview()
+    }
+    
+    private func enlargeEpisodeImageView() {
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+            
+            self?.podcastImage.transform = .identity
+
+        }, completion: nil)
+        
+    }
+    
+    private func shrinkEpisodeImageView() {
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+            let scale: CGFloat = 0.7
+            self?.podcastImage.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
         
     }
     
