@@ -68,6 +68,8 @@ class PodcastPlayerUIView: UIView {
     private lazy var sliderView: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumValue = 0
+        slider.maximumValue = 1
         return slider
     }()
     
@@ -79,7 +81,6 @@ class PodcastPlayerUIView: UIView {
     
     private lazy var currentTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "00:00:00"
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         return label
@@ -87,7 +88,6 @@ class PodcastPlayerUIView: UIView {
     
     private lazy var durationTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "69:69:00"
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .right
@@ -194,6 +194,7 @@ class PodcastPlayerUIView: UIView {
         
         setupViews()
         setupButtons()
+        observerCurrentPlayingTime()
     }
     
     required init?(coder: NSCoder) {
@@ -205,8 +206,6 @@ class PodcastPlayerUIView: UIView {
         self.backgroundColor = .systemBackground
         
         self.addSubview(containerStackView)
-        
-        
         
         NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
@@ -252,12 +251,6 @@ class PodcastPlayerUIView: UIView {
         playerOptionsStackView.addArrangedSubview(spacerView3)
         playerOptionsStackView.addArrangedSubview(fastForwardButton)
         playerOptionsStackView.addArrangedSubview(spacerView4)
-        
-//        NSLayoutConstraint.activate([
-//            rewindButton.widthAnchor.constraint(equalToConstant: 44),
-//            fastForwardButton.widthAnchor.constraint(equalToConstant: 44),
-//            playButton.widthAnchor.constraint(equalToConstant: 54),
-//        ])
         
         containerStackView.addArrangedSubview(volumeStackView)
         
@@ -313,6 +306,17 @@ class PodcastPlayerUIView: UIView {
         
         playerService.setCurrent(url: url)
         playing.toggle()
+    }
+    
+    private func observerCurrentPlayingTime() {
+        
+        playerService.observeCurrentTime { [unowned self] (vm) in
+            self.currentTimeLabel.text = vm.getCurrentFormatted()
+            self.durationTimeLabel.text = vm.getDurationFormatted()
+            
+            self.sliderView.value = vm.percentage
+        }
+        
     }
     
     private func closeView() {

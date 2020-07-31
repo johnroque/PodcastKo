@@ -8,11 +8,13 @@
 
 import Foundation
 import AVKit
+import CoreMedia
 
 protocol AudioPlayerable {
     func setCurrent(url: URL)
     func play()
     func pause()
+    func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void)
 }
 
 class MusicPlayerService: AudioPlayerable {
@@ -34,6 +36,69 @@ class MusicPlayerService: AudioPlayerable {
     
     func pause() {
         avPlayer.pause()
+    }
+    
+    func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void) {
+        let interval = CMTime(value: 1, timescale: 1)
+        avPlayer.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            guard let self = self else { return }
+            
+//            let durationString = self.avPlayer.currentItem?.duration == nil ?
+//                "--:--" : self.avPlayer.currentItem!.duration.getMinuteFormattedString()
+            
+            let durationTime = self.avPlayer.currentItem?.duration == nil ? CMTime(value: 1, timescale: 1) : self.avPlayer.currentItem!.duration
+            
+            let percentage = CMTimeGetSeconds(time) / CMTimeGetSeconds(durationTime)
+            
+            let status = PlayerStatusViewModel(currentSeconds: time.getTotalSeconds(), totalSeconds: durationTime.getTotalSeconds(), percentage: Float(percentage))
+            
+            observer(status)
+        }
+    }
+    
+}
+
+struct PlayerStatusViewModel {
+    
+    let currentSeconds: Int
+    let totalSeconds: Int
+    let percentage: Float
+    
+    func getCurrentFormatted() -> String {
+        let seconds = currentSeconds % 60
+        let minutes = currentSeconds / 60
+        
+        let timeFormattedString = String(format: "%02d:%02d", minutes, seconds)
+        
+        return timeFormattedString
+    }
+    
+    func getDurationFormatted() -> String {
+        let seconds = totalSeconds % 60
+        let minutes = totalSeconds / 60
+        
+        let timeFormattedString = String(format: "%02d:%02d", minutes, seconds)
+        
+        return timeFormattedString
+    }
+    
+}
+
+extension CMTime {
+    
+    func getTotalSeconds() -> Int {
+        return Int(CMTimeGetSeconds(self))
+    }
+    
+    func getMinuteFormattedString() -> String {
+        
+        let totalSeconds = Int(CMTimeGetSeconds(self))
+        let seconds = totalSeconds % 60
+        let minutes = totalSeconds / 60
+        
+        let timeFormattedString = String(format: "%02d:%02d", minutes, seconds)
+        
+        return timeFormattedString
     }
     
 }
