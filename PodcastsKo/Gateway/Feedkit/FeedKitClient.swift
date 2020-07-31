@@ -14,40 +14,45 @@ final class FeedKitClientImp {
     private struct UnsupportedParse: Error {}
     
     func parse(url: URL, completionHandler: @escaping (Result<[FKEpisode], Error>) -> Void) {
-        let parser = FeedParser(URL: url)
-        parser.parseAsync { (result) in
-            
-            completionHandler(Result {
-            switch result {
-            case .success(let feed):
+        
+        DispatchQueue.global(qos: .background).async {
+         
+            let parser = FeedParser(URL: url)
+            parser.parseAsync { (result) in
                 
-                switch feed {
-                case let .rss(rssFeed):
-                    var imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
+                completionHandler(Result {
+                switch result {
+                case .success(let feed):
                     
-                    var episodes = [FKEpisode]()
-                    rssFeed.items?.forEach({ (feedItem) in
+                    switch feed {
+                    case let .rss(rssFeed):
+                        var imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
                         
-                        if feedItem.iTunes?.iTunesImage?.attributes?.href != nil {
-                            imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href
-                        }
-                        
-                        episodes.append(FKEpisode(title: feedItem.title,
-                                                  pubDate: feedItem.pubDate,
-                                                  description: feedItem.iTunes?.iTunesSubtitle ?? feedItem.description,
-                                                  author: feedItem.iTunes?.iTunesAuthor,
-                                                  streamUrl: feedItem.enclosure?.attributes?.url,
-                                                  image: imageUrl))
-                    })
-                    return episodes
-                default:
+                        var episodes = [FKEpisode]()
+                        rssFeed.items?.forEach({ (feedItem) in
+                            
+                            if feedItem.iTunes?.iTunesImage?.attributes?.href != nil {
+                                imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href
+                            }
+                            
+                            episodes.append(FKEpisode(title: feedItem.title,
+                                                      pubDate: feedItem.pubDate,
+                                                      description: feedItem.iTunes?.iTunesSubtitle ?? feedItem.description,
+                                                      author: feedItem.iTunes?.iTunesAuthor,
+                                                      streamUrl: feedItem.enclosure?.attributes?.url,
+                                                      image: imageUrl))
+                        })
+                        return episodes
+                    default:
+                        throw UnsupportedParse()
+                    }
+                    
+                case .failure:
                     throw UnsupportedParse()
                 }
+                })
                 
-            case .failure:
-                throw UnsupportedParse()
             }
-            })
             
         }
         
