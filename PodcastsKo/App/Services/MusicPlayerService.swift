@@ -16,6 +16,7 @@ protocol AudioPlayerable {
     func moveTo(seconds: Int)
     func play()
     func pause()
+    func volume(value: Float)
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void)
 }
 
@@ -59,6 +60,10 @@ class MusicPlayerService: AudioPlayerable {
         
         avPlayer.seek(to: seekTime)
         
+    }
+    
+    func volume(value: Float) {
+        self.avPlayer.volume = value
     }
     
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void) {

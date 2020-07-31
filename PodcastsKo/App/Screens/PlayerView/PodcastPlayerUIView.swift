@@ -109,7 +109,6 @@ class PodcastPlayerUIView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .purple
-        label.text = "123"
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
@@ -180,6 +179,9 @@ class PodcastPlayerUIView: UIView {
     
     private lazy var volumeSlider: UISlider = {
         let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 1
+        slider.value = 1
         return slider
     }()
     
@@ -307,6 +309,14 @@ class PodcastPlayerUIView: UIView {
             .asDriver()
             .drive(onNext: { [unowned self] in
                 self.playerService.moveTo(seconds: 15)
+            })
+            .disposed(by: self.disposeBag)
+        
+        volumeSlider.rx
+            .value
+            .asDriver()
+            .drive(onNext: { [unowned self] (value) in
+                self.playerService.volume(value: value)
             })
             .disposed(by: self.disposeBag)
         
