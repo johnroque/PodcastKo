@@ -47,7 +47,11 @@ class SearchViewController: UITableViewController {
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.searchController.obscuresBackgroundDuringPresentation = false
         
-        searchController.searchBar.rx.text.asDriver().drive(onNext: { [weak self] (text) in
+        searchController.searchBar.rx
+            .text
+            .asDriver()
+            .debounce(.milliseconds(2000))
+            .drive(onNext: { [weak self] (text) in
             guard let self = self else { return }
             
             self.viewModel?.searchPodcastViewModel.searchPodcast(title: text ?? "")
