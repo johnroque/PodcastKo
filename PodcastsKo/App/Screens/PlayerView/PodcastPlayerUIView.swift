@@ -11,6 +11,30 @@ import RxSwift
 import RxCocoa
 import SDWebImage
 
+extension PodcastPlayerUIView {
+    
+    func configureMaximize() {
+        self.containerStackView.isHidden = false
+        self.minimizeView.isHidden = true
+    }
+    
+    func configureMinimize() {
+        self.containerStackView.isHidden = true
+        self.minimizeView.isHidden = false
+    }
+    
+    @objc private func handleMinimixeToMaximize() {
+        let window = UIWindow.key
+        if let nav = window?.rootViewController as? UINavigationController,
+            let mainTab = nav.viewControllers.first as? MainTabBarController {
+            
+            mainTab.showPlayer(episode: nil)
+            
+        }
+    }
+    
+}
+
 class PodcastPlayerUIView: UIView {
     
     // MARK: - Dependencies
@@ -31,16 +55,64 @@ class PodcastPlayerUIView: UIView {
             if playing {
                 playerService.play()
                 playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+                minimizePausePlayButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 enlargeEpisodeImageView()
             } else {
                 playerService.pause()
                 playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+                minimizePausePlayButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 shrinkEpisodeImageView()
             }
         }
     }
     
     // MARK: - Views
+    
+    private lazy var minimizeView: UIView = {
+        let view = UIView()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinimixeToMaximize)))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var minimizeStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var minimizeIconImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    private lazy var minimizeTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var minimizePausePlayButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        button.tintColor = UIColor(named: "textColor")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var minimizeFastForwardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "fastforward15"), for: .normal)
+        button.tintColor = UIColor(named: "textColor")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +128,7 @@ class PodcastPlayerUIView: UIView {
     }()
     
     private lazy var minimizeButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "arrow-down"), for: .normal)
         button.tintColor = UIColor(named: "textColor")
@@ -167,7 +239,7 @@ class PodcastPlayerUIView: UIView {
     }()
     
     private lazy var rewindButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "rewind15"), for: .normal)
         button.tintColor = UIColor(named: "textColor")!
@@ -175,7 +247,7 @@ class PodcastPlayerUIView: UIView {
     }()
     
     private lazy var playButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         button.tintColor = UIColor(named: "textColor")!
@@ -183,7 +255,7 @@ class PodcastPlayerUIView: UIView {
     }()
     
     private lazy var fastForwardButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle(nil, for: .normal)
         button.setImage(#imageLiteral(resourceName: "fastforward15"), for: .normal)
         button.tintColor = UIColor(named: "textColor")!
@@ -233,6 +305,35 @@ class PodcastPlayerUIView: UIView {
     private func setupViews() {
         
         self.backgroundColor = .systemBackground
+        
+        self.addSubview(minimizeView)
+        
+        NSLayoutConstraint.activate([
+            minimizeView.topAnchor.constraint(equalTo: self.topAnchor),
+            minimizeView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            minimizeView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            minimizeView.heightAnchor.constraint(equalToConstant: 64)
+        ])
+        
+        minimizeView.addSubview(minimizeStackView)
+        
+        NSLayoutConstraint.activate([
+            minimizeStackView.topAnchor.constraint(equalTo: minimizeView.topAnchor, constant: 8),
+            minimizeStackView.leadingAnchor.constraint(equalTo: minimizeView.leadingAnchor, constant: 8),
+            minimizeStackView.trailingAnchor.constraint(equalTo: minimizeView.trailingAnchor, constant: -8),
+            minimizeStackView.bottomAnchor.constraint(equalTo: minimizeView.bottomAnchor, constant: -8),
+        ])
+        
+        minimizeStackView.addArrangedSubview(minimizeIconImage)
+        minimizeStackView.addArrangedSubview(minimizeTitleLabel)
+        minimizeStackView.addArrangedSubview(minimizePausePlayButton)
+        minimizeStackView.addArrangedSubview(minimizeFastForwardButton)
+        
+        NSLayoutConstraint.activate([
+            minimizeIconImage.widthAnchor.constraint(equalToConstant: 48),
+            minimizePausePlayButton.widthAnchor.constraint(equalToConstant: 48),
+            minimizeFastForwardButton.widthAnchor.constraint(equalToConstant: 48)
+        ])
         
         self.addSubview(containerStackView)
         
@@ -334,6 +435,14 @@ class PodcastPlayerUIView: UIView {
             })
             .disposed(by: self.disposeBag)
         
+        minimizePausePlayButton.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.playing.toggle()
+            })
+            .disposed(by: self.disposeBag)
+        
         sliderView.rx
             .value
             .asDriver()
@@ -360,6 +469,14 @@ class PodcastPlayerUIView: UIView {
             })
             .disposed(by: self.disposeBag)
         
+        minimizeFastForwardButton.rx
+            .tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                self.playerService.moveTo(seconds: 15)
+            })
+            .disposed(by: self.disposeBag)
+        
         volumeSlider.rx
             .value
             .asDriver()
@@ -379,12 +496,16 @@ class PodcastPlayerUIView: UIView {
         
         if let urlStr = episode.image, let url = URL(string: urlStr) {
             podcastImage.sd_setImage(with: url)
+            minimizeIconImage.sd_setImage(with: url)
         } else {
             podcastImage.image = nil
+            minimizeIconImage.image = nil
         }
         
         podcastTileLabel.text = episode.title
         authorLabel.text = episode.author
+        
+        minimizeTitleLabel.text = episode.title
         
     }
     
@@ -393,7 +514,7 @@ class PodcastPlayerUIView: UIView {
         guard let streamUrlStr = self.episode?.streamUrl, let url = URL(string: streamUrlStr) else { return }
         
         playerService.setCurrent(url: url)
-        playing.toggle()
+        playing = true
     }
     
     private func observerCurrentPlayingTime() {

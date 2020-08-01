@@ -60,6 +60,7 @@ class MainTabBarController: UITabBarController {
         maximizedTopAnchorConstraint?.isActive = true
         maximizedTopAnchorConstraint?.constant = 0
         minimizeTopAnchorConstraint?.isActive = false
+        self.playerView?.configureMaximize()
         
         if let episode = episode {
             self.playerView?.episode = episode
@@ -76,6 +77,7 @@ class MainTabBarController: UITabBarController {
     func minimizePlayer() {
         maximizedTopAnchorConstraint?.isActive = false
         minimizeTopAnchorConstraint?.isActive = true
+        self.playerView?.configureMinimize()
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
             

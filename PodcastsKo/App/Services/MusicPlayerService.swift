@@ -115,6 +115,10 @@ struct PlayerStatusViewModel {
 extension CMTime {
     
     func getTotalSeconds() -> Int {
+        if CMTimeGetSeconds(self).isNaN {
+            return 0
+        }
+        
         return Int(CMTimeGetSeconds(self))
     }
     
