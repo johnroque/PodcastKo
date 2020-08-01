@@ -49,13 +49,37 @@ class PodcastPlayerUIView: UIView {
         return stackView
     }()
     
-    private lazy var dissmissButton: UIButton = {
+    private lazy var minimizeCloseView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var minimizeButton: UIButton = {
         let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "arrow-down"), for: .normal)
+        button.tintColor = UIColor(named: "textColor")
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Dismiss", for: .normal)
-        button.setTitleColor(UIColor(named: "textColor")!, for: .normal)
         return button
     }()
+    
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(nil, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
+        button.tintColor = UIColor(named: "textColor")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+//    private lazy var dissmissButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitle("Dismiss", for: .normal)
+//        button.setTitleColor(UIColor(named: "textColor"), for: .normal)
+//        return button
+//    }()
     
     private lazy var podcastImage: UIImageView = {
         let imageView = UIImageView()
@@ -219,11 +243,32 @@ class PodcastPlayerUIView: UIView {
             containerStackView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
         ])
         
-        containerStackView.addArrangedSubview(dissmissButton)
+        containerStackView.addArrangedSubview(minimizeCloseView)
+        minimizeCloseView.addSubview(minimizeButton)
         
         NSLayoutConstraint.activate([
-            dissmissButton.heightAnchor.constraint(equalToConstant: 44)
+            minimizeButton.topAnchor.constraint(equalTo: minimizeCloseView.topAnchor, constant: 8),
+            minimizeButton.leadingAnchor.constraint(equalTo: minimizeCloseView.leadingAnchor, constant: 16),
+            minimizeButton.bottomAnchor.constraint(equalTo: minimizeCloseView.bottomAnchor, constant: -8),
+            minimizeButton.heightAnchor.constraint(equalToConstant: 25),
+            minimizeButton.widthAnchor.constraint(equalToConstant: 25)
         ])
+        
+//        minimizeCloseView.addSubview(closeButton)
+//
+//        NSLayoutConstraint.activate([
+//            closeButton.topAnchor.constraint(equalTo: minimizeCloseView.topAnchor, constant: 8),
+//            closeButton.trailingAnchor.constraint(equalTo: minimizeCloseView.trailingAnchor, constant: -16),
+//            closeButton.bottomAnchor.constraint(equalTo: minimizeCloseView.bottomAnchor, constant: -8),
+//            closeButton.heightAnchor.constraint(equalToConstant: 25),
+//            closeButton.widthAnchor.constraint(equalToConstant: 25)
+//        ])
+        
+//        containerStackView.addArrangedSubview(dissmissButton)
+        
+//        NSLayoutConstraint.activate([
+//            dissmissButton.heightAnchor.constraint(equalToConstant: 44)
+//        ])
         
         containerStackView.addArrangedSubview(podcastImage)
         
@@ -273,13 +318,13 @@ class PodcastPlayerUIView: UIView {
     
     private func setupButtons() {
         
-        dissmissButton.rx
+        minimizeButton.rx
             .tap
             .asDriver()
             .drive(onNext: { [unowned self] in
                 self.closeView()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
         
         playButton.rx
             .tap
