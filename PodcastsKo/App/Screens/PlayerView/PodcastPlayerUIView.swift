@@ -408,7 +408,13 @@ class PodcastPlayerUIView: UIView {
     }
     
     private func closeView() {
-        self.removeFromSuperview()
+        let window = UIWindow.key
+        if let nav = window?.rootViewController as? UINavigationController,
+            let mainTab = nav.viewControllers.first as? MainTabBarController {
+            
+            mainTab.minimizePlayer()
+            
+        }
     }
     
     private func enlargeEpisodeImageView() {

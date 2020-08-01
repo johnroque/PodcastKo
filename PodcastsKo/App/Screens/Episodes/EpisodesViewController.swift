@@ -104,12 +104,20 @@ class EpisodesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // TODO: Deprecated keywindow for ios13
-        let window = UIApplication.shared.keyWindow
-     
-        let view = PodcastPlayerUIView(frame: self.view.frame)
-        view.episode = self.data[indexPath.row]
+//        let window = UIApplication.shared.keyWindow
+//     
+//        let view = PodcastPlayerUIView(frame: self.view.frame)
+//        view.episode = self.data[indexPath.row]
+//        
+//        window?.addSubview(view)
         
-        window?.addSubview(view)
+        let window = UIWindow.key
+        if let nav = window?.rootViewController as? UINavigationController,
+            let mainTab = nav.viewControllers.first as? MainTabBarController {
+            
+            mainTab.showPlayer(episode: self.data[indexPath.row])
+            
+        }
         
     }
     
