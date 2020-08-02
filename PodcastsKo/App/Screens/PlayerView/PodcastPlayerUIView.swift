@@ -14,13 +14,13 @@ import SDWebImage
 extension PodcastPlayerUIView {
     
     func configureMaximize() {
-        self.containerStackView.isHidden = false
-        self.minimizeView.isHidden = true
+        self.containerStackView.alpha = 1
+        self.minimizeView.alpha = 0
     }
     
     func configureMinimize() {
-        self.containerStackView.isHidden = true
-        self.minimizeView.isHidden = false
+        self.containerStackView.alpha = 0
+        self.minimizeView.alpha = 1
     }
     
     @objc private func handleMinimixeToMaximize() {
@@ -31,6 +31,49 @@ extension PodcastPlayerUIView {
             mainTab.showPlayer(episode: nil)
             
         }
+    }
+    
+    @objc private func handleViewPaning(gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .changed {
+            handlePanChange(gesture: gesture)
+        } else if gesture.state == .ended {
+            handlePanEnded(gesture: gesture)
+        }
+        
+    }
+    
+    private func handlePanChange(gesture: UIPanGestureRecognizer) {
+
+        let translation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        
+        self.minimizeView.alpha = 1 + translation.y / 200
+        self.containerStackView.alpha = -translation.y / 200
+        
+    }
+    
+    private func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+            
+            self?.transform = .identity
+            
+            if translation.y < -200 || velocity.y < -500 {
+                let window = UIWindow.key
+                if let nav = window?.rootViewController as? UINavigationController,
+                    let mainTab = nav.viewControllers.first as? MainTabBarController {
+                    
+                    mainTab.showPlayer(episode: nil)
+                    
+                }
+            } else {
+                self?.configureMinimize()
+            }
+            
+        }, completion: nil)
     }
     
 }
@@ -71,6 +114,16 @@ class PodcastPlayerUIView: UIView {
     private lazy var minimizeView: UIView = {
         let view = UIView()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMinimixeToMaximize)))
+//        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(h)))
+        
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleViewPaning)))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var minimizeSeperatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -313,6 +366,15 @@ class PodcastPlayerUIView: UIView {
             minimizeView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             minimizeView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             minimizeView.heightAnchor.constraint(equalToConstant: 64)
+        ])
+        
+        minimizeView.addSubview(minimizeSeperatorView)
+        
+        NSLayoutConstraint.activate([
+            minimizeSeperatorView.topAnchor.constraint(equalTo: minimizeView.topAnchor),
+            minimizeSeperatorView.leadingAnchor.constraint(equalTo: minimizeView.leadingAnchor),
+            minimizeSeperatorView.trailingAnchor.constraint(equalTo: minimizeView.trailingAnchor),
+            minimizeSeperatorView.heightAnchor.constraint(equalToConstant: 0.5),
         ])
         
         minimizeView.addSubview(minimizeStackView)

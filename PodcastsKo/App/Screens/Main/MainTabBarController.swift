@@ -20,6 +20,7 @@ class MainTabBarController: UITabBarController {
     
     private var maximizedTopAnchorConstraint: NSLayoutConstraint?
     private var minimizeTopAnchorConstraint: NSLayoutConstraint?
+    private var playerBottomAnchorConstraint: NSLayoutConstraint?
     
     func showPlayer(episode: Episode?) {
         if playerView == nil {
@@ -43,10 +44,12 @@ class MainTabBarController: UITabBarController {
         
         maximizedTopAnchorConstraint?.isActive = true
         
+        playerBottomAnchorConstraint = playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
+        
         NSLayoutConstraint.activate([
             playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            playerBottomAnchorConstraint!
         ])
         
     }
@@ -57,10 +60,10 @@ class MainTabBarController: UITabBarController {
     }
     
     func maximizePlayer(episode: Episode?) {
+        minimizeTopAnchorConstraint?.isActive = false
         maximizedTopAnchorConstraint?.isActive = true
         maximizedTopAnchorConstraint?.constant = 0
-        minimizeTopAnchorConstraint?.isActive = false
-        self.playerView?.configureMaximize()
+        playerBottomAnchorConstraint?.constant = 0
         
         if let episode = episode {
             self.playerView?.episode = episode
@@ -70,19 +73,21 @@ class MainTabBarController: UITabBarController {
             
             self?.view.layoutIfNeeded()
             self?.tabBar.isHidden = true
+            self?.playerView?.configureMaximize()
             
         }, completion: nil)
     }
     
     func minimizePlayer() {
         maximizedTopAnchorConstraint?.isActive = false
+        playerBottomAnchorConstraint?.constant = view.frame.height
         minimizeTopAnchorConstraint?.isActive = true
-        self.playerView?.configureMinimize()
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
             
             self?.view.layoutIfNeeded()
             self?.tabBar.isHidden = false
+            self?.playerView?.configureMinimize()
             
         }, completion: nil)
         
