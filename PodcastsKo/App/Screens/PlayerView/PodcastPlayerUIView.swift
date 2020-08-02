@@ -76,6 +76,46 @@ extension PodcastPlayerUIView {
         }, completion: nil)
     }
     
+    @objc private func handleMinimizePanGesture(gesture: UIPanGestureRecognizer) {
+        
+        if gesture.state == .changed {
+            handleMinimizePanChange(gesture: gesture)
+        } else if gesture.state == .ended {
+            handleMinimizePanEnded(gesture: gesture)
+        }
+        
+    }
+    
+    private func handleMinimizePanChange(gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: self.superview)
+        containerStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        
+    }
+    
+    private func handleMinimizePanEnded(gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: self.superview)
+//        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+            
+            self?.containerStackView.transform = .identity
+
+            if translation.y > 100 {
+                let window = UIWindow.key
+                if let nav = window?.rootViewController as? UINavigationController,
+                    let mainTab = nav.viewControllers.first as? MainTabBarController {
+
+                    mainTab.minimizePlayer()
+
+                }
+            }
+            
+        }, completion: nil)
+        
+    }
+    
 }
 
 class PodcastPlayerUIView: UIView {
@@ -176,6 +216,7 @@ class PodcastPlayerUIView: UIView {
     
     private lazy var minimizeCloseView: UIView = {
         let view = UIView()
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleMinimizePanGesture)))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
