@@ -73,7 +73,7 @@ class MusicPlayerService: AudioPlayerable {
         MPRemoteCommandCenter.shared().playCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
             
             self?.commandCenterService?.play()
-//            self?.setBackgroundElapsedTimeInfo()
+            self?.setBackgroundElapsedTimeInfo()
             
             return .success
         }
@@ -82,6 +82,7 @@ class MusicPlayerService: AudioPlayerable {
         MPRemoteCommandCenter.shared().pauseCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
             
             self?.commandCenterService?.pause()
+            self?.setBackgroundElapsedTimeInfo()
             
             return .success
         }
@@ -137,10 +138,12 @@ class MusicPlayerService: AudioPlayerable {
     
     func play() {
         avPlayer.play()
+        self.setBackgroundElapsedTimeInfo()
     }
     
     func pause() {
         avPlayer.pause()
+        self.setBackgroundElapsedTimeInfo()
     }
     
     func seek(to value: Float) {
@@ -153,6 +156,8 @@ class MusicPlayerService: AudioPlayerable {
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSecs, preferredTimescale: Int32(NSEC_PER_SEC))
         
         avPlayer.seek(to: seekTime)
+        
+        self.setBackgroundElapsedTimeInfo()
     }
     
     func moveTo(seconds: Int) {
@@ -162,6 +167,7 @@ class MusicPlayerService: AudioPlayerable {
         
         avPlayer.seek(to: seekTime)
         
+        self.setBackgroundElapsedTimeInfo()
     }
     
     func volume(value: Float) {

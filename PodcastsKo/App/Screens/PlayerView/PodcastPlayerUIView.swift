@@ -164,7 +164,6 @@ class PodcastPlayerUIView: UIView {
                 playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 minimizePausePlayButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 shrinkEpisodeImageView()
-                playerService.setBackgroundElapsedTimeInfo()
             }
         }
     }
