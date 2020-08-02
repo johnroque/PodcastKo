@@ -118,6 +118,18 @@ extension PodcastPlayerUIView {
     
 }
 
+extension PodcastPlayerUIView: AudioCommandCenterServiceable {
+    
+    func pause() {
+        self.playing = false
+    }
+    
+    func play() {
+        self.playing = true
+    }
+    
+}
+
 class PodcastPlayerUIView: UIView {
     
     // MARK: - Dependencies
@@ -390,6 +402,9 @@ class PodcastPlayerUIView: UIView {
         setupViews()
         setupButtons()
         observerCurrentPlayingTime()
+        
+        playerService.setupRemoteControl(commandCenterService: self)
+        playerService.setupAudioSession()
     }
     
     required init?(coder: NSCoder) {

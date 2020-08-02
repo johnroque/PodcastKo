@@ -9,8 +9,11 @@
 import Foundation
 import AVKit
 import CoreMedia
+import MediaPlayer
 
 protocol AudioPlayerable {
+    func setupAudioSession()
+    func setupRemoteControl(commandCenterService: AudioCommandCenterServiceable)
     func setCurrent(url: URL)
     func seek(to value: Float)
     func moveTo(seconds: Int)
@@ -20,7 +23,15 @@ protocol AudioPlayerable {
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void)
 }
 
+protocol AudioCommandCenterServiceable: class {
+    func pause()
+    func play()
+}
+
 class MusicPlayerService: AudioPlayerable {
+    
+    //
+    private weak var commandCenterService: AudioCommandCenterServiceable?
     
     let avPlayer: AVPlayer = {
         let player = AVPlayer()
@@ -31,6 +42,48 @@ class MusicPlayerService: AudioPlayerable {
     func setCurrent(url: URL) {
         let playerItem = AVPlayerItem(url: url)
         avPlayer.replaceCurrentItem(with: playerItem)
+    }
+    
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true, options: .init())
+        } catch {
+            print("Failed to activate session:", error)
+        }
+    }
+    
+    func setupRemoteControl(commandCenterService: AudioCommandCenterServiceable) {
+        
+        self.commandCenterService = commandCenterService
+        
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        MPRemoteCommandCenter.shared().playCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().playCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
+            
+            self?.commandCenterService?.play()
+            
+            return .success
+        }
+        
+        MPRemoteCommandCenter.shared().pauseCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
+            
+            self?.commandCenterService?.pause()
+            
+            return .success
+        }
+        
+        // Command for airpods double tap
+//        MPRemoteCommandCenter.shared().togglePlayPauseCommand.isEnabled = true
+//        MPRemoteCommandCenter.shared().togglePlayPauseCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
+//
+//            self?.commandCenterService?.pause()
+//
+//            return .success
+//        }
+        
     }
     
     func play() {
