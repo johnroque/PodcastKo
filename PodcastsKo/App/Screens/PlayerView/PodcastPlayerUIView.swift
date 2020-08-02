@@ -138,6 +138,13 @@ class PodcastPlayerUIView: UIView {
             self.shrinkEpisodeImageView()
             self.setEpisodeData()
             self.playEpisode()
+            
+//            if let episode = episode {
+//                self.playerService.setupBackgroundInfo(title: episode.title ?? "",
+//                                                       author: episode.author ?? "",
+//                                                       image: nil)
+//            }
+            
         }
     }
     
@@ -157,6 +164,7 @@ class PodcastPlayerUIView: UIView {
                 playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 minimizePausePlayButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 shrinkEpisodeImageView()
+                playerService.setBackgroundElapsedTimeInfo()
             }
         }
     }
@@ -614,7 +622,14 @@ class PodcastPlayerUIView: UIView {
         
         if let urlStr = episode.image, let url = URL(string: urlStr) {
             podcastImage.sd_setImage(with: url)
-            minimizeIconImage.sd_setImage(with: url)
+            minimizeIconImage.sd_setImage(with: url) { [weak self] (image, _, _, _) in
+                
+                self?.playerService.setupBackgroundInfo(title: episode.title ?? "",
+                                                       author: episode.author ?? "",
+                                                       image: image)
+                
+                
+            }
         } else {
             podcastImage.image = nil
             minimizeIconImage.image = nil

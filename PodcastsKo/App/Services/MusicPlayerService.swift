@@ -14,6 +14,9 @@ import MediaPlayer
 protocol AudioPlayerable {
     func setupAudioSession()
     func setupRemoteControl(commandCenterService: AudioCommandCenterServiceable)
+    func setupBackgroundInfo(title: String, author: String, image: UIImage?)
+    func setBackgroundDurationInfo()
+    func setBackgroundElapsedTimeInfo()
     func setCurrent(url: URL)
     func seek(to value: Float)
     func moveTo(seconds: Int)
@@ -38,6 +41,13 @@ class MusicPlayerService: AudioPlayerable {
         player.automaticallyWaitsToMinimizeStalling = false
         return player
     }()
+    
+    init() {
+        avPlayer.addBoundaryTimeObserver(forTimes: [NSValue(time: CMTime(value: 1, timescale: 1))], queue: .main) { [weak self] in
+            
+            self?.setBackgroundDurationInfo()
+        }
+    }
    
     func setCurrent(url: URL) {
         let playerItem = AVPlayerItem(url: url)
@@ -63,6 +73,7 @@ class MusicPlayerService: AudioPlayerable {
         MPRemoteCommandCenter.shared().playCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
             
             self?.commandCenterService?.play()
+//            self?.setBackgroundElapsedTimeInfo()
             
             return .success
         }
@@ -83,6 +94,44 @@ class MusicPlayerService: AudioPlayerable {
 //
 //            return .success
 //        }
+        
+    }
+    
+    func setupBackgroundInfo(title: String, author: String, image: UIImage?) {
+        
+        var nowPlayingInfo = [String: Any]()
+        
+        nowPlayingInfo[MPMediaItemPropertyTitle] = title
+        nowPlayingInfo[MPMediaItemPropertyArtist] = author
+        
+        if let image = image {
+            let artwork = MPMediaItemArtwork(boundsSize: image.size) { (_) -> UIImage in
+                return image
+            }
+            nowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
+            
+        }
+        
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        
+    }
+    
+    func setBackgroundDurationInfo() {
+        
+        guard let duration = avPlayer.currentItem?.duration else { return }
+        
+        let durationSecs = CMTimeGetSeconds(duration)
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSecs
+        
+    }
+    
+    func setBackgroundElapsedTimeInfo() {
+        
+        let time = CMTimeGetSeconds(avPlayer.currentTime())
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = time
         
     }
     
