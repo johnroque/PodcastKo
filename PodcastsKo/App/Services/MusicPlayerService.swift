@@ -29,6 +29,8 @@ protocol AudioPlayerable {
 protocol AudioCommandCenterServiceable: class {
     func pause()
     func play()
+    func playNextTrack()
+    func playPreviousTrack()
 }
 
 class MusicPlayerService: AudioPlayerable {
@@ -83,6 +85,22 @@ class MusicPlayerService: AudioPlayerable {
             
             self?.commandCenterService?.pause()
             self?.setBackgroundElapsedTimeInfo()
+            
+            return .success
+        }
+        
+        MPRemoteCommandCenter.shared().nextTrackCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
+            
+            self?.commandCenterService?.playNextTrack()
+            
+            return .success
+        }
+        
+        MPRemoteCommandCenter.shared().previousTrackCommand.isEnabled = true
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget { [weak self] (_) -> MPRemoteCommandHandlerStatus in
+            
+            self?.commandCenterService?.playPreviousTrack()
             
             return .success
         }

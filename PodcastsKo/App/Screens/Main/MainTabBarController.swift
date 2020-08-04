@@ -22,12 +22,12 @@ class MainTabBarController: UITabBarController {
     private var minimizeTopAnchorConstraint: NSLayoutConstraint?
     private var playerBottomAnchorConstraint: NSLayoutConstraint?
     
-    func showPlayer(episode: Episode?) {
+    func showPlayer(episode: Episode?, episodes: [Episode]? = nil) {
         if playerView == nil {
             attachPlayer()
         }
 
-        maximizePlayer(episode: episode)
+        maximizePlayer(episode: episode, episodes: episodes)
     }
     
     private func attachPlayer() {
@@ -59,7 +59,7 @@ class MainTabBarController: UITabBarController {
         playerView = nil
     }
     
-    func maximizePlayer(episode: Episode?) {
+    func maximizePlayer(episode: Episode?, episodes: [Episode]?) {
         minimizeTopAnchorConstraint?.isActive = false
         maximizedTopAnchorConstraint?.isActive = true
         maximizedTopAnchorConstraint?.constant = 0
@@ -67,6 +67,10 @@ class MainTabBarController: UITabBarController {
         
         if let episode = episode {
             self.playerView?.episode = episode
+        }
+        
+        if let episodes = episodes {
+            self.playerView?.episodes = episodes
         }
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in

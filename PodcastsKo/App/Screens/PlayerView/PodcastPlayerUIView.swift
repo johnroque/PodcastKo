@@ -128,6 +128,44 @@ extension PodcastPlayerUIView: AudioCommandCenterServiceable {
         self.playing = true
     }
     
+    func playNextTrack() {
+        guard let episode = self.episode else { return }
+        
+        let epIndex = self.episodes.firstIndex { (ep) -> Bool in
+            return episode.title == ep.title && episode.author == ep.author
+        }
+        
+        if let epIndexInt = epIndex {
+            
+            let index = (epIndexInt + 1) >= (self.episodes.count) ? 0 : epIndexInt + 1
+            
+            let nextEp = self.episodes[index]
+            
+            self.episode = nextEp
+            
+        }
+    }
+    
+    func playPreviousTrack() {
+        
+        guard let episode = self.episode else { return }
+        
+        let epIndex = self.episodes.firstIndex { (ep) -> Bool in
+            return episode.title == ep.title && episode.author == ep.author
+        }
+        
+        if let epIndexInt = epIndex {
+            
+            let index = (epIndexInt) <= 0 ? (self.episodes.count - 1) : epIndexInt - 1
+            
+            let nextEp = self.episodes[index]
+            
+            self.episode = nextEp
+            
+        }
+        
+    }
+    
 }
 
 class PodcastPlayerUIView: UIView {
@@ -147,6 +185,7 @@ class PodcastPlayerUIView: UIView {
             
         }
     }
+    var episodes: [Episode] = []
     
     // MARK: - Private properties
     let disposeBag = DisposeBag()

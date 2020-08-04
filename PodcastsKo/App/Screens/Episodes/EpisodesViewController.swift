@@ -115,7 +115,7 @@ class EpisodesViewController: UITableViewController {
         if let nav = window?.rootViewController as? UINavigationController,
             let mainTab = nav.viewControllers.first as? MainTabBarController {
             
-            mainTab.showPlayer(episode: self.data[indexPath.row])
+            mainTab.showPlayer(episode: self.data[indexPath.row], episodes: self.data)
             
         }
         
