@@ -175,6 +175,7 @@ class PodcastPlayerUIView: UIView {
         didSet {
             self.shrinkEpisodeImageView()
             self.setEpisodeData()
+            self.playerService.setupAudioSession()
             self.playEpisode()
             
 //            if let episode = episode {
@@ -450,7 +451,6 @@ class PodcastPlayerUIView: UIView {
         observerCurrentPlayingTime()
         
         playerService.setupRemoteControl(commandCenterService: self)
-        playerService.setupAudioSession()
     }
     
     required init?(coder: NSCoder) {

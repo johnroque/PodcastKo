@@ -49,6 +49,8 @@ class MusicPlayerService: AudioPlayerable {
             
             self?.setBackgroundDurationInfo()
         }
+        
+        setupHandlerInteruption()
     }
    
     func setCurrent(url: URL) {
@@ -77,6 +79,8 @@ class MusicPlayerService: AudioPlayerable {
             self?.commandCenterService?.play()
             self?.setBackgroundElapsedTimeInfo()
             
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
+            
             return .success
         }
         
@@ -85,6 +89,8 @@ class MusicPlayerService: AudioPlayerable {
             
             self?.commandCenterService?.pause()
             self?.setBackgroundElapsedTimeInfo()
+            
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
             
             return .success
         }
@@ -157,11 +163,13 @@ class MusicPlayerService: AudioPlayerable {
     func play() {
         avPlayer.play()
         self.setBackgroundElapsedTimeInfo()
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 1
     }
     
     func pause() {
         avPlayer.pause()
         self.setBackgroundElapsedTimeInfo()
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0
     }
     
     func seek(to value: Float) {
@@ -208,6 +216,37 @@ class MusicPlayerService: AudioPlayerable {
             
             observer(status)
         }
+    }
+    
+    private func setupHandlerInteruption() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInteruption), name: AVAudioSession.interruptionNotification, object: nil)
+        
+    }
+    
+    @objc private func handleInteruption(notification: Notification) {
+        
+        guard let userInfo = notification.userInfo else { return }
+        
+        guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
+        
+        if type == AVAudioSession.InterruptionType.began.rawValue {
+            print("interruption began")
+            
+            self.commandCenterService?.pause()
+        } else {
+            print("interruption ended")
+            
+            guard let options = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
+            
+            if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
+                self.commandCenterService?.play()
+            }
+            
+        }
+        
+        self.setBackgroundElapsedTimeInfo()
+        
     }
     
 }
