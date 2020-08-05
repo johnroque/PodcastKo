@@ -31,6 +31,14 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
         if let data = self.viewModel?.getFavoritePodcasts() {
             self.data = data
         }
+        
+        let window = UIWindow.key
+        if let nav = window?.rootViewController as? UINavigationController,
+            let mainTab = nav.viewControllers.first as? MainTabBarController {
+                
+            mainTab.viewControllers?[0].tabBarItem.badgeValue = nil
+        
+        }
     }
     
     private func configureCollection() {

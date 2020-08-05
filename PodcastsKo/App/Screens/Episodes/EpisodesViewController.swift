@@ -89,10 +89,10 @@ class EpisodesViewController: UITableViewController {
 //            .asDriver()
 //            .drive(onNext: { [unowned self] in
 //                guard let podcast = self.podCast else { return }
-//                
+//
 //                self.viewModel?.removeFavoritePodcast(podcast: podcast)
 //                self.navigationItem.rightBarButtonItem = self.favoriteButton
-//                
+//
 //            })
 //            .disposed(by: self.disposeBag)
         
@@ -103,6 +103,14 @@ class EpisodesViewController: UITableViewController {
                 
                 self.viewModel?.saveFavoritePodcast(podcast: podcast)
                 self.navigationItem.rightBarButtonItem = self.hearthButton
+                
+                let window = UIWindow.key
+                if let nav = window?.rootViewController as? UINavigationController,
+                    let mainTab = nav.viewControllers.first as? MainTabBarController {
+                        
+                    mainTab.viewControllers?[0].tabBarItem.badgeValue = "New"
+                
+                }
                 
             })
             .disposed(by: self.disposeBag)
