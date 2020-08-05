@@ -27,6 +27,21 @@ final class EpisodesViewViewModel {
         
     }
     
+    func removeFavoritePodcast(podcast: Podcast) {
+        
+        var podcasts: [Podcast] = getFavoritePodcasts()
+        if let index = podcasts.firstIndex(where: { (pd) -> Bool in
+            return pd.trackName == podcast.trackName && pd.artistName == podcast.artistName
+        }) {
+            
+            podcasts.remove(at: index)
+            
+            self.userDefaults.store(podcasts, key: .favoritedPodcastKey)
+            
+        }
+        
+    }
+    
     func getFavoritePodcasts() -> [Podcast] {
         
         guard let podcasts = self.userDefaults.getObjectWithKey(.favoritedPodcastKey, type: [Podcast].self) else {
@@ -34,6 +49,15 @@ final class EpisodesViewViewModel {
         }
         
         return podcasts
+    }
+    
+    func checkIfPodcastAlreadyFavorite(podcast: Podcast) -> Bool {
+        let podcasts = getFavoritePodcasts()
+        let index = podcasts.firstIndex { (pd) -> Bool in
+            return pd.trackName == podcast.trackName && pd.artistName == podcast.artistName
+        }
+        
+        return index != nil ? true : false
     }
     
 }

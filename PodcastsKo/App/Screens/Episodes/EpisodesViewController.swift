@@ -34,6 +34,12 @@ class EpisodesViewController: UITableViewController {
         return button
     }()
     
+    private lazy var hearthButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: "hearth")!, style: .plain, target: self, action: nil)
+        button.tintColor = .purple
+        return button
+    }()
+    
     // MARK: - Private properties
     private var data = [Episode]() {
         didSet {
@@ -71,7 +77,24 @@ class EpisodesViewController: UITableViewController {
             })
             .disposed(by: self.disposeBag)
         
-        self.navigationItem.rightBarButtonItem = favoriteButton
+        guard let podcast = self.podCast, let viewModel = self.viewModel else { return }
+        
+        if viewModel.checkIfPodcastAlreadyFavorite(podcast: podcast) {
+            self.navigationItem.rightBarButtonItem = hearthButton
+        } else {
+            self.navigationItem.rightBarButtonItem = favoriteButton
+        }
+        
+//        hearthButton.rx.tap
+//            .asDriver()
+//            .drive(onNext: { [unowned self] in
+//                guard let podcast = self.podCast else { return }
+//                
+//                self.viewModel?.removeFavoritePodcast(podcast: podcast)
+//                self.navigationItem.rightBarButtonItem = self.favoriteButton
+//                
+//            })
+//            .disposed(by: self.disposeBag)
         
         favoriteButton.rx.tap
             .asDriver()
@@ -79,6 +102,8 @@ class EpisodesViewController: UITableViewController {
                 guard let podcast = self.podCast else { return }
                 
                 self.viewModel?.saveFavoritePodcast(podcast: podcast)
+                self.navigationItem.rightBarButtonItem = self.hearthButton
+                
             })
             .disposed(by: self.disposeBag)
         
