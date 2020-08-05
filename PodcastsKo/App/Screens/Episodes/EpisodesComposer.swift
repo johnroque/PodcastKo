@@ -20,7 +20,7 @@ final class EpisodesComposer {
         
         // setup ViewModel
         let getEpisodesViewModel = GetEpisodesViewModel(useCase: fkGateway)
-        let episodesViewViewModel = EpisodesViewViewModel(getEpisodesViewModel: getEpisodesViewModel)
+        let episodesViewViewModel = EpisodesViewViewModel(getEpisodesViewModel: getEpisodesViewModel, userDefaults: AppUserDefaults.shared)
         
         let vc = EpisodesViewController()
         vc.podCast = podCast

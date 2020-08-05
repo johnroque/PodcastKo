@@ -76,7 +76,9 @@ class EpisodesViewController: UITableViewController {
         favoriteButton.rx.tap
             .asDriver()
             .drive(onNext: { [unowned self] in
+                guard let podcast = self.podCast else { return }
                 
+                self.viewModel?.saveFavoritePodcast(podcast: podcast)
             })
             .disposed(by: self.disposeBag)
         
