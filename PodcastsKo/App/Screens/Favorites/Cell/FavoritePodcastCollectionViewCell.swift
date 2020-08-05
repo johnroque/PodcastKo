@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoritePodcastCollectionViewCell: UICollectionViewCell {
     
@@ -69,6 +70,17 @@ class FavoritePodcastCollectionViewCell: UICollectionViewCell {
         
         contentStackView.addArrangedSubview(nameLabel)
         contentStackView.addArrangedSubview(artistNameLabel)
+        
+    }
+    
+    func configure(podcast: Podcast) {
+        
+        self.artistNameLabel.text = podcast.artistName ?? ""
+        self.nameLabel.text = podcast.trackName ?? ""
+     
+        if let urlString = podcast.artworkUrl600, let url = URL(string: urlString) {
+            imageIconView.sd_setImage(with: url)
+        }
         
     }
     

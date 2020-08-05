@@ -11,11 +11,26 @@ import UIKit
 class FavoritesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let cellId = "cellId"
+    private var data: [Podcast] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    var viewModel: FavoritesViewViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureCollection()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let data = self.viewModel?.getFavoritePodcasts() {
+            self.data = data
+        }
     }
     
     private func configureCollection() {
@@ -24,12 +39,14 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.data.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellId, for: indexPath) as! FavoritePodcastCollectionViewCell
+        
+        cell.configure(podcast: self.data[indexPath.item])
         
         return cell
         
