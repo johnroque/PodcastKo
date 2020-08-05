@@ -22,8 +22,14 @@ class EpisodesViewController: UITableViewController {
     var viewModel: EpisodesViewViewModel?
     
     // MARK: - Views
-    let backButton: UIBarButtonItem = {
+    private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Back", style: .plain, target: self, action: nil)
+        button.tintColor = .purple
+        return button
+    }()
+    
+    private lazy var favoriteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: nil)
         button.tintColor = .purple
         return button
     }()
@@ -62,6 +68,15 @@ class EpisodesViewController: UITableViewController {
             .asDriver()
             .drive(onNext: { [unowned self] in
                 self.coordinator?.back(self)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.navigationItem.rightBarButtonItem = favoriteButton
+        
+        favoriteButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                
             })
             .disposed(by: self.disposeBag)
         
