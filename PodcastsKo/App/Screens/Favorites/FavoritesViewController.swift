@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FavoritesViewControllerDelegate {
+    func showEpisodes(_ vc: FavoritesViewController, podCast: Podcast)
+}
+
 class FavoritesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let cellId = "cellId"
@@ -18,6 +22,7 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     var viewModel: FavoritesViewViewModel?
+    var coordinator: FavoritesViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +112,12 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.coordinator?.showEpisodes(self, podCast: self.data[indexPath.item])
+        
     }
     
 }
