@@ -6,14 +6,14 @@
 //  Copyright © 2020 JohnRoque Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class FavoritesComposer {
     
     private init() {}
     
     static func composeWith() -> FavoritesViewController {
-        let vc = FavoritesViewController()
+        let vc = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
         return vc
     }
     
