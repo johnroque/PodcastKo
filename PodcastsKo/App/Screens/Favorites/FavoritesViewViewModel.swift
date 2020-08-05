@@ -24,5 +24,13 @@ final class FavoritesViewViewModel {
         
         return podcasts
     }
+
+    func saveNewPodcasts(podcasts: [Podcast]) {
+        
+        self.userDefaults.removeDefaultsWithKey(.favoritedPodcastKey)
+        
+        self.userDefaults.store(podcasts, key: .favoritedPodcastKey)
+        
+    }
     
 }

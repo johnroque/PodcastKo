@@ -36,6 +36,39 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
     private func configureCollection() {
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.register(FavoritePodcastCollectionViewCell.self, forCellWithReuseIdentifier: self.cellId)
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleCollectionLongPress))
+        collectionView.addGestureRecognizer(gesture)
+        
+    }
+    
+    @objc private func handleCollectionLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        let location = gesture.location(in: collectionView)
+        
+        if let selectedIndex = collectionView.indexPathForItem(at: location) {
+            self.remoteFavorite(index: selectedIndex)
+        }
+        
+    }
+    
+    private func remoteFavorite(index: IndexPath) {
+        
+        let alertController = UIAlertController(title: "Remote Podcast?", message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { [weak self] (_) in
+//            self?.viewModel.
+            self?.data.remove(at: index.item)
+//            self?.collectionView.deleteItems(at: [index])
+            if let data = self?.data {
+                self?.viewModel?.saveNewPodcasts(podcasts: data)
+            }
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
