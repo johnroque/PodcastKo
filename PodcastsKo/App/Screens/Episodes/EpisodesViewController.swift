@@ -184,4 +184,22 @@ class EpisodesViewController: UITableViewController {
         return self.data.isEmpty ? 200 : 0
     }
     
+//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//
+//        let downloadAction = UITableViewRowAction
+//
+//    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let contextItem = UIContextualAction(style: .normal, title: "Download") { (_, _, completion) in
+            print("whatt")
+            completion(true)
+        }
+        
+        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+     
+        return swipeActions
+    }
+    
 }
