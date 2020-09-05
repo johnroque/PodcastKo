@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Episode {
+struct Episode: Codable {
     
     let title: String?
     let pubDate: Date?

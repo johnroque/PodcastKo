@@ -14,7 +14,12 @@ final class FavoritesComposer {
     
     static func composeWith() -> FavoritesViewController {
         let vc = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        vc.viewModel = FavoritesViewViewModel(userDefaults: AppUserDefaults.shared)
+        
+        let downloadsViewModel = DownloadViewModel(userDefaults: AppUserDefaults.shared)
+        
+        vc.viewModel = FavoritesViewViewModel(userDefaults: AppUserDefaults.shared,
+                                              downloadViewModel: downloadsViewModel)
+        
         return vc
     }
     

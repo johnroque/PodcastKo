@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol FavoritesViewControllerDelegate {
     func showEpisodes(_ vc: FavoritesViewController, podCast: Podcast)
@@ -20,6 +22,7 @@ class FavoritesViewController: UICollectionViewController, UICollectionViewDeleg
             self.collectionView.reloadData()
         }
     }
+    private let disposeBag = DisposeBag()
     
     var viewModel: FavoritesViewViewModel?
     var coordinator: FavoritesViewControllerDelegate?

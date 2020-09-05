@@ -54,4 +54,5 @@ class AppUserDefaults {
 
 enum AppUserDefaultsKeys: CodingKey {
     case favoritedPodcastKey
+    case downloadEpisodeKey
 }

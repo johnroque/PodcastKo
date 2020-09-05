@@ -11,9 +11,11 @@ import Foundation
 final class FavoritesViewViewModel {
     
     let userDefaults: AppUserDefaults
+    let downloadViewModel: DownloadViewModelInputs
     
-    init(userDefaults: AppUserDefaults) {
+    init(userDefaults: AppUserDefaults, downloadViewModel: DownloadViewModelInputs) {
         self.userDefaults = userDefaults
+        self.downloadViewModel = downloadViewModel
     }
     
     func getFavoritePodcasts() -> [Podcast] {

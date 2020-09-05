@@ -12,10 +12,14 @@ final class EpisodesViewViewModel {
     
     let getEpisodesViewModel: GetEpisodesViewModelInputs
     let userDefaults: AppUserDefaults
+    let downloadViewModel: DownloadViewModelInputs
     
-    init(getEpisodesViewModel: GetEpisodesViewModelInputs, userDefaults: AppUserDefaults) {
+    init(getEpisodesViewModel: GetEpisodesViewModelInputs,
+         userDefaults: AppUserDefaults,
+         downloadViewModel: DownloadViewModelInputs) {
         self.getEpisodesViewModel = getEpisodesViewModel
         self.userDefaults = userDefaults
+        self.downloadViewModel = downloadViewModel
     }
     
     func saveFavoritePodcast(podcast: Podcast) {

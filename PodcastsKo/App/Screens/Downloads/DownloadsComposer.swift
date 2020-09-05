@@ -14,6 +14,13 @@ final class DownloadsComposer {
     
     static func composeWith() -> DownloadsViewController {
         let vc = DownloadsViewController()
+        
+        // setup ViewModel
+        let downloadsViewModel = DownloadViewModel(userDefaults: AppUserDefaults.shared)
+        let downloadUIViewModel = DownloadsViewViewModel(downloadViewModel: downloadsViewModel)
+        
+        vc.viewModel = downloadUIViewModel
+        
         return vc
     }
     

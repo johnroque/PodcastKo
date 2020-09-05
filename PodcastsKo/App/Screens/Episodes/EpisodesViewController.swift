@@ -85,16 +85,16 @@ class EpisodesViewController: UITableViewController {
             self.navigationItem.rightBarButtonItem = favoriteButton
         }
         
-//        hearthButton.rx.tap
-//            .asDriver()
-//            .drive(onNext: { [unowned self] in
-//                guard let podcast = self.podCast else { return }
-//
-//                self.viewModel?.removeFavoritePodcast(podcast: podcast)
-//                self.navigationItem.rightBarButtonItem = self.favoriteButton
-//
-//            })
-//            .disposed(by: self.disposeBag)
+        hearthButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [unowned self] in
+                guard let podcast = self.podCast else { return }
+
+                self.viewModel?.removeFavoritePodcast(podcast: podcast)
+                self.navigationItem.rightBarButtonItem = self.favoriteButton
+
+            })
+            .disposed(by: self.disposeBag)
         
         favoriteButton.rx.tap
             .asDriver()
@@ -192,8 +192,20 @@ class EpisodesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let contextItem = UIContextualAction(style: .normal, title: "Download") { (_, _, completion) in
-            print("whatt")
+        let contextItem = UIContextualAction(style: .normal, title: "Download") { [unowned self] (_, _, completion) in
+            
+            let episode = self.data[indexPath.row]
+            
+            self.viewModel?.downloadViewModel.downloadEpisode(episode: episode)
+            
+            let window = UIWindow.key
+            if let nav = window?.rootViewController as? UINavigationController,
+                let mainTab = nav.viewControllers.first as? MainTabBarController {
+                    
+                mainTab.viewControllers?[2].tabBarItem.badgeValue = "New"
+            
+            }
+            
             completion(true)
         }
         
