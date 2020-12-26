@@ -682,10 +682,23 @@ class PodcastPlayerUIView: UIView {
     
     private func playEpisode() {
         
-        guard let streamUrlStr = self.episode?.streamUrl, let url = URL(string: streamUrlStr) else { return }
+        if let fileUrlString = episode?.fileUrl, let fileUrl = URL(string: fileUrlString) {
+            let fileName = fileUrl.lastPathComponent
+            
+            guard var documentDir = FileManager.default.urls(for: .documentDirectory,
+                                                             in: .userDomainMask).first else { return }
+            
+            documentDir.appendPathComponent(fileName)
+            
+            playerService.setCurrent(url: documentDir)
+            playing = true
+        } else {
+            guard let streamUrlStr = self.episode?.streamUrl, let url = URL(string: streamUrlStr) else { return }
+            
+            playerService.setCurrent(url: url)
+            playing = true
+        }
         
-        playerService.setCurrent(url: url)
-        playing = true
     }
     
     private func observerCurrentPlayingTime() {

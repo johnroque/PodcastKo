@@ -81,7 +81,21 @@ final class URLSessionHttpClient: HTTPClient {
                 if let error = error {
                     throw error
                 } else if let url = url, let response = response as? HTTPURLResponse {
-                    return (url, response)
+                    do {
+                        let documentsUrl = try FileManager.default.url(for: .documentDirectory,
+                                                                       in: .userDomainMask,
+                                                                       appropriateFor: nil,
+                                                                       create: false)
+                        guard let originalName = request.urlRequest.url?.lastPathComponent else {
+                            throw UnexpectedValuesRepresentation()
+                        }
+                        let savedUrl = documentsUrl.appendingPathComponent(originalName)
+                        
+                        try FileManager.default.moveItem(at: url, to: savedUrl)
+                        return (savedUrl, response)
+                    } catch {
+                        throw UnexpectedValuesRepresentation()
+                    }
                 } else {
                     throw UnexpectedValuesRepresentation()
                 }
