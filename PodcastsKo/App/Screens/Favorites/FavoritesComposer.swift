@@ -15,7 +15,13 @@ final class FavoritesComposer {
     static func composeWith() -> FavoritesViewController {
         let vc = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
         
-        let downloadsViewModel = DownloadViewModel(userDefaults: AppUserDefaults.shared)
+        // Setup Api
+        let apiLogger = ApiLogger()
+        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
+        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        
+        let downloadsViewModel = DownloadViewModel(useCase: apiEpisodeGateway,
+                                                   userDefaults: AppUserDefaults.shared)
         
         vc.viewModel = FavoritesViewViewModel(userDefaults: AppUserDefaults.shared,
                                               downloadViewModel: downloadsViewModel)

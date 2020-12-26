@@ -55,6 +55,10 @@
 		4A6CA76824DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */; };
 		4A6CA76A24DAB4C8005B1DC0 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */; };
 		4A6CA76C24DACDBB005B1DC0 /* FavoritesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76B24DACDBB005B1DC0 /* FavoritesViewViewModel.swift */; };
+		4A889EA52597C28F00B92366 /* DownloadEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EA42597C28F00B92366 /* DownloadEpisodeUseCase.swift */; };
+		4A889EAA2597CEEF00B92366 /* ApiEpisodeGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EA92597CEEF00B92366 /* ApiEpisodeGateway.swift */; };
+		4A889EAF2597D19600B92366 /* BaseApiGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EAE2597D19600B92366 /* BaseApiGateway.swift */; };
+		4A889EB42597D21000B92366 /* DownloadEpisodeApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EB32597D21000B92366 /* DownloadEpisodeApiRequest.swift */; };
 		4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C324D2324100B2B263 /* FKGateway.swift */; };
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
 		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
@@ -132,6 +136,10 @@
 		4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		4A6CA76B24DACDBB005B1DC0 /* FavoritesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewViewModel.swift; sourceTree = "<group>"; };
+		4A889EA42597C28F00B92366 /* DownloadEpisodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEpisodeUseCase.swift; sourceTree = "<group>"; };
+		4A889EA92597CEEF00B92366 /* ApiEpisodeGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEpisodeGateway.swift; sourceTree = "<group>"; };
+		4A889EAE2597D19600B92366 /* BaseApiGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiGateway.swift; sourceTree = "<group>"; };
+		4A889EB32597D21000B92366 /* DownloadEpisodeApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEpisodeApiRequest.swift; sourceTree = "<group>"; };
 		4A9795C324D2324100B2B263 /* FKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKGateway.swift; sourceTree = "<group>"; };
 		4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesUseCase.swift; sourceTree = "<group>"; };
 		4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewViewModel.swift; sourceTree = "<group>"; };
@@ -217,6 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				4A02572E24CF4325007A5B0C /* ApiPodcastGateway.swift */,
+				4A889EA92597CEEF00B92366 /* ApiEpisodeGateway.swift */,
+				4A889EAE2597D19600B92366 /* BaseApiGateway.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -235,6 +245,7 @@
 			children = (
 				4A02573424CF4C31007A5B0C /* SearchPodcastUseCase.swift */,
 				4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */,
+				4A889EA42597C28F00B92366 /* DownloadEpisodeUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				4A02573A24CF87E0007A5B0C /* SearchPodcastApiRequest.swift */,
+				4A889EB32597D21000B92366 /* DownloadEpisodeApiRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -662,6 +674,7 @@
 				4A5AF35A24CCCCE700D56A0B /* AppDelegate.swift in Sources */,
 				4A02572024CDC7DD007A5B0C /* DownloadsCoordinator.swift in Sources */,
 				4A02575724D20CCA007A5B0C /* Episode.swift in Sources */,
+				4A889EAA2597CEEF00B92366 /* ApiEpisodeGateway.swift in Sources */,
 				4A02576124D22C33007A5B0C /* FKEpisode.swift in Sources */,
 				4A0EAF6824CD806800CA1788 /* DownloadsComposer.swift in Sources */,
 				4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */,
@@ -671,6 +684,7 @@
 				4A9795CA24D2369800B2B263 /* GetEpisodesViewModel.swift in Sources */,
 				4A6CA76A24DAB4C8005B1DC0 /* AppUserDefaults.swift in Sources */,
 				4A02573D24CF8CFB007A5B0C /* SearchPodcastMapper.swift in Sources */,
+				4A889EAF2597D19600B92366 /* BaseApiGateway.swift in Sources */,
 				4A0EAF5E24CD7EEA00CA1788 /* FavoritesViewController.swift in Sources */,
 				4A4653CE24D280FC00A2A78F /* PodcastPlayerUIView.swift in Sources */,
 				4A02573224CF47E7007A5B0C /* Podcast.swift in Sources */,
@@ -679,6 +693,7 @@
 				4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */,
 				4A9DBB2B25000A4B006856A2 /* DownloadViewModel.swift in Sources */,
 				4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */,
+				4A889EB42597D21000B92366 /* DownloadEpisodeApiRequest.swift in Sources */,
 				4A02571E24CD85EE007A5B0C /* SearchCoordinator.swift in Sources */,
 				4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */,
 				4A02575E24D2171F007A5B0C /* FeedKitClient.swift in Sources */,
@@ -693,6 +708,7 @@
 				4A02572924CF24E0007A5B0C /* HTTPClient.swift in Sources */,
 				4A6CA76C24DACDBB005B1DC0 /* FavoritesViewViewModel.swift in Sources */,
 				4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */,
+				4A889EA52597C28F00B92366 /* DownloadEpisodeUseCase.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
 				4A0EAF6424CD7F4C00CA1788 /* FavoritesComposer.swift in Sources */,
 				4A02572724CF249D007A5B0C /* URLSessionHttpClient.swift in Sources */,

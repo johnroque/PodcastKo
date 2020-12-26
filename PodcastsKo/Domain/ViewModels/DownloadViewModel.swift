@@ -23,9 +23,14 @@ protocol DownloadViewModelOutputs {
 
 final class DownloadViewModel: DownloadViewModelInputs, DownloadViewModelOutputs {
     
+    private let useCase: DownloadEpisodeUseCase
     let userDefaults: AppUserDefaults
     
-    init(userDefaults: AppUserDefaults) {
+    private var downloadRequest: HttpClientTask?
+    
+    init(useCase: DownloadEpisodeUseCase,
+         userDefaults: AppUserDefaults) {
+        self.useCase = useCase
         self.userDefaults = userDefaults
     }
     
@@ -41,10 +46,37 @@ final class DownloadViewModel: DownloadViewModelInputs, DownloadViewModelOutputs
     
     func downloadEpisode(episode: Episode) {
         
-        var episodes: [Episode] = getDownloads()
-        episodes.insert(episode, at: 0)
+        guard let episodeStreamUrl = episode.streamUrl,
+              let url = URL(string: episodeStreamUrl) else { return }
         
-        self.userDefaults.store(episodes, key: .downloadEpisodeKey)
+        downloadRequest = useCase.downloadEpisode(url: url,
+                                progressHandler: { (progress) in
+                                    
+                                    print("Progress: \(progress)")
+                                    
+                                }) { [weak self] (result) in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let url):
+                
+                var mutableEpisode = episode
+                mutableEpisode.fileUrl = url.absoluteString
+                var episodes: [Episode] = self.getDownloads()
+                episodes.insert(mutableEpisode, at: 0)
+                
+                self.userDefaults.store(episodes, key: .downloadEpisodeKey)
+                
+            case .failure:
+                break
+            }
+            
+        }
+        
+//        var episodes: [Episode] = getDownloads()
+//        episodes.insert(episode, at: 0)
+//
+//        self.userDefaults.store(episodes, key: .downloadEpisodeKey)
         
     }
     

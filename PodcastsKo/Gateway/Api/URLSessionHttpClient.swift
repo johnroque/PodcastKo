@@ -20,8 +20,26 @@ final class URLSessionHttpClient: HTTPClient {
     
     private struct UnexpectedValuesRepresentation: Error {}
     
-    private struct URLSessionTaskWrapper: HttpClientTask {
+    private class URLSessionTaskWrapper: HttpClientTask {
         let wrapped: URLSessionTask
+        var progressBlock: ((Double) -> Void)?
+        private var observation: NSKeyValueObservation?
+        
+        init(wrapped: URLSessionTask,
+             progressBlock: ((Double) -> Void)? = nil) {
+            
+            self.wrapped = wrapped
+            self.progressBlock = progressBlock
+            
+            setupProgressObservation()
+        }
+        
+        private func setupProgressObservation() {
+            observation = wrapped.progress.observe(\.fractionCompleted,
+                                                   changeHandler: { [weak self] (progress, _) in
+                                                    self?.progressBlock?(progress.fractionCompleted)
+                                                   })
+        }
         
         func cancel() {
             wrapped.cancel()
@@ -48,6 +66,31 @@ final class URLSessionHttpClient: HTTPClient {
         }
         task.resume()
         return URLSessionTaskWrapper(wrapped: task)
+    }
+    
+    func download(request: URLSessionRequest,
+                  progressHandler: ((Double) -> Void)?,
+                  completionHandler: @escaping (HTTPClient.DownloadResult) -> Void) -> HttpClientTask {
+        
+        self.apiLogger.log(request: request.urlRequest)
+        
+        let task = session.downloadTask(with: request.urlRequest) { (url, response, error) in
+            
+            
+            completionHandler(DownloadResult {
+                if let error = error {
+                    throw error
+                } else if let url = url, let response = response as? HTTPURLResponse {
+                    return (url, response)
+                } else {
+                    throw UnexpectedValuesRepresentation()
+                }
+            })
+            
+        }
+        
+        task.resume()
+        return URLSessionTaskWrapper(wrapped: task, progressBlock: progressHandler)
     }
     
 }

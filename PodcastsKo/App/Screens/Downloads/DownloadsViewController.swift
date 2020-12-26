@@ -102,13 +102,15 @@ extension DownloadsViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let window = UIWindow.key
-        if let nav = window?.rootViewController as? UINavigationController,
-            let mainTab = nav.viewControllers.first as? MainTabBarController {
-            
-            mainTab.showPlayer(episode: self.data[indexPath.row], episodes: self.data)
-            
-        }
+//        let window = UIWindow.key
+//        if let nav = window?.rootViewController as? UINavigationController,
+//            let mainTab = nav.viewControllers.first as? MainTabBarController {
+//
+//            mainTab.showPlayer(episode: self.data[indexPath.row], episodes: self.data)
+//
+//        }
+        
+        print("wtf: \(self.data[indexPath.row])")
     }
     
 }

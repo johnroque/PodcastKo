@@ -18,9 +18,15 @@ final class EpisodesComposer {
         let fkClient = FeedKitClientImp()
         let fkGateway = FKGatewayImpl(client: fkClient)
         
+        // Setup Api
+        let apiLogger = ApiLogger()
+        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
+        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        
         // setup ViewModel
         let getEpisodesViewModel = GetEpisodesViewModel(useCase: fkGateway)
-        let downloadsViewModel = DownloadViewModel(userDefaults: AppUserDefaults.shared)
+        let downloadsViewModel = DownloadViewModel(useCase: apiEpisodeGateway,
+                                                   userDefaults: AppUserDefaults.shared)
         let episodesViewViewModel = EpisodesViewViewModel(getEpisodesViewModel: getEpisodesViewModel,
                                                           userDefaults: AppUserDefaults.shared,
                                                           downloadViewModel: downloadsViewModel)

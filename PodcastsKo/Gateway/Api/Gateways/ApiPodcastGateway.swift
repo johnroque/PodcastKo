@@ -11,14 +11,9 @@ import Foundation
 protocol ApiPodcastGateway: SearchPodcastUseCase {
 }
 
-class ApiPodcastGatewayImpl: ApiPodcastGateway {
+class ApiPodcastGatewayImpl: BaseApiGateway, ApiPodcastGateway {
     
     let client: HTTPClient
-    
-    enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
     
     init(client: HTTPClient) {
         self.client = client

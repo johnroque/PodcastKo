@@ -15,8 +15,14 @@ final class DownloadsComposer {
     static func composeWith() -> DownloadsViewController {
         let vc = DownloadsViewController()
         
+        // Setup Api
+        let apiLogger = ApiLogger()
+        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
+        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        
         // setup ViewModel
-        let downloadsViewModel = DownloadViewModel(userDefaults: AppUserDefaults.shared)
+        let downloadsViewModel = DownloadViewModel(useCase: apiEpisodeGateway,
+                                                   userDefaults: AppUserDefaults.shared)
         let downloadUIViewModel = DownloadsViewViewModel(downloadViewModel: downloadsViewModel)
         
         vc.viewModel = downloadUIViewModel
