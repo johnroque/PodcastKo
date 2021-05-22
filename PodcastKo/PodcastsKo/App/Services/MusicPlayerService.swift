@@ -26,7 +26,7 @@ protocol AudioPlayerable {
     func observeCurrentTime(observer: @escaping (PlayerStatusViewModel) -> Void)
 }
 
-protocol AudioCommandCenterServiceable: class {
+protocol AudioCommandCenterServiceable: AnyObject {
     func pause()
     func play()
     func playNextTrack()
