@@ -53,7 +53,6 @@
 		4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */; };
 		4A5AF39824CD10CB00D56A0B /* MainTabBarComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */; };
 		4A5C6CED2659364200589A07 /* PodcastKoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5C6CE42659364200589A07 /* PodcastKoCore.framework */; };
-		4A5C6CF22659364200589A07 /* PodcastKoCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6CF12659364200589A07 /* PodcastKoCoreTests.swift */; };
 		4A5C6CFE2659366200589A07 /* PodcastKoCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A5C6CFC2659366200589A07 /* PodcastKoCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A5C6D022659371B00589A07 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D012659371B00589A07 /* Podcast.swift */; };
 		4A5C6D0426593A3500589A07 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D0326593A3500589A07 /* Episode.swift */; };
@@ -155,7 +154,6 @@
 		4A5AF39724CD10CB00D56A0B /* MainTabBarComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarComposer.swift; sourceTree = "<group>"; };
 		4A5C6CE42659364200589A07 /* PodcastKoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PodcastKoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A5C6CEC2659364200589A07 /* PodcastKoCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastKoCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A5C6CF12659364200589A07 /* PodcastKoCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastKoCoreTests.swift; sourceTree = "<group>"; };
 		4A5C6CF32659364200589A07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A5C6CFB2659366200589A07 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A5C6CFC2659366200589A07 /* PodcastKoCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastKoCore.h; sourceTree = "<group>"; };
@@ -570,7 +568,6 @@
 		4A5C6CF02659364200589A07 /* PodcastKoCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				4A5C6CF12659364200589A07 /* PodcastKoCoreTests.swift */,
 				4A5C6CF32659364200589A07 /* Info.plist */,
 			);
 			path = PodcastKoCoreTests;
@@ -950,7 +947,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A5C6CF22659364200589A07 /* PodcastKoCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
