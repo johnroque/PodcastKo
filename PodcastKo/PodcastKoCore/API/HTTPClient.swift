@@ -8,10 +8,6 @@
 
 import Foundation
 
-public protocol URLSessionRequest {
-    var urlRequest: URLRequest { get }
-}
-
 public protocol HttpClientTask {
     func cancel()
 }
@@ -21,10 +17,10 @@ public protocol HTTPClient {
     typealias DownloadResult = Swift.Result<(URL, HTTPURLResponse), Error>
     
     @discardableResult
-    func get(request: URLSessionRequest, completionHandler: @escaping (Result) -> Void) -> HttpClientTask
+    func get(request: URLRequest, completionHandler: @escaping (Result) -> Void) -> HttpClientTask
     
     @discardableResult
-    func download(request: URLSessionRequest,
+    func download(request: URLRequest,
                   progressHandler: ((Double) -> Void)?,
                   completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask
 }

@@ -25,8 +25,8 @@ public final class URLSessionHTTPClient: HTTPClient {
         }
     }
     
-    public func get(request: URLSessionRequest, completionHandler: @escaping (HTTPClient.Result) -> Void) -> HttpClientTask {
-        let task = session.dataTask(with: request.urlRequest) { (data, response, error) in
+    public func get(request: URLRequest, completionHandler: @escaping (HTTPClient.Result) -> Void) -> HttpClientTask {
+        let task = session.dataTask(with: request) { (data, response, error) in
             completionHandler(Result {
                 if let error = error {
                     throw error
@@ -41,8 +41,8 @@ public final class URLSessionHTTPClient: HTTPClient {
         return URLSessionTaskWrapper(wrapped: task)
     }
     
-    public func download(request: URLSessionRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask {
-        let task = session.downloadTask(with: request.urlRequest) { (url, response, error) in
+    public func download(request: URLRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask {
+        let task = session.downloadTask(with: request) { (url, response, error) in
             completionHandler(DownloadResult {
                 if let error = error {
                     throw error

@@ -79,6 +79,7 @@
 		4A9795CD24D244E500B2B263 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */; };
 		4A9DBB2B25000A4B006856A2 /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9DBB2A25000A4B006856A2 /* DownloadViewModel.swift */; };
 		4AEC3AE024FECD3C00C19E97 /* DownloadsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEC3ADF24FECD3C00C19E97 /* DownloadsViewViewModel.swift */; };
+		4AF9CBE526597DE800DF5764 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9CBE426597DE800DF5764 /* URLProtocolStub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		4A9DBB2A25000A4B006856A2 /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
 		4AEC3ADF24FECD3C00C19E97 /* DownloadsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewViewModel.swift; sourceTree = "<group>"; };
+		4AF9CBE426597DE800DF5764 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +629,7 @@
 		4A5C6D20265978AC00589A07 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4AF9CBE326597DD000DF5764 /* Helpers */,
 				4A5C6D21265978CF00589A07 /* URLSessionHTTPClientTests.swift */,
 			);
 			path = API;
@@ -654,6 +657,14 @@
 				4A9795CC24D244E500B2B263 /* EpisodeTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		4AF9CBE326597DD000DF5764 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4AF9CBE426597DE800DF5764 /* URLProtocolStub.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -960,6 +971,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A5C6D22265978CF00589A07 /* URLSessionHTTPClientTests.swift in Sources */,
+				4AF9CBE526597DE800DF5764 /* URLProtocolStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,7 +1264,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastKoCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
@@ -1285,7 +1297,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastKoCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
@@ -1312,7 +1324,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastKoCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1335,7 +1347,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastKoCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
