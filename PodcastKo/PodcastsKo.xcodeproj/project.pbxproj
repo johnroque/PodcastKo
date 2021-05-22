@@ -562,6 +562,7 @@
 		4A5C6CFF265936E500589A07 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				4A5C6D0526593AF000589A07 /* Abstractions */,
 				4A5C6D00265936FC00589A07 /* Entities */,
 			);
 			path = Domain;
@@ -574,6 +575,13 @@
 				4A5C6D0326593A3500589A07 /* Episode.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		4A5C6D0526593AF000589A07 /* Abstractions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Abstractions;
 			sourceTree = "<group>";
 		};
 		4A6CA76624DA8E87005B1DC0 /* Cell */ = {

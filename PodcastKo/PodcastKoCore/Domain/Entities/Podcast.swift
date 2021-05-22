@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Podcast: Equatable {
+public struct Podcast: Equatable {
     
     let trackName: String?
     let artistName: String?

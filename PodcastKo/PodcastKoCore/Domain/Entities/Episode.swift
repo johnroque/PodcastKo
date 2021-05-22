@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Episode: Equatable {
+public struct Episode: Equatable {
     
     let title: String?
     let pubDate: Date?
