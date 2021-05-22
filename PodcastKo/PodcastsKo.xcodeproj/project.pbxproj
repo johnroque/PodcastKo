@@ -57,6 +57,10 @@
 		4A5C6CFE2659366200589A07 /* PodcastKoCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A5C6CFC2659366200589A07 /* PodcastKoCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A5C6D022659371B00589A07 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D012659371B00589A07 /* Podcast.swift */; };
 		4A5C6D0426593A3500589A07 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D0326593A3500589A07 /* Episode.swift */; };
+		4A5C6D072659400200589A07 /* SearchPodcastUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D062659400200589A07 /* SearchPodcastUseCase.swift */; };
+		4A5C6D092659410D00589A07 /* GetEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D082659410D00589A07 /* GetEpisodeUseCase.swift */; };
+		4A5C6D0B2659427F00589A07 /* DownloadEpisodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D0A2659427F00589A07 /* DownloadEpisodeUseCase.swift */; };
+		4A5C6D0D26594AFC00589A07 /* CancellableTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D0C26594AFC00589A07 /* CancellableTask.swift */; };
 		4A6CA76824DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */; };
 		4A6CA76A24DAB4C8005B1DC0 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */; };
 		4A6CA76C24DACDBB005B1DC0 /* FavoritesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76B24DACDBB005B1DC0 /* FavoritesViewViewModel.swift */; };
@@ -153,6 +157,10 @@
 		4A5C6CFC2659366200589A07 /* PodcastKoCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PodcastKoCore.h; sourceTree = "<group>"; };
 		4A5C6D012659371B00589A07 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		4A5C6D0326593A3500589A07 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		4A5C6D062659400200589A07 /* SearchPodcastUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastUseCase.swift; sourceTree = "<group>"; };
+		4A5C6D082659410D00589A07 /* GetEpisodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodeUseCase.swift; sourceTree = "<group>"; };
+		4A5C6D0A2659427F00589A07 /* DownloadEpisodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEpisodeUseCase.swift; sourceTree = "<group>"; };
+		4A5C6D0C26594AFC00589A07 /* CancellableTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableTask.swift; sourceTree = "<group>"; };
 		4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		4A6CA76B24DACDBB005B1DC0 /* FavoritesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewViewModel.swift; sourceTree = "<group>"; };
@@ -580,6 +588,10 @@
 		4A5C6D0526593AF000589A07 /* Abstractions */ = {
 			isa = PBXGroup;
 			children = (
+				4A5C6D062659400200589A07 /* SearchPodcastUseCase.swift */,
+				4A5C6D082659410D00589A07 /* GetEpisodeUseCase.swift */,
+				4A5C6D0A2659427F00589A07 /* DownloadEpisodeUseCase.swift */,
+				4A5C6D0C26594AFC00589A07 /* CancellableTask.swift */,
 			);
 			path = Abstractions;
 			sourceTree = "<group>";
@@ -893,6 +905,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5C6D0B2659427F00589A07 /* DownloadEpisodeUseCase.swift in Sources */,
+				4A5C6D092659410D00589A07 /* GetEpisodeUseCase.swift in Sources */,
+				4A5C6D072659400200589A07 /* SearchPodcastUseCase.swift in Sources */,
+				4A5C6D0D26594AFC00589A07 /* CancellableTask.swift in Sources */,
 				4A5C6D022659371B00589A07 /* Podcast.swift in Sources */,
 				4A5C6D0426593A3500589A07 /* Episode.swift in Sources */,
 			);
