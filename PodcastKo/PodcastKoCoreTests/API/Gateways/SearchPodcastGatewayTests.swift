@@ -162,10 +162,6 @@ class SearchPodcastGatewayTests: XCTestCase {
         "term"
     }
     
-    func anyData() -> Data {
-        return Data("any data".utf8)
-    }
-    
     private func failure(_ error: SearchPodcastAPIGateway.Error) -> SearchPodcastAPIGateway.Result {
         SearchPodcastAPIGateway.Result.failure(error)
     }

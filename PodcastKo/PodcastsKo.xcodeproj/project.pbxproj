@@ -39,6 +39,7 @@
 		4A0EAF6624CD803000CA1788 /* SearchComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6524CD803000CA1788 /* SearchComposer.swift */; };
 		4A0EAF6824CD806800CA1788 /* DownloadsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */; };
 		4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */; };
+		4A42A58F265C2C54007A4FBC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */; };
 		4A4653CE24D280FC00A2A78F /* PodcastPlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4653CD24D280FC00A2A78F /* PodcastPlayerUIView.swift */; };
 		4A4653D124D3574A00A2A78F /* MusicPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4653D024D3574A00A2A78F /* MusicPlayerService.swift */; };
 		4A4653D324D3E69600A2A78F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4653D224D3E69600A2A78F /* Colors.xcassets */; };
@@ -136,6 +137,7 @@
 		4A0EAF6524CD803000CA1788 /* SearchComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComposer.swift; sourceTree = "<group>"; };
 		4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsComposer.swift; sourceTree = "<group>"; };
 		4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		4A4653CD24D280FC00A2A78F /* PodcastPlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayerUIView.swift; sourceTree = "<group>"; };
 		4A4653D024D3574A00A2A78F /* MusicPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerService.swift; sourceTree = "<group>"; };
 		4A4653D224D3E69600A2A78F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -409,6 +411,14 @@
 			path = Downloads;
 			sourceTree = "<group>";
 		};
+		4A42A58D265C2C2B007A4FBC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4A4653CC24D280DF00A2A78F /* PlayerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +584,7 @@
 		4A5C6CF02659364200589A07 /* PodcastKoCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A42A58D265C2C2B007A4FBC /* Helpers */,
 				4A5C6D20265978AC00589A07 /* API */,
 				4A5C6CF32659364200589A07 /* Info.plist */,
 			);
@@ -981,6 +992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A42A58F265C2C54007A4FBC /* SharedTestHelpers.swift in Sources */,
 				4A5C6D22265978CF00589A07 /* URLSessionHTTPClientTests.swift in Sources */,
 				4AF9CBE526597DE800DF5764 /* URLProtocolStub.swift in Sources */,
 				4AB8145E265BB487000F61F7 /* SearchPodcastGatewayTests.swift in Sources */,
