@@ -47,16 +47,24 @@ public final class SearchPodcastAPIGateway: SearchPodcastUseCase {
         let task = HTTPClientTaskWrapper(completion)
         task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { result in
             switch result {
-            case let .success((_, httpResponse)):
-                if httpResponse.isOK {
-                    completion(.success([]))
-                } else {
-                    completion(.failure(Error.invalidData))
-                }
+            case let .success((data, httpResponse)):
+                completion(Result {
+                    try SearchPodcastAPIMapper.map(data, from: httpResponse).toModels()
+                })
             case .failure:
                 completion(.failure(Error.connectivity))
             }
         })
         return task
+    }
+}
+
+private extension Array where Element == APIPodcast {
+    func toModels() -> [Podcast] {
+        return map { Podcast(trackName: $0.trackName,
+                             artistName: $0.artistName,
+                             artworkUrl600: $0.artworkUrl600,
+                             trackCount: $0.trackCount,
+                             feedUrl: $0.feedUrl) }
     }
 }
