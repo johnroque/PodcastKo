@@ -40,20 +40,20 @@ public final class URLSessionHTTPClient: HTTPClient {
         task.resume()
         return URLSessionTaskWrapper(wrapped: task)
     }
-    
-    public func download(request: URLRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask {
-        let task = session.downloadTask(with: request) { (url, response, error) in
-            completionHandler(DownloadResult {
-                if let error = error {
-                    throw error
-                } else if let url = url, let response = response as? HTTPURLResponse {
-                    return (url, response)
-                } else {
-                    throw UnexpectedValuesRepresentation()
-                }
-            })
-        }
-        task.resume()
-        return URLSessionTaskWrapper(wrapped: task)
-    }
+//
+//    public func download(request: URLRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask {
+//        let task = session.downloadTask(with: request) { (url, response, error) in
+//            completionHandler(DownloadResult {
+//                if let error = error {
+//                    throw error
+//                } else if let url = url, let response = response as? HTTPURLResponse {
+//                    return (url, response)
+//                } else {
+//                    throw UnexpectedValuesRepresentation()
+//                }
+//            })
+//        }
+//        task.resume()
+//        return URLSessionTaskWrapper(wrapped: task)
+//    }
 }

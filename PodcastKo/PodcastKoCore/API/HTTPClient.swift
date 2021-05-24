@@ -18,9 +18,9 @@ public protocol HTTPClient {
     
     @discardableResult
     func get(request: URLRequest, completionHandler: @escaping (Result) -> Void) -> HttpClientTask
-    
-    @discardableResult
-    func download(request: URLRequest,
-                  progressHandler: ((Double) -> Void)?,
-                  completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask
+//    
+//    @discardableResult
+//    func download(request: URLRequest,
+//                  progressHandler: ((Double) -> Void)?,
+//                  completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask
 }
