@@ -56,7 +56,11 @@ final class SearchPodcastAPIGateway: SearchPodcastUseCase {
     }
     
     func searchPodcast(title: String, completion: @escaping (SearchPodcastUseCase.Result) -> Void) -> CancellableTask {
-        HTTPClientTaskWrapper(completion)
+        let request = SearchPodcastURLRequest(url: url, term: title)
+        
+        let task = HTTPClientTaskWrapper(completion)
+        task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { _ in })
+        return task
     }
 }
 
@@ -68,12 +72,27 @@ class SearchPodcastGatewayTests: XCTestCase {
         XCTAssertTrue(client.requests.isEmpty)
     }
     
+    func test_searchPodcast_requestsDataFromURL() {
+        let url = URL(string: "https://a-given-url.com")!
+        let title = makeTitle()
+        let requestedURL = SearchPodcastURLRequest(url: url, term: title)
+        let (sut, client) = makeSUT(url: url)
+        
+        _ = sut.searchPodcast(title: title) { _ in }
+
+        XCTAssertEqual(client.requests.map { $0.url }, [requestedURL.urlRequest.url])
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: SearchPodcastAPIGateway, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         let sut = SearchPodcastAPIGateway(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func makeTitle() -> String {
+        "title"
     }
     
     private class HTTPClientSpy: HTTPClient {
