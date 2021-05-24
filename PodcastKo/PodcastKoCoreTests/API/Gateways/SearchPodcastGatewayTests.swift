@@ -61,6 +61,15 @@ class SearchPodcastGatewayTests: XCTestCase {
         }
     }
     
+    func test_searchPodcast_deliversErrorOn200HTTPResponseWithInvalidJSON() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, term: makeTerm(), toCompleteWith: failure(.invalidData)) {
+            let invalidJSON = Data("invalid json".utf8)
+            client.complete(withStatusCode: 200, data: invalidJSON, at: 0)
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: SearchPodcastAPIGateway, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
