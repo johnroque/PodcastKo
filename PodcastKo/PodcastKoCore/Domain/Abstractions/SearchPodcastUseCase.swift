@@ -9,8 +9,8 @@
 import Foundation
 
 public protocol SearchPodcastUseCase {
-    typealias CompletionHandler = (_ result: Result<[Podcast], Error>) -> Void
+    typealias Result = Swift.Result<[Podcast], Error>
     
     func searchPodcast(title: String,
-                       completionHandler: @escaping CompletionHandler) -> CancellableTask
+                       completion: @escaping (Result) -> Void) -> CancellableTask
 }
