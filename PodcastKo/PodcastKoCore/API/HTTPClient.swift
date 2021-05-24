@@ -8,16 +8,16 @@
 
 import Foundation
 
-public protocol HttpClientTask {
+public protocol HTTPClientTask {
     func cancel()
 }
 
 public protocol HTTPClient {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-    typealias DownloadResult = Swift.Result<(URL, HTTPURLResponse), Error>
+//    typealias DownloadResult = Swift.Result<(URL, HTTPURLResponse), Error>
     
     @discardableResult
-    func get(request: URLRequest, completionHandler: @escaping (Result) -> Void) -> HttpClientTask
+    func get(request: URLRequest, completionHandler: @escaping (Result) -> Void) -> HTTPClientTask
 //    
 //    @discardableResult
 //    func download(request: URLRequest,
