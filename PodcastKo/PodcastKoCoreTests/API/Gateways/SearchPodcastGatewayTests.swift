@@ -75,7 +75,7 @@ class SearchPodcastGatewayTests: XCTestCase {
     func test_searchPodcast_requestsDataFromURL() {
         let url = URL(string: "https://a-given-url.com")!
         let title = makeTitle()
-        let requestedURL = SearchPodcastURLRequest(url: url, term: title)
+        let requestedURL = makeSearchPodcastRequest(url: url, term: title)
         let (sut, client) = makeSUT(url: url)
         
         _ = sut.searchPodcast(title: title) { _ in }
@@ -89,6 +89,10 @@ class SearchPodcastGatewayTests: XCTestCase {
         let sut = SearchPodcastAPIGateway(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func makeSearchPodcastRequest(url: URL = URL(string: "https://a-url.com")!, term: String) -> SearchPodcastURLRequest {
+        SearchPodcastURLRequest(url: url, term: term)
     }
     
     private func makeTitle() -> String {
