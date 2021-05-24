@@ -44,18 +44,9 @@ class SearchPodcastGatewayTests: XCTestCase {
         let clientError = NSError(domain: "Test", code: 0)
         let (sut, client) = makeSUT()
         
-        var capturedError = [SearchPodcastAPIGateway.Error]()
-        _  = sut.searchPodcast(title: makeTerm()) { result in
-            switch result {
-            case .success:
-                XCTFail("Expected Failure got, \(result) instead")
-            case let .failure(error):
-                capturedError.append(error as! SearchPodcastAPIGateway.Error)
-            }
+        expect(sut, term: makeTerm(), toCompleteWith: failure(.connectivity)) {
+            client.complete(with: clientError)
         }
-        client.complete(with: clientError)
-        
-        XCTAssertEqual(capturedError, [.connectivity])
     }
     
     func test_searchPodcast_deliversErrorOnNon200HTTPResponse() {
