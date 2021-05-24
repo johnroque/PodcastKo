@@ -40,6 +40,8 @@
 		4A0EAF6824CD806800CA1788 /* DownloadsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */; };
 		4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */; };
 		4A42A58F265C2C54007A4FBC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */; };
+		4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */; };
+		4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */; };
 		4A4653CE24D280FC00A2A78F /* PodcastPlayerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4653CD24D280FC00A2A78F /* PodcastPlayerUIView.swift */; };
 		4A4653D124D3574A00A2A78F /* MusicPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4653D024D3574A00A2A78F /* MusicPlayerService.swift */; };
 		4A4653D324D3E69600A2A78F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4653D224D3E69600A2A78F /* Colors.xcassets */; };
@@ -138,6 +140,8 @@
 		4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsComposer.swift; sourceTree = "<group>"; };
 		4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastAPIGateway.swift; sourceTree = "<group>"; };
+		4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastURLRequest.swift; sourceTree = "<group>"; };
 		4A4653CD24D280FC00A2A78F /* PodcastPlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayerUIView.swift; sourceTree = "<group>"; };
 		4A4653D024D3574A00A2A78F /* MusicPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerService.swift; sourceTree = "<group>"; };
 		4A4653D224D3E69600A2A78F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -419,6 +423,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		4A42A591265C2FE8007A4FBC /* Gateways */ = {
+			isa = PBXGroup;
+			children = (
+				4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */,
+			);
+			path = Gateways;
+			sourceTree = "<group>";
+		};
+		4A42A594265C303A007A4FBC /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		4A4653CC24D280DF00A2A78F /* PlayerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +644,8 @@
 			isa = PBXGroup;
 			children = (
 				4A5C6D0F26594EE400589A07 /* Helpers */,
+				4A42A594265C303A007A4FBC /* Requests */,
+				4A42A591265C2FE8007A4FBC /* Gateways */,
 				4A5C6D15265952D600589A07 /* HTTPMethod.swift */,
 				4A5C6D172659551F00589A07 /* HTTPClient.swift */,
 				4A5C6D192659591E00589A07 /* URLSessionHTTPClient.swift */,
@@ -978,10 +1000,12 @@
 				4A5C6D0B2659427F00589A07 /* DownloadEpisodeUseCase.swift in Sources */,
 				4A5C6D1A2659591E00589A07 /* URLSessionHTTPClient.swift in Sources */,
 				4A5C6D092659410D00589A07 /* GetEpisodeUseCase.swift in Sources */,
+				4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */,
 				4A5C6D1126594EF900589A07 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4A5C6D072659400200589A07 /* SearchPodcastUseCase.swift in Sources */,
 				4A5C6D16265952D600589A07 /* HTTPMethod.swift in Sources */,
 				4A5C6D182659551F00589A07 /* HTTPClient.swift in Sources */,
+				4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */,
 				4A5C6D0D26594AFC00589A07 /* CancellableTask.swift in Sources */,
 				4A5C6D022659371B00589A07 /* Podcast.swift in Sources */,
 				4A5C6D0426593A3500589A07 /* Episode.swift in Sources */,
