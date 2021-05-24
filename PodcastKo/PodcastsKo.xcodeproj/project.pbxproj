@@ -423,20 +423,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		4A42A591265C2FE8007A4FBC /* Gateways */ = {
-			isa = PBXGroup;
-			children = (
-				4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */,
-			);
-			path = Gateways;
-			sourceTree = "<group>";
-		};
-		4A42A594265C303A007A4FBC /* Requests */ = {
+		4A42A597265C3662007A4FBC /* Search Podcast */ = {
 			isa = PBXGroup;
 			children = (
 				4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */,
+				4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */,
 			);
-			path = Requests;
+			path = "Search Podcast";
 			sourceTree = "<group>";
 		};
 		4A4653CC24D280DF00A2A78F /* PlayerView */ = {
@@ -644,8 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				4A5C6D0F26594EE400589A07 /* Helpers */,
-				4A42A594265C303A007A4FBC /* Requests */,
-				4A42A591265C2FE8007A4FBC /* Gateways */,
+				4A42A597265C3662007A4FBC /* Search Podcast */,
 				4A5C6D15265952D600589A07 /* HTTPMethod.swift */,
 				4A5C6D172659551F00589A07 /* HTTPClient.swift */,
 				4A5C6D192659591E00589A07 /* URLSessionHTTPClient.swift */,
