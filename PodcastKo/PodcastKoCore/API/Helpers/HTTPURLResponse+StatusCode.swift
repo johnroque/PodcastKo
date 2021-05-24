@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension HTTPURLResponse {
+public extension HTTPURLResponse {
     var isOK: Bool {
         let successRange = 200...299
         return successRange.contains(self.statusCode)

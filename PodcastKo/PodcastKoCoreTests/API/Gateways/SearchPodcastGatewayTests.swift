@@ -9,11 +9,16 @@
 import XCTest
 import PodcastKoCore
 
-struct SearchPodcastURLRequest {
-    let url: URL
-    let term: String
+public struct SearchPodcastURLRequest {
+    private let url: URL
+    private let term: String
     
-    var urlRequest: URLRequest {
+    public init(url: URL, term: String) {
+        self.url = url
+        self.term = term
+    }
+    
+    internal var urlRequest: URLRequest {
         let queryItems = [URLQueryItem(name: "term", value: term),
                           URLQueryItem(name: "media", value: "podcast")]
         var urlComponent = URLComponents(url: url, resolvingAgainstBaseURL: true)
@@ -28,12 +33,17 @@ struct SearchPodcastURLRequest {
 }
 
 final class SearchPodcastAPIGateway: SearchPodcastUseCase {
-    let url: URL
-    let client: HTTPClient
+    private let url: URL
+    private let client: HTTPClient
     
-    init(url: URL, client: HTTPClient) {
+    public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
+    }
+    
+    public enum Error: Swift.Error {
+        case connectivity
+        case invalidData
     }
     
     private final class HTTPClientTaskWrapper: CancellableTask {
@@ -55,11 +65,22 @@ final class SearchPodcastAPIGateway: SearchPodcastUseCase {
         }
     }
     
-    func searchPodcast(title: String, completion: @escaping (SearchPodcastUseCase.Result) -> Void) -> CancellableTask {
+    public func searchPodcast(title: String, completion: @escaping (SearchPodcastUseCase.Result) -> Void) -> CancellableTask {
         let request = SearchPodcastURLRequest(url: url, term: title)
         
         let task = HTTPClientTaskWrapper(completion)
-        task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { _ in })
+        task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { result in
+            switch result {
+            case let .success((_, httpResponse)):
+                if httpResponse.isOK {
+                    completion(.success([]))
+                } else {
+                    completion(.failure(Error.invalidData))
+                }
+            case .failure:
+                completion(.failure(Error.connectivity))
+            }
+        })
         return task
     }
 }
@@ -74,13 +95,55 @@ class SearchPodcastGatewayTests: XCTestCase {
     
     func test_searchPodcast_requestsDataFromURL() {
         let url = URL(string: "https://a-given-url.com")!
-        let title = makeTitle()
+        let title = makeTerm()
         let requestedURL = makeSearchPodcastRequest(url: url, term: title)
         let (sut, client) = makeSUT(url: url)
         
         _ = sut.searchPodcast(title: title) { _ in }
 
         XCTAssertEqual(client.requests.map { $0.url }, [requestedURL.urlRequest.url])
+    }
+    
+    func test_searchPodcastTwice_requestsDataFromURLTwice() {
+        let url = URL(string: "https://a-given-url.com")!
+        let title = makeTerm()
+        let requestedURL = makeSearchPodcastRequest(url: url, term: title)
+        let (sut, client) = makeSUT(url: url)
+        
+        _ = sut.searchPodcast(title: title) { _ in }
+        _ = sut.searchPodcast(title: title) { _ in }
+
+        XCTAssertEqual(client.requests.map { $0.url }, [requestedURL.urlRequest.url, requestedURL.urlRequest.url])
+    }
+    
+    func test_searchPodcast_deliversErrorOnClientError() {
+        let clientError = NSError(domain: "Test", code: 0)
+        let (sut, client) = makeSUT()
+        
+        var capturedError = [SearchPodcastAPIGateway.Error]()
+        _  = sut.searchPodcast(title: makeTerm()) { result in
+            switch result {
+            case .success:
+                XCTFail("Expected Failure got, \(result) instead")
+            case let .failure(error):
+                capturedError.append(error as! SearchPodcastAPIGateway.Error)
+            }
+        }
+        client.complete(with: clientError)
+        
+        XCTAssertEqual(capturedError, [.connectivity])
+    }
+    
+    func test_searchPodcast_deliversErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        let samples = [199, 300, 400, 500].enumerated()
+        
+        samples.forEach { (index, code) in
+            expect(sut, term: makeTerm(), toCompleteWith: failure(.invalidData)) {
+                client.complete(withStatusCode: code, data: anyData(), at: index)
+            }
+        }
     }
     
     // MARK: - Helpers
@@ -95,8 +158,37 @@ class SearchPodcastGatewayTests: XCTestCase {
         SearchPodcastURLRequest(url: url, term: term)
     }
     
-    private func makeTitle() -> String {
-        "title"
+    private func makeTerm() -> String {
+        "term"
+    }
+    
+    func anyData() -> Data {
+        return Data("any data".utf8)
+    }
+    
+    private func failure(_ error: SearchPodcastAPIGateway.Error) -> SearchPodcastAPIGateway.Result {
+        SearchPodcastAPIGateway.Result.failure(error)
+    }
+    
+    private func expect(_ sut: SearchPodcastAPIGateway, term: String, toCompleteWith expectedResult: SearchPodcastAPIGateway.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        
+        _ = sut.searchPodcast(title: term) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+            case let (.failure(receivedError as SearchPodcastAPIGateway.Error), .failure(expectedError as SearchPodcastAPIGateway.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+            
+            exp.fulfill()
+        }
+        
+        action()
+        
+        wait(for: [exp], timeout: 2.0)
     }
     
     private class HTTPClientSpy: HTTPClient {
@@ -114,8 +206,21 @@ class SearchPodcastGatewayTests: XCTestCase {
             messages.append((request, completionHandler))
             return Task()
         }
+        
+        // MARK: - Helpers
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
+        }
+        
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
+            let response = HTTPURLResponse(url: messages[index].request.url!, // TODO: make this safe
+                                           statusCode: code,
+                                           httpVersion: nil,
+                                           headerFields: nil)
+            
+            messages[index].completion(.success((data, response!)))
+        }
     }
-    
 }
 
 
