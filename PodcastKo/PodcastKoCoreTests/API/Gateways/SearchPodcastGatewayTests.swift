@@ -70,6 +70,15 @@ class SearchPodcastGatewayTests: XCTestCase {
         }
     }
     
+    func test_searchPodcast_deliversNoItemsOn200HTTPResponseWithEmptyJSONResult() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, term: makeTerm(), toCompleteWith: .success([])) {
+            let invalidJSON = Data("{\"resultCount\": 0, \"results\": []}".utf8)
+            client.complete(withStatusCode: 200, data: invalidJSON, at: 0)
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: SearchPodcastAPIGateway, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
