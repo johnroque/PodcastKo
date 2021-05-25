@@ -52,7 +52,9 @@ public final class SearchPodcastAPIGateway: SearchPodcastUseCase {
                     try SearchPodcastAPIMapper.map(data, from: httpResponse).toModels()
                 })
             case .failure:
-                completion(.failure(Error.connectivity))
+                task.complete(with: Result {
+                    throw Error.connectivity
+                })
             }
         })
         return task
