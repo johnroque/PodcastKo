@@ -48,7 +48,7 @@ public final class SearchPodcastAPIGateway: SearchPodcastUseCase {
         task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { result in
             switch result {
             case let .success((data, httpResponse)):
-                completion(Result {
+                task.complete(with: Result {
                     try SearchPodcastAPIMapper.map(data, from: httpResponse).toModels()
                 })
             case .failure:
