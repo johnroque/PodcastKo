@@ -45,7 +45,9 @@ public final class SearchPodcastAPIGateway: SearchPodcastUseCase {
         let request = SearchPodcastURLRequest(url: url, term: title)
         
         let task = HTTPClientTaskWrapper(completion)
-        task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { result in
+        task.wrapped = self.client.get(request: request.urlRequest, completionHandler: { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case let .success((data, httpResponse)):
                 task.complete(with: Result {

@@ -105,6 +105,20 @@ class SearchPodcastGatewayTests: XCTestCase {
         
         XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
     }
+    
+    func test_searchPodcast_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let url = URL(string: "http://any-url.com")!
+        let client = HTTPClientSpy()
+        var sut: SearchPodcastAPIGateway? = SearchPodcastAPIGateway(url: url, client: client)
+        
+        var capturedResult = [SearchPodcastAPIGateway.Result]()
+        _ = sut?.searchPodcast(title: makeTerm(), completion: { capturedResult.append($0) })
+    
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeJSONResultsData([]))
+        
+        XCTAssertTrue(capturedResult.isEmpty, "Expected no received results after instance have been deallocated.")
+    }
 
     // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: SearchPodcastAPIGateway, client: HTTPClientSpy) {
