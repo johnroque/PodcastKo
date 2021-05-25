@@ -79,6 +79,18 @@ class SearchPodcastGatewayTests: XCTestCase {
         }
     }
     
+    func test_searchPodcast_deliversResultsOn200HTTPResponseWithJSONResults() {
+        let (sut, client) = makeSUT()
+
+        let result1 = makePodcast(trackName: "Test1", artistName: "test1", artworkUrl600: nil, trackCount: 3, feedUrl: "https://a-url1.com")
+        let result2 = makePodcast(trackName: "Test2", artistName: "test2", artworkUrl600: nil, trackCount: 1, feedUrl: "https://a-url2.com")
+        
+        expect(sut, term: makeTerm(), toCompleteWith: .success([result1.model, result2.model])) {
+            let json = makeJSONResultsData([result1.json, result2.json])
+            client.complete(withStatusCode: 200, data: json)
+        }
+    }
+
     // MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: SearchPodcastAPIGateway, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
@@ -93,6 +105,43 @@ class SearchPodcastGatewayTests: XCTestCase {
     
     private func makeTerm() -> String {
         "term"
+    }
+    
+    private func makePodcast(trackName: String? = nil, artistName: String? = nil, artworkUrl600: String? = nil, trackCount: Int? = nil, feedUrl: String? = nil) -> (model: Podcast, json: [String: Any]) {
+        let podcast = Podcast(trackName: trackName,
+                              artistName: artistName,
+                              artworkUrl600: artworkUrl600,
+                              trackCount: trackCount,
+                              feedUrl: feedUrl)
+        
+        var json = [String : Any]()
+        
+        if let trackName = trackName {
+            json["trackName"] = trackName
+        }
+        if let artistName = artistName {
+            json["artistName"] = artistName
+        }
+        if let artworkUrl600 = artworkUrl600 {
+            json["artworkUrl600"] = artworkUrl600
+        }
+        if let trackCount = trackCount {
+            json["trackCount"] = trackCount
+        }
+        if let feedUrl = feedUrl {
+            json["feedUrl"] = feedUrl
+        }
+        
+        return (podcast, json)
+    }
+    
+    private func makeJSONResultsData(_ results: [[String: Any]]) -> Data {
+        let resultsJSON = [
+            "resultCount": results.count,
+            "results": results
+        ] as [String : Any]
+        let json = try! JSONSerialization.data(withJSONObject: resultsJSON)
+        return json
     }
     
     private func failure(_ error: SearchPodcastAPIGateway.Error) -> SearchPodcastAPIGateway.Result {
