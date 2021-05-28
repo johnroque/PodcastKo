@@ -19,6 +19,21 @@ public final class URLSessionHTTPClient: HTTPClient {
     
     private struct URLSessionTaskWrapper: HTTPClientTask {
         let wrapped: URLSessionTask
+        let progressBlock: ((Double) -> Void)?
+        private var observation: NSKeyValueObservation?
+        
+        init(wrapped: URLSessionTask, progressBlock: ((Double) -> Void)? = nil) {
+            self.wrapped = wrapped
+            self.progressBlock = progressBlock
+            
+            setupProgressObservation()
+        }
+        
+        private mutating func setupProgressObservation() {
+            observation = wrapped.progress.observe(\.fractionCompleted, changeHandler: { [self] progress, _ in
+                self.progressBlock?(progress.fractionCompleted)
+            })
+        }
         
         func cancel() {
             wrapped.cancel()
@@ -39,20 +54,22 @@ public final class URLSessionHTTPClient: HTTPClient {
         task.resume()
         return URLSessionTaskWrapper(wrapped: task)
     }
-//
-//    public func download(request: URLRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask {
-//        let task = session.downloadTask(with: request) { (url, response, error) in
-//            completionHandler(DownloadResult {
-//                if let error = error {
-//                    throw error
-//                } else if let url = url, let response = response as? HTTPURLResponse {
-//                    return (url, response)
-//                } else {
-//                    throw UnexpectedValuesRepresentation()
-//                }
-//            })
-//        }
-//        task.resume()
-//        return URLSessionTaskWrapper(wrapped: task)
-//    }
+}
+
+extension URLSessionHTTPClient: HTTPDownloadClient {
+    public func download(request: URLRequest, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (DownloadResult) -> Void) -> HTTPClientTask {
+        let task = session.downloadTask(with: request) { (tmpUrl, response, error) in
+            completionHandler(DownloadResult {
+                if let error = error {
+                    throw error
+                } else if let tmpUrl = tmpUrl, let response = response as? HTTPURLResponse {
+                    return (tmpUrl, response)
+                } else {
+                    throw UnexpectedValuesRepresentation()
+                }
+            })
+        }
+        task.resume()
+        return URLSessionTaskWrapper(wrapped: task, progressBlock: progressHandler)
+    }
 }

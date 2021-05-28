@@ -14,13 +14,14 @@ public protocol HTTPClientTask {
 
 public protocol HTTPClient {
     typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-//    typealias DownloadResult = Swift.Result<(URL, HTTPURLResponse), Error>
-    
     @discardableResult
     func get(request: URLRequest, completionHandler: @escaping (Result) -> Void) -> HTTPClientTask
-//    
-//    @discardableResult
-//    func download(request: URLRequest,
-//                  progressHandler: ((Double) -> Void)?,
-//                  completionHandler: @escaping (DownloadResult) -> Void) -> HttpClientTask
+}
+
+public protocol HTTPDownloadClient {
+    typealias DownloadResult = Swift.Result<(URL, HTTPURLResponse), Error>
+    @discardableResult
+    func download(request: URLRequest,
+                  progressHandler: ((Double) -> Void)?,
+                  completionHandler: @escaping (DownloadResult) -> Void) -> HTTPClientTask
 }
