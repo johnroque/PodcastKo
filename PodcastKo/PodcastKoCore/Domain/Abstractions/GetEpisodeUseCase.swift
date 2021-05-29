@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GetEpisodesUseCase {
+public protocol GetEpisodesUseCase {
     typealias CompletionHandler = (_ result: Result<[Episode], Error>) -> Void
     
     func getEpisodes(url: URL, completionHandler: @escaping CompletionHandler)
