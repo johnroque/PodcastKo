@@ -57,6 +57,16 @@ class EpisodesFKGatewayTests: XCTestCase {
         XCTAssertEqual(client.requests, [requestURL])
     }
     
+    func test_getEpisodesTwice_requestDaaFromURLTwice() {
+        let requestURL = URL(string: "https://a-given-url.com")!
+        let (sut, client) = makeSUT(url: requestURL)
+        
+        sut.getEpisodes() { _ in }
+        sut.getEpisodes() { _ in }
+        
+        XCTAssertEqual(client.requests, [requestURL, requestURL])
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL = anyURL(), file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
         let client = FeedKitClientSpy()
