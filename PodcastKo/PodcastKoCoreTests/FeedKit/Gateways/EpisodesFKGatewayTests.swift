@@ -41,20 +41,27 @@ public final class EpisodesFKGateway: GetEpisodesUseCase {
 class EpisodesFKGatewayTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
-        let client = FeedKitClientSpy()
-        let _ = EpisodesFKGateway(client: client)
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requests.isEmpty)
     }
     
     func test_getEpisodes_requestsDataFromGivenURL() {
+        let (sut, client) = makeSUT()
         let requestURL = anyURL()
-        let client = FeedKitClientSpy()
-        let sut = EpisodesFKGateway(client: client)
         
         sut.getEpisodes(url: requestURL) { _ in }
         
         XCTAssertEqual(client.requests, [requestURL])
+    }
+    
+    // MARK: - Helpers
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
+        let client = FeedKitClientSpy()
+        let sut = EpisodesFKGateway(client: client)
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(sut)
+        return (sut, client)
     }
     
     private class FeedKitClientSpy: FeedKitClient {
