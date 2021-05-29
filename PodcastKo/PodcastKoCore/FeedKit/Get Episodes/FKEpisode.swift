@@ -16,4 +16,13 @@ public struct FKEpisode {
     public let streamUrl: String?
     
     public let image: String?
+    
+    public init(title: String?, pubDate: Date?, description: String?, author: String?, streamURL: String?, image: String?) {
+        self.title = title
+        self.pubDate = pubDate
+        self.description = description
+        self.author = author
+        self.streamUrl = streamURL
+        self.image = image
+    }
 }
