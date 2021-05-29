@@ -79,6 +79,9 @@
 		4A889EAF2597D19600B92366 /* BaseApiGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EAE2597D19600B92366 /* BaseApiGateway.swift */; };
 		4A889EB42597D21000B92366 /* DownloadEpisodeApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A889EB32597D21000B92366 /* DownloadEpisodeApiRequest.swift */; };
 		4A926C1826628F6D00AD132F /* EpisodesFKGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1726628F6D00AD132F /* EpisodesFKGatewayTests.swift */; };
+		4A926C1B2662D0E500AD132F /* FeedKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1A2662D0E500AD132F /* FeedKitClient.swift */; };
+		4A926C1E2662D15500AD132F /* FKEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1D2662D15500AD132F /* FKEpisode.swift */; };
+		4A926C202662D1C300AD132F /* EpisodesFKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */; };
 		4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C324D2324100B2B263 /* FKGateway.swift */; };
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
 		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
@@ -193,6 +196,9 @@
 		4A889EAE2597D19600B92366 /* BaseApiGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiGateway.swift; sourceTree = "<group>"; };
 		4A889EB32597D21000B92366 /* DownloadEpisodeApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEpisodeApiRequest.swift; sourceTree = "<group>"; };
 		4A926C1726628F6D00AD132F /* EpisodesFKGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesFKGatewayTests.swift; sourceTree = "<group>"; };
+		4A926C1A2662D0E500AD132F /* FeedKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedKitClient.swift; sourceTree = "<group>"; };
+		4A926C1D2662D15500AD132F /* FKEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKEpisode.swift; sourceTree = "<group>"; };
+		4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesFKGateway.swift; sourceTree = "<group>"; };
 		4A9795C324D2324100B2B263 /* FKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKGateway.swift; sourceTree = "<group>"; };
 		4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesUseCase.swift; sourceTree = "<group>"; };
 		4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewViewModel.swift; sourceTree = "<group>"; };
@@ -599,6 +605,7 @@
 		4A5C6CE52659364200589A07 /* PodcastKoCore */ = {
 			isa = PBXGroup;
 			children = (
+				4A926C192662CFEF00AD132F /* FeedKit */,
 				4A5C6D0E26594E8500589A07 /* API */,
 				4A5C6CFF265936E500589A07 /* Domain */,
 				4A5C6CFB2659366200589A07 /* Info.plist */,
@@ -691,6 +698,24 @@
 				4A926C1726628F6D00AD132F /* EpisodesFKGatewayTests.swift */,
 			);
 			path = Gateways;
+			sourceTree = "<group>";
+		};
+		4A926C192662CFEF00AD132F /* FeedKit */ = {
+			isa = PBXGroup;
+			children = (
+				4A926C1C2662D13600AD132F /* Get Episodes */,
+				4A926C1A2662D0E500AD132F /* FeedKitClient.swift */,
+			);
+			path = FeedKit;
+			sourceTree = "<group>";
+		};
+		4A926C1C2662D13600AD132F /* Get Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				4A926C1D2662D15500AD132F /* FKEpisode.swift */,
+				4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */,
+			);
+			path = "Get Episodes";
 			sourceTree = "<group>";
 		};
 		4A9795C224D231A700B2B263 /* Gateway */ = {
@@ -1024,16 +1049,19 @@
 				4A42A59B265C387F007A4FBC /* APIPodcast.swift in Sources */,
 				4A5C6D1A2659591E00589A07 /* URLSessionHTTPClient.swift in Sources */,
 				4A42A599265C36CB007A4FBC /* SearchPodcastAPIMapper.swift in Sources */,
+				4A926C1E2662D15500AD132F /* FKEpisode.swift in Sources */,
 				4A5C6D092659410D00589A07 /* GetEpisodeUseCase.swift in Sources */,
 				4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */,
 				4A5C6D1126594EF900589A07 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				4A5C6D072659400200589A07 /* SearchPodcastUseCase.swift in Sources */,
+				4A926C1B2662D0E500AD132F /* FeedKitClient.swift in Sources */,
 				4A5C6D16265952D600589A07 /* HTTPMethod.swift in Sources */,
 				4A5C6D182659551F00589A07 /* HTTPClient.swift in Sources */,
 				4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */,
 				4A5C6D0D26594AFC00589A07 /* CancellableTask.swift in Sources */,
 				4A5C6D022659371B00589A07 /* Podcast.swift in Sources */,
 				4A5C6D0426593A3500589A07 /* Episode.swift in Sources */,
+				4A926C202662D1C300AD132F /* EpisodesFKGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
