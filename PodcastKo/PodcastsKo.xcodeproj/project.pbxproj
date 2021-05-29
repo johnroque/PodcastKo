@@ -82,6 +82,8 @@
 		4A926C1B2662D0E500AD132F /* FeedKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1A2662D0E500AD132F /* FeedKitClient.swift */; };
 		4A926C1E2662D15500AD132F /* FKEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1D2662D15500AD132F /* FKEpisode.swift */; };
 		4A926C202662D1C300AD132F /* EpisodesFKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */; };
+		4A926C222662DD9D00AD132F /* FeedKitClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C212662DD9D00AD132F /* FeedKitClientImpl.swift */; };
+		4A926C252662E08800AD132F /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A926C242662E08800AD132F /* FeedKit */; };
 		4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C324D2324100B2B263 /* FKGateway.swift */; };
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
 		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
@@ -199,6 +201,7 @@
 		4A926C1A2662D0E500AD132F /* FeedKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedKitClient.swift; sourceTree = "<group>"; };
 		4A926C1D2662D15500AD132F /* FKEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKEpisode.swift; sourceTree = "<group>"; };
 		4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesFKGateway.swift; sourceTree = "<group>"; };
+		4A926C212662DD9D00AD132F /* FeedKitClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedKitClientImpl.swift; sourceTree = "<group>"; };
 		4A9795C324D2324100B2B263 /* FKGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FKGateway.swift; sourceTree = "<group>"; };
 		4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesUseCase.swift; sourceTree = "<group>"; };
 		4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewViewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A926C252662E08800AD132F /* FeedKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +481,7 @@
 				4A5C6CE52659364200589A07 /* PodcastKoCore */,
 				4A5C6CF02659364200589A07 /* PodcastKoCoreTests */,
 				4A5AF35724CCCCE700D56A0B /* Products */,
+				4A926C232662E08800AD132F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -705,6 +710,7 @@
 			children = (
 				4A926C1C2662D13600AD132F /* Get Episodes */,
 				4A926C1A2662D0E500AD132F /* FeedKitClient.swift */,
+				4A926C212662DD9D00AD132F /* FeedKitClientImpl.swift */,
 			);
 			path = FeedKit;
 			sourceTree = "<group>";
@@ -716,6 +722,13 @@
 				4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */,
 			);
 			path = "Get Episodes";
+			sourceTree = "<group>";
+		};
+		4A926C232662E08800AD132F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4A9795C224D231A700B2B263 /* Gateway */ = {
@@ -846,6 +859,9 @@
 			dependencies = (
 			);
 			name = PodcastKoCore;
+			packageProductDependencies = (
+				4A926C242662E08800AD132F /* FeedKit */,
+			);
 			productName = PodcastKoCore;
 			productReference = 4A5C6CE42659364200589A07 /* PodcastKoCore.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1059,6 +1075,7 @@
 				4A5C6D182659551F00589A07 /* HTTPClient.swift in Sources */,
 				4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */,
 				4A5C6D0D26594AFC00589A07 /* CancellableTask.swift in Sources */,
+				4A926C222662DD9D00AD132F /* FeedKitClientImpl.swift in Sources */,
 				4A5C6D022659371B00589A07 /* Podcast.swift in Sources */,
 				4A5C6D0426593A3500589A07 /* Episode.swift in Sources */,
 				4A926C202662D1C300AD132F /* EpisodesFKGateway.swift in Sources */,
@@ -1566,6 +1583,11 @@
 			productName = SDWebImage;
 		};
 		4A02575A24D21071007A5B0C /* FeedKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */;
+			productName = FeedKit;
+		};
+		4A926C242662E08800AD132F /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
