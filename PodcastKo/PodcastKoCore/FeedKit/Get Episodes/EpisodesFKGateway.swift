@@ -21,11 +21,22 @@ public final class EpisodesFKGateway: GetEpisodesUseCase {
     public func getEpisodes(completion: @escaping (GetEpisodesUseCase.Result) -> Void) {
         client.get(self.url) { result in
             switch result {
-            case .success:
-                break
+            case let .success(fkEpisods):
+                completion(.success(fkEpisods.toDomain()))
             case let .failure(error):
                 completion(.failure(error))
             }
         }
+    }
+}
+
+extension Array where Element == FKEpisode {
+    func toDomain() -> [Episode] {
+        self.map { Episode(title: $0.title,
+                           pubDate: $0.pubDate,
+                           description: $0.description,
+                           author: $0.author,
+                           streamURL: $0.streamUrl,
+                           image: $0.image) }
     }
 }

@@ -45,10 +45,16 @@ class EpisodesFKGatewayTests: XCTestCase {
         }
     }
     
-//    func test_getEpisodes_deliversEpisodesOnClientResult() {
-//        let (sut, client) = makeSUT()
-//        
-//    }
+    func test_getEpisodes_deliversEpisodesOnClientResult() {
+        let (sut, client) = makeSUT()
+        
+        let ep1 = makeFKEpisode(title: "title 1", pubDate: nil, description: "desc 1", author: "author 1", streamURL: nil, image: nil)
+        let ep2 = makeFKEpisode(title: "title 2", pubDate: nil, description: "desc 2", author: "author 2", streamURL: nil, image: nil)
+        
+        expect(sut, toCompleteWith: .success([ep1.domain, ep2.domain])) {
+            client.complete(with: [ep1.fk, ep2.fk])
+        }
+    }
     
     // MARK: - Helpers
     private func makeSUT(url: URL = anyURL(), file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
@@ -57,6 +63,12 @@ class EpisodesFKGatewayTests: XCTestCase {
         trackForMemoryLeaks(client)
         trackForMemoryLeaks(sut)
         return (sut, client)
+    }
+    
+    private func makeFKEpisode(title: String? = nil, pubDate: Date? = nil, description: String? = nil, author: String? = nil, streamURL: String? = nil, image: String? = nil) -> (fk: FKEpisode, domain: Episode) {
+        let fk = FKEpisode(title: title, pubDate: pubDate, description: description, author: author, streamURL: streamURL, image: image)
+        let domain = Episode(title: title, pubDate: pubDate, description: description, author: author, streamURL: streamURL, image: image)
+        return (fk, domain)
     }
     
     private func expect(_ sut: EpisodesFKGateway, toCompleteWith expectedResult: EpisodesFKGateway.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
@@ -94,6 +106,10 @@ class EpisodesFKGatewayTests: XCTestCase {
         // MARK: - Helpers
         func complete(with error: Error, at index: Int = 0) {
             messages[index].completion(.failure(error))
+        }
+        
+        func complete(with fkEpisodes: [FKEpisode], at index: Int = 0) {
+            messages[index].completion(.success(fkEpisodes))
         }
     }
     
