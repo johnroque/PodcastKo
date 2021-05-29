@@ -28,13 +28,15 @@ public struct FKEpisode {
 public final class EpisodesFKGateway: GetEpisodesUseCase {
     
     private let client: FeedKitClient
+    private let url: URL
     
-    public init(client: FeedKitClient) {
+    public init(client: FeedKitClient, url: URL) {
         self.client = client
+        self.url = url
     }
     
-    public func getEpisodes(url: URL, completionHandler: @escaping CompletionHandler) {
-        client.get(url) { _ in }
+    public func getEpisodes(completionHandler: @escaping CompletionHandler) {
+        client.get(self.url) { _ in }
     }
 }
 
@@ -47,18 +49,18 @@ class EpisodesFKGatewayTests: XCTestCase {
     }
     
     func test_getEpisodes_requestsDataFromGivenURL() {
-        let (sut, client) = makeSUT()
-        let requestURL = anyURL()
+        let requestURL = URL(string: "https://a-given-url.com")!
+        let (sut, client) = makeSUT(url: requestURL)
         
-        sut.getEpisodes(url: requestURL) { _ in }
+        sut.getEpisodes() { _ in }
         
         XCTAssertEqual(client.requests, [requestURL])
     }
     
     // MARK: - Helpers
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
+    private func makeSUT(url: URL = anyURL(), file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
         let client = FeedKitClientSpy()
-        let sut = EpisodesFKGateway(client: client)
+        let sut = EpisodesFKGateway(client: client, url: url)
         trackForMemoryLeaks(client)
         trackForMemoryLeaks(sut)
         return (sut, client)
