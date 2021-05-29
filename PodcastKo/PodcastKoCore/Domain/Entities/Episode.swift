@@ -19,4 +19,14 @@ public struct Episode: Equatable {
     
     var fileUrl: String?
     
+    public init(title: String?, pubDate: Date?, description: String?, author: String?, streamURL: String?, image: String?, fileURL: String? = nil) {
+        self.title = title
+        self.pubDate = pubDate
+        self.description = description
+        self.author = author
+        self.streamUrl = streamURL
+        self.image = image
+        
+        self.fileUrl = fileURL
+    }
 }
