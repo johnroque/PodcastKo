@@ -34,7 +34,7 @@ public final class EpisodesFKGateway: GetEpisodesUseCase {
     }
     
     public func getEpisodes(url: URL, completionHandler: @escaping CompletionHandler) {
-        
+        client.get(url) { _ in }
     }
 }
 
@@ -45,6 +45,16 @@ class EpisodesFKGatewayTests: XCTestCase {
         let _ = EpisodesFKGateway(client: client)
         
         XCTAssertTrue(client.requests.isEmpty)
+    }
+    
+    func test_getEpisodes_requestsDataFromGivenURL() {
+        let requestURL = anyURL()
+        let client = FeedKitClientSpy()
+        let sut = EpisodesFKGateway(client: client)
+        
+        sut.getEpisodes(url: requestURL) { _ in }
+        
+        XCTAssertEqual(client.requests, [requestURL])
     }
     
     private class FeedKitClientSpy: FeedKitClient {
