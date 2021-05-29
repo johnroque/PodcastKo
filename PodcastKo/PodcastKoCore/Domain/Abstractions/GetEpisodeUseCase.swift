@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol GetEpisodesUseCase {
-    typealias CompletionHandler = (_ result: Result<[Episode], Error>) -> Void
+    typealias Result = Swift.Result<[Episode], Error>
     
-    func getEpisodes(completionHandler: @escaping CompletionHandler)
+    func getEpisodes(completion: @escaping (Result) -> Void)
 }

@@ -30,13 +30,19 @@ public final class EpisodesFKGateway: GetEpisodesUseCase {
     private let client: FeedKitClient
     private let url: URL
     
+    public enum Error: Swift.Error {
+        case connectivity
+    }
+    
     public init(client: FeedKitClient, url: URL) {
         self.client = client
         self.url = url
     }
     
-    public func getEpisodes(completionHandler: @escaping CompletionHandler) {
-        client.get(self.url) { _ in }
+    public func getEpisodes(completion: @escaping (GetEpisodesUseCase.Result) -> Void) {
+        client.get(self.url) { _ in
+            completion(.failure(Error.connectivity))
+        }
     }
 }
 
@@ -67,6 +73,15 @@ class EpisodesFKGatewayTests: XCTestCase {
         XCTAssertEqual(client.requests, [requestURL, requestURL])
     }
     
+    func test_getEpisodes_deliversErrorOnClientError() {
+        let clientError = NSError(domain: "Test", code: 0)
+        let (sut, client) = makeSUT()
+        
+        expect(sut, toCompleteWith: failure(.connectivity)) {
+            client.complete(with: clientError)
+        }
+    }
+    
     // MARK: - Helpers
     private func makeSUT(url: URL = anyURL(), file: StaticString = #filePath, line: UInt = #line) -> (sut: EpisodesFKGateway, client: FeedKitClientSpy) {
         let client = FeedKitClientSpy()
@@ -74,6 +89,31 @@ class EpisodesFKGatewayTests: XCTestCase {
         trackForMemoryLeaks(client)
         trackForMemoryLeaks(sut)
         return (sut, client)
+    }
+    
+    private func failure(_ error: EpisodesFKGateway.Error) -> EpisodesFKGateway.Result {
+        EpisodesFKGateway.Result.failure(error)
+    }
+    
+    private func expect(_ sut: EpisodesFKGateway, toCompleteWith expectedResult: EpisodesFKGateway.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.getEpisodes { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+            case let (.failure(receivedError as EpisodesFKGateway.Error), .failure(expectedError as EpisodesFKGateway.Error)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+
+            exp.fulfill()
+        }
+
+        action()
+
+        wait(for: [exp], timeout: 2.0)
     }
     
     private class FeedKitClientSpy: FeedKitClient {
@@ -85,6 +125,11 @@ class EpisodesFKGatewayTests: XCTestCase {
         
         func get(_ url: URL, completion: @escaping (FeedKitClient.Result) -> Void) {
             messages.append((url, completion))
+        }
+        
+        // MARK: - Helpers
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
         }
     }
     
