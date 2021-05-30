@@ -84,6 +84,8 @@
 		4A926C202662D1C300AD132F /* EpisodesFKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1F2662D1C300AD132F /* EpisodesFKGateway.swift */; };
 		4A926C222662DD9D00AD132F /* FeedKitClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C212662DD9D00AD132F /* FeedKitClientImpl.swift */; };
 		4A926C252662E08800AD132F /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A926C242662E08800AD132F /* FeedKit */; };
+		4A926C262663225500AD132F /* PodcastKoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5C6CE42659364200589A07 /* PodcastKoCore.framework */; };
+		4A926C272663225500AD132F /* PodcastKoCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5C6CE42659364200589A07 /* PodcastKoCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4A9795C424D2324100B2B263 /* FKGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C324D2324100B2B263 /* FKGateway.swift */; };
 		4A9795C624D2341C00B2B263 /* GetEpisodesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C524D2341C00B2B263 /* GetEpisodesUseCase.swift */; };
 		4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9795C724D2368300B2B263 /* EpisodesViewViewModel.swift */; };
@@ -118,7 +120,28 @@
 			remoteGlobalIDString = 4A5C6CE32659364200589A07;
 			remoteInfo = PodcastKoCore;
 		};
+		4A926C282663225500AD132F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A5C6CE32659364200589A07;
+			remoteInfo = PodcastKoCore;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A926C2A2663225500AD132F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4A926C272663225500AD132F /* PodcastKoCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A02571D24CD85EE007A5B0C /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
@@ -221,6 +244,7 @@
 			files = (
 				4A02575024D138D1007A5B0C /* SDWebImage in Frameworks */,
 				4A02574824CFD32E007A5B0C /* RxSwift in Frameworks */,
+				4A926C262663225500AD132F /* PodcastKoCore.framework in Frameworks */,
 				4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */,
 				4A02575B24D21071007A5B0C /* FeedKit in Frameworks */,
 			);
@@ -793,10 +817,12 @@
 				4A5AF35224CCCCE700D56A0B /* Sources */,
 				4A5AF35324CCCCE700D56A0B /* Frameworks */,
 				4A5AF35424CCCCE700D56A0B /* Resources */,
+				4A926C2A2663225500AD132F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4A926C292663225500AD132F /* PBXTargetDependency */,
 			);
 			name = PodcastsKo;
 			packageProductDependencies = (
@@ -1113,6 +1139,11 @@
 			isa = PBXTargetDependency;
 			target = 4A5C6CE32659364200589A07 /* PodcastKoCore */;
 			targetProxy = 4A5C6CEE2659364200589A07 /* PBXContainerItemProxy */;
+		};
+		4A926C292663225500AD132F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A5C6CE32659364200589A07 /* PodcastKoCore */;
+			targetProxy = 4A926C282663225500AD132F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
