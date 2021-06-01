@@ -37,8 +37,6 @@
 		4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF35B24CCCCE700D56A0B /* SceneDelegate.swift */; };
 		4A5AF36324CCCCEB00D56A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A5AF36224CCCCEB00D56A0B /* Assets.xcassets */; };
 		4A5AF36624CCCCEB00D56A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A5AF36424CCCCEB00D56A0B /* LaunchScreen.storyboard */; };
-		4A5AF37124CCCCEB00D56A0B /* PodcastsKoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF37024CCCCEB00D56A0B /* PodcastsKoTests.swift */; };
-		4A5AF37C24CCCCEB00D56A0B /* PodcastsKoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */; };
 		4A5AF39024CCF22A00D56A0B /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */; };
 		4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */; };
 		4A5AF39624CD10AB00D56A0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */; };
@@ -82,20 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4A5AF36D24CCCCEB00D56A0B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A5AF35524CCCCE700D56A0B;
-			remoteInfo = PodcastsKo;
-		};
-		4A5AF37824CCCCEB00D56A0B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4A5AF35524CCCCE700D56A0B;
-			remoteInfo = PodcastsKo;
-		};
 		4A5C6CEE2659364200589A07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
@@ -155,12 +139,6 @@
 		4A5AF36224CCCCEB00D56A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A5AF36524CCCCEB00D56A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A5AF36724CCCCEB00D56A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A5AF36C24CCCCEB00D56A0B /* PodcastsKoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastsKoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A5AF37024CCCCEB00D56A0B /* PodcastsKoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsKoTests.swift; sourceTree = "<group>"; };
-		4A5AF37224CCCCEB00D56A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A5AF37724CCCCEB00D56A0B /* PodcastsKoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodcastsKoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsKoUITests.swift; sourceTree = "<group>"; };
-		4A5AF37D24CCCCEB00D56A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A5AF38F24CCF22A00D56A0B /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		4A5AF39124CCF53D00D56A0B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		4A5AF39524CD10AB00D56A0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -213,20 +191,6 @@
 				4A926C262663225500AD132F /* PodcastKoCore.framework in Frameworks */,
 				4A02574624CFD32E007A5B0C /* RxCocoa in Frameworks */,
 				4A02575B24D21071007A5B0C /* FeedKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A5AF36924CCCCEB00D56A0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A5AF37424CCCCEB00D56A0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,8 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				4A5AF35824CCCCE700D56A0B /* PodcastsKo */,
-				4A5AF36F24CCCCEB00D56A0B /* PodcastsKoTests */,
-				4A5AF37A24CCCCEB00D56A0B /* PodcastsKoUITests */,
 				4A5C6CE52659364200589A07 /* PodcastKoCore */,
 				4A5C6CF02659364200589A07 /* PodcastKoCoreTests */,
 				4A5AF35724CCCCE700D56A0B /* Products */,
@@ -372,8 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */,
-				4A5AF36C24CCCCEB00D56A0B /* PodcastsKoTests.xctest */,
-				4A5AF37724CCCCEB00D56A0B /* PodcastsKoUITests.xctest */,
 				4A5C6CE42659364200589A07 /* PodcastKoCore.framework */,
 				4A5C6CEC2659364200589A07 /* PodcastKoCoreTests.xctest */,
 			);
@@ -389,24 +349,6 @@
 				4A5AF38A24CCCF3500D56A0B /* SupportingFiles */,
 			);
 			path = PodcastsKo;
-			sourceTree = "<group>";
-		};
-		4A5AF36F24CCCCEB00D56A0B /* PodcastsKoTests */ = {
-			isa = PBXGroup;
-			children = (
-				4A5AF37024CCCCEB00D56A0B /* PodcastsKoTests.swift */,
-				4A5AF37224CCCCEB00D56A0B /* Info.plist */,
-			);
-			path = PodcastsKoTests;
-			sourceTree = "<group>";
-		};
-		4A5AF37A24CCCCEB00D56A0B /* PodcastsKoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4A5AF37B24CCCCEB00D56A0B /* PodcastsKoUITests.swift */,
-				4A5AF37D24CCCCEB00D56A0B /* Info.plist */,
-			);
-			path = PodcastsKoUITests;
 			sourceTree = "<group>";
 		};
 		4A5AF38924CCCF2F00D56A0B /* App */ = {
@@ -696,42 +638,6 @@
 			productReference = 4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4A5AF36B24CCCCEB00D56A0B /* PodcastsKoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4A5AF38324CCCCEB00D56A0B /* Build configuration list for PBXNativeTarget "PodcastsKoTests" */;
-			buildPhases = (
-				4A5AF36824CCCCEB00D56A0B /* Sources */,
-				4A5AF36924CCCCEB00D56A0B /* Frameworks */,
-				4A5AF36A24CCCCEB00D56A0B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4A5AF36E24CCCCEB00D56A0B /* PBXTargetDependency */,
-			);
-			name = PodcastsKoTests;
-			productName = PodcastsKoTests;
-			productReference = 4A5AF36C24CCCCEB00D56A0B /* PodcastsKoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4A5AF37624CCCCEB00D56A0B /* PodcastsKoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4A5AF38624CCCCEB00D56A0B /* Build configuration list for PBXNativeTarget "PodcastsKoUITests" */;
-			buildPhases = (
-				4A5AF37324CCCCEB00D56A0B /* Sources */,
-				4A5AF37424CCCCEB00D56A0B /* Frameworks */,
-				4A5AF37524CCCCEB00D56A0B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4A5AF37924CCCCEB00D56A0B /* PBXTargetDependency */,
-			);
-			name = PodcastsKoUITests;
-			productName = PodcastsKoUITests;
-			productReference = 4A5AF37724CCCCEB00D56A0B /* PodcastsKoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		4A5C6CE32659364200589A07 /* PodcastKoCore */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A5C6CF52659364200589A07 /* Build configuration list for PBXNativeTarget "PodcastKoCore" */;
@@ -784,14 +690,6 @@
 					4A5AF35524CCCCE700D56A0B = {
 						CreatedOnToolsVersion = 11.6;
 					};
-					4A5AF36B24CCCCEB00D56A0B = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = 4A5AF35524CCCCE700D56A0B;
-					};
-					4A5AF37624CCCCEB00D56A0B = {
-						CreatedOnToolsVersion = 11.6;
-						TestTargetID = 4A5AF35524CCCCE700D56A0B;
-					};
 					4A5C6CE32659364200589A07 = {
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1250;
@@ -821,8 +719,6 @@
 			projectRoot = "";
 			targets = (
 				4A5AF35524CCCCE700D56A0B /* PodcastsKo */,
-				4A5AF36B24CCCCEB00D56A0B /* PodcastsKoTests */,
-				4A5AF37624CCCCEB00D56A0B /* PodcastsKoUITests */,
 				4A5C6CE32659364200589A07 /* PodcastKoCore */,
 				4A5C6CEB2659364200589A07 /* PodcastKoCoreTests */,
 			);
@@ -837,20 +733,6 @@
 				4A4653D324D3E69600A2A78F /* Colors.xcassets in Resources */,
 				4A5AF36624CCCCEB00D56A0B /* LaunchScreen.storyboard in Resources */,
 				4A5AF36324CCCCEB00D56A0B /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A5AF36A24CCCCEB00D56A0B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A5AF37524CCCCEB00D56A0B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,22 +790,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4A5AF36824CCCCEB00D56A0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4A5AF37124CCCCEB00D56A0B /* PodcastsKoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4A5AF37324CCCCEB00D56A0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4A5AF37C24CCCCEB00D56A0B /* PodcastsKoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4A5C6CE02659364200589A07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -969,16 +835,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4A5AF36E24CCCCEB00D56A0B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4A5AF35524CCCCE700D56A0B /* PodcastsKo */;
-			targetProxy = 4A5AF36D24CCCCEB00D56A0B /* PBXContainerItemProxy */;
-		};
-		4A5AF37924CCCCEB00D56A0B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4A5AF35524CCCCE700D56A0B /* PodcastsKo */;
-			targetProxy = 4A5AF37824CCCCEB00D56A0B /* PBXContainerItemProxy */;
-		};
 		4A5C6CEF2659364200589A07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4A5C6CE32659364200589A07 /* PodcastKoCore */;
@@ -1157,90 +1013,6 @@
 			};
 			name = Release;
 		};
-		4A5AF38424CCCCEB00D56A0B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PodcastsKo.app/PodcastsKo";
-			};
-			name = Debug;
-		};
-		4A5AF38524CCCCEB00D56A0B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKoTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PodcastsKo.app/PodcastsKo";
-			};
-			name = Release;
-		};
-		4A5AF38724CCCCEB00D56A0B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PodcastsKo;
-			};
-			name = Debug;
-		};
-		4A5AF38824CCCCEB00D56A0B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
-				INFOPLIST_FILE = PodcastsKoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PodcastsKo;
-			};
-			name = Release;
-		};
 		4A5C6CF62659364200589A07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1372,24 +1144,6 @@
 			buildConfigurations = (
 				4A5AF38124CCCCEB00D56A0B /* Debug */,
 				4A5AF38224CCCCEB00D56A0B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4A5AF38324CCCCEB00D56A0B /* Build configuration list for PBXNativeTarget "PodcastsKoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4A5AF38424CCCCEB00D56A0B /* Debug */,
-				4A5AF38524CCCCEB00D56A0B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4A5AF38624CCCCEB00D56A0B /* Build configuration list for PBXNativeTarget "PodcastsKoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4A5AF38724CCCCEB00D56A0B /* Debug */,
-				4A5AF38824CCCCEB00D56A0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
