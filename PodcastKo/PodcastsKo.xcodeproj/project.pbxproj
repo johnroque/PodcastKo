@@ -70,6 +70,7 @@
 		4A5C6D182659551F00589A07 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D172659551F00589A07 /* HTTPClient.swift */; };
 		4A5C6D1A2659591E00589A07 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D192659591E00589A07 /* URLSessionHTTPClient.swift */; };
 		4A5C6D22265978CF00589A07 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D21265978CF00589A07 /* URLSessionHTTPClientTests.swift */; };
+		4A5F245B26666FDC00985996 /* URLSessionHTTPDownloadClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F245A26666FDC00985996 /* URLSessionHTTPDownloadClient.swift */; };
 		4A66EE7D265D17EF00B29BAE /* XCTestCase+MemoryLeakTrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A66EE7C265D17EF00B29BAE /* XCTestCase+MemoryLeakTrackingHelper.swift */; };
 		4A6CA76824DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */; };
 		4A6CA76A24DAB4C8005B1DC0 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */; };
@@ -212,6 +213,7 @@
 		4A5C6D172659551F00589A07 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		4A5C6D192659591E00589A07 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		4A5C6D21265978CF00589A07 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		4A5F245A26666FDC00985996 /* URLSessionHTTPDownloadClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPDownloadClient.swift; sourceTree = "<group>"; };
 		4A66EE7C265D17EF00B29BAE /* XCTestCase+MemoryLeakTrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTrackingHelper.swift"; sourceTree = "<group>"; };
 		4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 				4A5C6D15265952D600589A07 /* HTTPMethod.swift */,
 				4A5C6D172659551F00589A07 /* HTTPClient.swift */,
 				4A5C6D192659591E00589A07 /* URLSessionHTTPClient.swift */,
+				4A5F245A26666FDC00985996 /* URLSessionHTTPDownloadClient.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1092,6 +1095,7 @@
 				4A5C6D1A2659591E00589A07 /* URLSessionHTTPClient.swift in Sources */,
 				4A42A599265C36CB007A4FBC /* SearchPodcastAPIMapper.swift in Sources */,
 				4A926C1E2662D15500AD132F /* FKEpisode.swift in Sources */,
+				4A5F245B26666FDC00985996 /* URLSessionHTTPDownloadClient.swift in Sources */,
 				4A5C6D092659410D00589A07 /* GetEpisodeUseCase.swift in Sources */,
 				4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */,
 				4A5C6D1126594EF900589A07 /* HTTPURLResponse+StatusCode.swift in Sources */,
