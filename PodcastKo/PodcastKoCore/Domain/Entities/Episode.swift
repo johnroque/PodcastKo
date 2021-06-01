@@ -8,16 +8,16 @@
 
 import Foundation
 
-public struct Episode: Equatable {
+public struct Episode: Equatable, Codable {
     
-    let title: String?
-    let pubDate: Date?
-    let description: String?
-    let author: String?
-    let streamUrl: String?
-    let image: String?
+    public let title: String?
+    public let pubDate: Date?
+    public let description: String?
+    public let author: String?
+    public let streamUrl: String?
+    public let image: String?
     
-    var fileUrl: String?
+    public var fileUrl: String?
     
     public init(title: String?, pubDate: Date?, description: String?, author: String?, streamURL: String?, image: String?, fileURL: String? = nil) {
         self.title = title

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PodcastKoCore
 
 class MainTabBarController: UITabBarController {
 

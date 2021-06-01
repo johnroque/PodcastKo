@@ -9,11 +9,13 @@
 import Foundation
 import FeedKit
 
-final class FeedKitClientImpl: EpisodeFeedKitClient {
+public final class FeedKitClientImpl: EpisodeFeedKitClient {
     
     private struct UnsupportedParse: Error {}
     
-    func get(_ url: URL, completion: @escaping (EpisodeFeedKitClient.Result) -> Void) {
+    public init() {}
+    
+    public func get(_ url: URL, completion: @escaping (EpisodeFeedKitClient.Result) -> Void) {
         let parser = FeedParser(URL: url)
         parser.parseAsync { (result) in
             completion(Result {

@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol DownloadViewModelInputs {
     func getDownloads()
@@ -26,7 +27,7 @@ final class DownloadViewModel: DownloadViewModelInputs, DownloadViewModelOutputs
     private let useCase: DownloadEpisodeUseCase
     let userDefaults: AppUserDefaults
     
-    private var downloadRequest: HttpClientTask?
+    private var downloadRequest: CancellableTask?
     
     init(useCase: DownloadEpisodeUseCase,
          userDefaults: AppUserDefaults) {

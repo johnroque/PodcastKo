@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol EpisodesViewControllerDelegate {
     func back(_ vc: EpisodesViewController)
@@ -61,7 +62,7 @@ class EpisodesViewController: UITableViewController {
     
     private func getEpisodes() {
         
-        self.viewModel?.getEpisodesViewModel.getEpisodes(urlString: self.podCast?.feedUrl)
+        self.viewModel?.getEpisodesViewModel.getEpisodes()
         
     }
     

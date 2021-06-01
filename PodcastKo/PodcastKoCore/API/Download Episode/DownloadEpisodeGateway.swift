@@ -11,7 +11,7 @@ import Foundation
 public final class DownloadEpisodeGateway: DownloadEpisodeUseCase {
     private let client: HTTPDownloadClient
     
-    public init(url: URL, client: HTTPDownloadClient) {
+    public init(client: HTTPDownloadClient) {
         self.client = client
     }
     
@@ -34,7 +34,7 @@ public final class DownloadEpisodeGateway: DownloadEpisodeUseCase {
         }
     }
   
-    func downloadEpisode(url: URL, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (Completion) -> Void) -> CancellableTask {
+    public func downloadEpisode(url: URL, progressHandler: ((Double) -> Void)?, completionHandler: @escaping (Completion) -> Void) -> CancellableTask {
         let request = DownloadEpisodeURLRequest(url: url)
         
         let task = HTTPClientTaskWrapper(completionHandler)

@@ -9,9 +9,10 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol GetEpisodesViewModelInputs {
-    func getEpisodes(urlString: String?)
+    func getEpisodes()
     func getOutputs() -> GetEpisodesViewModelOutputs
 }
 
@@ -33,15 +34,9 @@ final class GetEpisodesViewModel: GetEpisodesViewModelInputs, GetEpisodesViewMod
     let error: BehaviorRelay<String?> = BehaviorRelay(value: nil)
     let episodes: BehaviorRelay<[Episode]> = BehaviorRelay(value: [])
     
-    
-    func getEpisodes(urlString: String?) {
+    func getEpisodes() {
         
-        guard let urlStr = urlString, let url = URL(string: urlStr) else {
-            // TODO: throw error
-            return
-        }
-        
-        self.useCase.getEpisodes(url: url) {
+        self.useCase.getEpisodes() {
             [weak self] (result) in
             guard let self = self else { return }
             

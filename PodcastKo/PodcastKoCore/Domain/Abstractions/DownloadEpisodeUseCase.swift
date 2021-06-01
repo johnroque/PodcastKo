@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DownloadEpisodeUseCase {
+public protocol DownloadEpisodeUseCase {
     typealias Completion = Result<URL, Error>
     
     func downloadEpisode(url: URL,
