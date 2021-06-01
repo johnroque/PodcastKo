@@ -46,7 +46,16 @@ public final class URLSessionHTTPDownloadClient: HTTPDownloadClient {
                 if let error = error {
                     throw error
                 } else if let tmpUrl = tmpUrl, let response = response as? HTTPURLResponse {
-                    return (tmpUrl, response)
+                    let documentsURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    
+                    guard let originalName = request.url?.lastPathComponent else  {
+                        throw UnexpectedValuesRepresentation()
+                    }
+                    
+                    let savedURL = documentsURL.appendingPathComponent(originalName)
+                    
+                    try FileManager.default.moveItem(at: tmpUrl, to: savedURL)
+                    return (savedURL, response)
                 } else {
                     throw UnexpectedValuesRepresentation()
                 }
