@@ -9,9 +9,9 @@
 import Foundation
 
 protocol DownloadEpisodeUseCase {
-    typealias CompletionHandler = (_ result: Result<URL, Error>) -> Void
+    typealias Completion = Result<URL, Error>
     
     func downloadEpisode(url: URL,
                          progressHandler: ((Double) -> Void)?,
-                         completionHandler: @escaping CompletionHandler) -> CancellableTask
+                         completionHandler: @escaping (Completion) -> Void) -> CancellableTask
 }
