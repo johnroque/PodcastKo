@@ -53,6 +53,31 @@ class DownloadEpisodeGatewayTests: XCTestCase {
         wait(for: [exp], timeout: 2.0)
     }
     
+    func test_download_deliversDownloadURLOnDownloadRequestSucceeds() {
+        let downloadedURL = URL(string: "https://a-given-url.com")!
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait for load completion")
+        
+        _ = sut.downloadEpisode(
+            url: anyURL(),
+            progressHandler: nil) { result in
+            
+            switch result {
+            case let .success(url):
+                XCTAssertEqual(url, downloadedURL)
+            default:
+                XCTFail("Expected result, got \(result) instead.")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(withStatusCode: 200, url: downloadedURL)
+        
+        wait(for: [exp], timeout: 2.0)
+    }
+    
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: DownloadEpisodeUseCase, client: HTTPDownloadClientSpy) {
         let client = HTTPDownloadClientSpy()
