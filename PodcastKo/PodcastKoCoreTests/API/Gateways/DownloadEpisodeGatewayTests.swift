@@ -18,6 +18,18 @@ class DownloadEpisodeGatewayTests: XCTestCase {
         XCTAssertTrue(client.requests.isEmpty)
     }
     
+    func test_download_requestDownloadFromURL() {
+        let url = URL(string: "https://a-given-url.com")!
+        let client = HTTPDownloadClientSpy()
+        let sut = DownloadEpisodeGateway(client: client)
+        
+        _ = sut.downloadEpisode(
+            url: url,
+            progressHandler: nil) { _ in }
+        
+        XCTAssertEqual(client.requests.map { $0.url }, [url])
+    }
+    
     private class HTTPDownloadClientSpy: HTTPDownloadClient {
         private struct Task: HTTPClientTask {
             func cancel() {}
