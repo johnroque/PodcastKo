@@ -28,6 +28,31 @@ class DownloadEpisodeGatewayTests: XCTestCase {
         XCTAssertEqual(client.requests.map { $0.url }, [url])
     }
     
+    func test_download_deliversErrorOnClientError() {
+        let clientError = NSError(domain: "Test", code: 0)
+        let (sut, client) = makeSUT()
+        
+        let exp = expectation(description: "Wait for load completion")
+        
+        _ = sut.downloadEpisode(
+            url: anyURL(),
+            progressHandler: nil) { result in
+            
+            switch result {
+            case let .failure(error as NSError):
+                XCTAssertEqual(error, clientError)
+            default:
+                XCTFail("Expected failure, got \(result) instead.")
+            }
+            
+            exp.fulfill()
+        }
+        
+        client.complete(with: clientError)
+        
+        wait(for: [exp], timeout: 2.0)
+    }
+    
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: DownloadEpisodeUseCase, client: HTTPDownloadClientSpy) {
         let client = HTTPDownloadClientSpy()
