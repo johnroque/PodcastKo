@@ -46,6 +46,21 @@ class DownloadEpisodeGatewayTests: XCTestCase {
         }
     }
     
+    func test_download_doesNotDeliversURLAfterCancellingTask() {
+        let (sut, client) = makeSUT()
+        
+        var received = [DownloadEpisodeUseCase.Completion]()
+        let task = sut.downloadEpisode(
+            url: anyURL(),
+            progressHandler: nil) { received.append($0) }
+        task.cancel()
+        
+        client.complete(withStatusCode: 200, url: anyURL())
+        client.complete(with: anyNSError())
+        
+        XCTAssertTrue(received.isEmpty, "Expected no received results after cancelling task")
+    }
+    
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: DownloadEpisodeUseCase, client: HTTPDownloadClientSpy) {
         let client = HTTPDownloadClientSpy()
