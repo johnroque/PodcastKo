@@ -12,22 +12,27 @@ import PodcastKoCore
 class DownloadEpisodeGatewayTests: XCTestCase {
     
     func test_init_doesNotRequestDownloadFromURL() {
-        let client = HTTPDownloadClientSpy()
-        _ = DownloadEpisodeGateway(client: client)
+        let (_, client) = makeSUT()
         
         XCTAssertTrue(client.requests.isEmpty)
     }
     
     func test_download_requestDownloadFromURL() {
         let url = URL(string: "https://a-given-url.com")!
-        let client = HTTPDownloadClientSpy()
-        let sut = DownloadEpisodeGateway(client: client)
+        let (sut, client) = makeSUT()
         
         _ = sut.downloadEpisode(
             url: url,
             progressHandler: nil) { _ in }
         
         XCTAssertEqual(client.requests.map { $0.url }, [url])
+    }
+    
+    // MARK: - Helpers
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: DownloadEpisodeUseCase, client: HTTPDownloadClientSpy) {
+        let client = HTTPDownloadClientSpy()
+        let sut = DownloadEpisodeGateway(client: client)
+        return (sut, client)
     }
     
     private class HTTPDownloadClientSpy: HTTPDownloadClient {
