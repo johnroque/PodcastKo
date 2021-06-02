@@ -75,6 +75,7 @@
 		4A9DBB2B25000A4B006856A2 /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9DBB2A25000A4B006856A2 /* DownloadViewModel.swift */; };
 		4AB8145E265BB487000F61F7 /* SearchPodcastGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8145D265BB487000F61F7 /* SearchPodcastGatewayTests.swift */; };
 		4AD55EB326623CC0006957DA /* FeedKitClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD55EB226623CC0006957DA /* FeedKitClientTests.swift */; };
+		4AE9CF582667BE1100520840 /* DownloadEpisodeGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE9CF572667BE1100520840 /* DownloadEpisodeGatewayTests.swift */; };
 		4AEC3AE024FECD3C00C19E97 /* DownloadsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEC3ADF24FECD3C00C19E97 /* DownloadsViewViewModel.swift */; };
 		4AF9CBE526597DE800DF5764 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF9CBE426597DE800DF5764 /* URLProtocolStub.swift */; };
 /* End PBXBuildFile section */
@@ -177,6 +178,7 @@
 		4A9DBB2A25000A4B006856A2 /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
 		4AB8145D265BB487000F61F7 /* SearchPodcastGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastGatewayTests.swift; sourceTree = "<group>"; };
 		4AD55EB226623CC0006957DA /* FeedKitClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedKitClientTests.swift; sourceTree = "<group>"; };
+		4AE9CF572667BE1100520840 /* DownloadEpisodeGatewayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEpisodeGatewayTests.swift; sourceTree = "<group>"; };
 		4AEC3ADF24FECD3C00C19E97 /* DownloadsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewViewModel.swift; sourceTree = "<group>"; };
 		4AF9CBE426597DE800DF5764 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -578,6 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				4AB8145D265BB487000F61F7 /* SearchPodcastGatewayTests.swift */,
+				4AE9CF572667BE1100520840 /* DownloadEpisodeGatewayTests.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				4AF9CBE526597DE800DF5764 /* URLProtocolStub.swift in Sources */,
 				4AB8145E265BB487000F61F7 /* SearchPodcastGatewayTests.swift in Sources */,
 				4AD55EB326623CC0006957DA /* FeedKitClientTests.swift in Sources */,
+				4AE9CF582667BE1100520840 /* DownloadEpisodeGatewayTests.swift in Sources */,
 				4A926C1826628F6D00AD132F /* EpisodesFKGatewayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
