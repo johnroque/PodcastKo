@@ -32,6 +32,8 @@ class DownloadEpisodeGatewayTests: XCTestCase {
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: DownloadEpisodeUseCase, client: HTTPDownloadClientSpy) {
         let client = HTTPDownloadClientSpy()
         let sut = DownloadEpisodeGateway(client: client)
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(sut)
         return (sut, client)
     }
     
