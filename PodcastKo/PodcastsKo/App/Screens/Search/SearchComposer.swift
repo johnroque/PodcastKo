@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PodcastKoCore
 
 final class SearchComposer {
     
@@ -15,9 +16,8 @@ final class SearchComposer {
     static func composeWith() -> SearchViewController {
         
         // Setup Api
-        let apiLogger = ApiLogger()
-        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
-        let apiGateway = ApiPodcastGatewayImpl(client: apiClient)
+        let apiClient = URLSessionHTTPClient(session: URLSession(configuration: .default))
+        let apiGateway = SearchPodcastAPIGateway(url: URL(string: "https://itunes.apple.com/search")!, client: apiClient)
         
         let searchPodCastVm = SearchPodcastViewModel(useCase: apiGateway)
         let searchViewVm = SearchViewViewModel(searchPodcastViewModel: searchPodCastVm)

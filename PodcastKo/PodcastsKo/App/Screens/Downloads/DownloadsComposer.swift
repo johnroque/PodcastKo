@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PodcastKoCore
 
 final class DownloadsComposer {
     
@@ -16,9 +17,8 @@ final class DownloadsComposer {
         let vc = DownloadsViewController()
         
         // Setup Api
-        let apiLogger = ApiLogger()
-        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
-        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        let apiClient = URLSessionHTTPDownloadClient(session: URLSession(configuration: .default))
+        let apiEpisodeGateway = DownloadEpisodeGateway(client: apiClient)
         
         // setup ViewModel
         let downloadsViewModel = DownloadViewModel(useCase: apiEpisodeGateway,

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol FavoritesViewControllerDelegate {
     func showEpisodes(_ vc: FavoritesViewController, podCast: Podcast)

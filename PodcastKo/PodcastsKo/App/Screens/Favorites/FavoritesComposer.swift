@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PodcastKoCore
 
 final class FavoritesComposer {
     
@@ -16,11 +17,10 @@ final class FavoritesComposer {
         let vc = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
         
         // Setup Api
-        let apiLogger = ApiLogger()
-        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
-        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        let apiClient = URLSessionHTTPDownloadClient(session: URLSession(configuration: .default))
+        let gateway = DownloadEpisodeGateway(client: apiClient)
         
-        let downloadsViewModel = DownloadViewModel(useCase: apiEpisodeGateway,
+        let downloadsViewModel = DownloadViewModel(useCase: gateway,
                                                    userDefaults: AppUserDefaults.shared)
         
         vc.viewModel = FavoritesViewViewModel(userDefaults: AppUserDefaults.shared,
