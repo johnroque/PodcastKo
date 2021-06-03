@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol SearchPodcastViewModelInputs {
     func searchPodcast(title: String)
@@ -25,7 +26,7 @@ protocol SearchPodcastViewModelOutputs {
 final class SearchPodcastViewModel: SearchPodcastViewModelInputs, SearchPodcastViewModelOutputs {
     
     private let useCase: SearchPodcastUseCase
-    private var searchRequest: HttpClientTask?
+    private var searchRequest: CancellableTask?
     
     init(useCase: SearchPodcastUseCase) {
         self.useCase = useCase

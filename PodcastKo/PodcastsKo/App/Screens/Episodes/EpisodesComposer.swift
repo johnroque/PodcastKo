@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PodcastKoCore
 
 final class EpisodesComposer {
     
@@ -15,13 +16,12 @@ final class EpisodesComposer {
     static func composeWith(podCast: Podcast) -> EpisodesViewController {
         
         // setup FKClient
-        let fkClient = FeedKitClientImp()
-        let fkGateway = FKGatewayImpl(client: fkClient)
+        let fkClient = FeedKitClientImpl()
+        let fkGateway = EpisodesFKGateway(client: fkClient, url: URL(string: podCast.feedUrl!)!)
         
         // Setup Api
-        let apiLogger = ApiLogger()
-        let apiClient = URLSessionHttpClient(session: URLSession(configuration: .default), logger: apiLogger)
-        let apiEpisodeGateway = ApiEpisodeGatewayImpl(client: apiClient)
+        let apiClient = URLSessionHTTPDownloadClient(session: URLSession(configuration: .default))
+        let apiEpisodeGateway = DownloadEpisodeGateway(client: apiClient)
         
         // setup ViewModel
         let getEpisodesViewModel = GetEpisodesViewModel(useCase: fkGateway)

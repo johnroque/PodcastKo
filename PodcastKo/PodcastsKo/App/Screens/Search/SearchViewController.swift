@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PodcastKoCore
 
 protocol SearchViewControllerDelegate {
     func showEpisodes(_ vc: SearchViewController, podCast: Podcast)
