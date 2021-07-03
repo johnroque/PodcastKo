@@ -25,6 +25,13 @@
 		4A0EAF6624CD803000CA1788 /* SearchComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6524CD803000CA1788 /* SearchComposer.swift */; };
 		4A0EAF6824CD806800CA1788 /* DownloadsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */; };
 		4A0EAF6A24CD822700CA1788 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */; };
+		4A16B7D82690D954005E664C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A16B7D72690D954005E664C /* WidgetKit.framework */; };
+		4A16B7DA2690D954005E664C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A16B7D92690D954005E664C /* SwiftUI.framework */; };
+		4A16B7DD2690D954005E664C /* PodcastKoLikedWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16B7DC2690D954005E664C /* PodcastKoLikedWidget.swift */; };
+		4A16B7E02690D958005E664C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A16B7DF2690D958005E664C /* Assets.xcassets */; };
+		4A16B7E22690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */; };
+		4A16B7E32690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */; };
+		4A16B7E62690D958005E664C /* PodcastKoLikedWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A42A58F265C2C54007A4FBC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */; };
 		4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */; };
 		4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */; };
@@ -81,6 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4A16B7E42690D958005E664C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A16B7D52690D954005E664C;
+			remoteInfo = PodcastKoLikedWidgetExtension;
+		};
 		4A5C6CEE2659364200589A07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4A5AF34E24CCCCE700D56A0B /* Project object */;
@@ -98,6 +112,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4A16B7E72690D958005E664C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4A16B7E62690D958005E664C /* PodcastKoLikedWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A926C2A2663225500AD132F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +151,13 @@
 		4A0EAF6524CD803000CA1788 /* SearchComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComposer.swift; sourceTree = "<group>"; };
 		4A0EAF6724CD806800CA1788 /* DownloadsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsComposer.swift; sourceTree = "<group>"; };
 		4A0EAF6924CD822700CA1788 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PodcastKoLikedWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A16B7D72690D954005E664C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4A16B7D92690D954005E664C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4A16B7DC2690D954005E664C /* PodcastKoLikedWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastKoLikedWidget.swift; sourceTree = "<group>"; };
+		4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PodcastKoLikedWidget.intentdefinition; sourceTree = "<group>"; };
+		4A16B7DF2690D958005E664C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A16B7E12690D958005E664C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastAPIGateway.swift; sourceTree = "<group>"; };
 		4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastURLRequest.swift; sourceTree = "<group>"; };
@@ -184,6 +216,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4A16B7D32690D954005E664C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A16B7DA2690D954005E664C /* SwiftUI.framework in Frameworks */,
+				4A16B7D82690D954005E664C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A5AF35324CCCCE700D56A0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +325,17 @@
 			path = Downloads;
 			sourceTree = "<group>";
 		};
+		4A16B7DB2690D954005E664C /* PodcastKoLikedWidget */ = {
+			isa = PBXGroup;
+			children = (
+				4A16B7DC2690D954005E664C /* PodcastKoLikedWidget.swift */,
+				4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */,
+				4A16B7DF2690D958005E664C /* Assets.xcassets */,
+				4A16B7E12690D958005E664C /* Info.plist */,
+			);
+			path = PodcastKoLikedWidget;
+			sourceTree = "<group>";
+		};
 		4A42A58D265C2C2B007A4FBC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +379,7 @@
 				4A5AF35824CCCCE700D56A0B /* PodcastsKo */,
 				4A5C6CE52659364200589A07 /* PodcastKoCore */,
 				4A5C6CF02659364200589A07 /* PodcastKoCoreTests */,
+				4A16B7DB2690D954005E664C /* PodcastKoLikedWidget */,
 				4A5AF35724CCCCE700D56A0B /* Products */,
 				4A926C232662E08800AD132F /* Frameworks */,
 			);
@@ -338,6 +391,7 @@
 				4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */,
 				4A5C6CE42659364200589A07 /* PodcastKoCore.framework */,
 				4A5C6CEC2659364200589A07 /* PodcastKoCoreTests.xctest */,
+				4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -564,6 +618,8 @@
 		4A926C232662E08800AD132F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A16B7D72690D954005E664C /* WidgetKit.framework */,
+				4A16B7D92690D954005E664C /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -616,6 +672,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		4A16B7D52690D954005E664C /* PodcastKoLikedWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A16B7EA2690D958005E664C /* Build configuration list for PBXNativeTarget "PodcastKoLikedWidgetExtension" */;
+			buildPhases = (
+				4A16B7D22690D954005E664C /* Sources */,
+				4A16B7D32690D954005E664C /* Frameworks */,
+				4A16B7D42690D954005E664C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PodcastKoLikedWidgetExtension;
+			productName = PodcastKoLikedWidgetExtension;
+			productReference = 4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4A5AF35524CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A5AF38024CCCCEB00D56A0B /* Build configuration list for PBXNativeTarget "PodcastsKo" */;
@@ -624,11 +697,13 @@
 				4A5AF35324CCCCE700D56A0B /* Frameworks */,
 				4A5AF35424CCCCE700D56A0B /* Resources */,
 				4A926C2A2663225500AD132F /* Embed Frameworks */,
+				4A16B7E72690D958005E664C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				4A926C292663225500AD132F /* PBXTargetDependency */,
+				4A16B7E52690D958005E664C /* PBXTargetDependency */,
 			);
 			name = PodcastsKo;
 			packageProductDependencies = (
@@ -690,6 +765,9 @@
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "JohnRoque Inc";
 				TargetAttributes = {
+					4A16B7D52690D954005E664C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					4A5AF35524CCCCE700D56A0B = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -724,11 +802,20 @@
 				4A5AF35524CCCCE700D56A0B /* PodcastsKo */,
 				4A5C6CE32659364200589A07 /* PodcastKoCore */,
 				4A5C6CEB2659364200589A07 /* PodcastKoCoreTests */,
+				4A16B7D52690D954005E664C /* PodcastKoLikedWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4A16B7D42690D954005E664C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A16B7E02690D958005E664C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A5AF35424CCCCE700D56A0B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -756,6 +843,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4A16B7D22690D954005E664C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A16B7DD2690D954005E664C /* PodcastKoLikedWidget.swift in Sources */,
+				4A16B7E22690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4A5AF35224CCCCE700D56A0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,6 +880,7 @@
 				4AEC3AE024FECD3C00C19E97 /* DownloadsViewViewModel.swift in Sources */,
 				4A9795C824D2368300B2B263 /* EpisodesViewViewModel.swift in Sources */,
 				4A5AF39224CCF53D00D56A0B /* MainCoordinator.swift in Sources */,
+				4A16B7E32690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */,
 				4A6CA76C24DACDBB005B1DC0 /* FavoritesViewViewModel.swift in Sources */,
 				4A02574324CFCE10007A5B0C /* SearchPodcaseViewModel.swift in Sources */,
 				4A5AF35C24CCCCE700D56A0B /* SceneDelegate.swift in Sources */,
@@ -839,6 +936,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4A16B7E52690D958005E664C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A16B7D52690D954005E664C /* PodcastKoLikedWidgetExtension */;
+			targetProxy = 4A16B7E42690D958005E664C /* PBXContainerItemProxy */;
+		};
 		4A5C6CEF2659364200589A07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4A5C6CE32659364200589A07 /* PodcastKoCore */;
@@ -863,6 +965,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4A16B7E82690D958005E664C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
+				INFOPLIST_FILE = PodcastKoLikedWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKo.PodcastKoLikedWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A16B7E92690D958005E664C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
+				INFOPLIST_FILE = PodcastKoLikedWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.johnroque.PodcastsKo.PodcastKoLikedWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4A5AF37E24CCCCEB00D56A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -984,6 +1130,7 @@
 		4A5AF38124CCCCEB00D56A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
@@ -1002,6 +1149,7 @@
 		4A5AF38224CCCCEB00D56A0B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
@@ -1134,6 +1282,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4A16B7EA2690D958005E664C /* Build configuration list for PBXNativeTarget "PodcastKoLikedWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A16B7E82690D958005E664C /* Debug */,
+				4A16B7E92690D958005E664C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4A5AF35124CCCCE700D56A0B /* Build configuration list for PBXProject "PodcastsKo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
