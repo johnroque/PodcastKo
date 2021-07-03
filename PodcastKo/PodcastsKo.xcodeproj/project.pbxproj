@@ -32,6 +32,8 @@
 		4A16B7E22690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */; };
 		4A16B7E32690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */; };
 		4A16B7E62690D958005E664C /* PodcastKoLikedWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A16B7EC2690ED17005E664C /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C6D012659371B00589A07 /* Podcast.swift */; };
+		4A16B7ED2690ED28005E664C /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */; };
 		4A42A58F265C2C54007A4FBC /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */; };
 		4A42A593265C301F007A4FBC /* SearchPodcastAPIGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */; };
 		4A42A596265C3054007A4FBC /* SearchPodcastURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */; };
@@ -158,6 +160,7 @@
 		4A16B7DE2690D954005E664C /* PodcastKoLikedWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PodcastKoLikedWidget.intentdefinition; sourceTree = "<group>"; };
 		4A16B7DF2690D958005E664C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A16B7E12690D958005E664C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A16B7EB2690E08C005E664C /* PodcastsKo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PodcastsKo.entitlements; sourceTree = "<group>"; };
 		4A42A58E265C2C54007A4FBC /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		4A42A592265C301F007A4FBC /* SearchPodcastAPIGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastAPIGateway.swift; sourceTree = "<group>"; };
 		4A42A595265C3054007A4FBC /* SearchPodcastURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPodcastURLRequest.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 		4A5AF35824CCCCE700D56A0B /* PodcastsKo */ = {
 			isa = PBXGroup;
 			children = (
+				4A16B7EB2690E08C005E664C /* PodcastsKo.entitlements */,
 				4A5AF38924CCCF2F00D56A0B /* App */,
 				4A02572124CF14B4007A5B0C /* Domain */,
 				4A5AF38B24CCCF4000D56A0B /* Resources */,
@@ -847,8 +851,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A16B7ED2690ED28005E664C /* AppUserDefaults.swift in Sources */,
 				4A16B7DD2690D954005E664C /* PodcastKoLikedWidget.swift in Sources */,
 				4A16B7E22690D958005E664C /* PodcastKoLikedWidget.intentdefinition in Sources */,
+				4A16B7EC2690ED17005E664C /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,6 +1138,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PodcastsKo/PodcastsKo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
 				INFOPLIST_FILE = PodcastsKo/SupportingFiles/Info.plist;
@@ -1151,6 +1158,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PodcastsKo/PodcastsKo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
 				INFOPLIST_FILE = PodcastsKo/SupportingFiles/Info.plist;
