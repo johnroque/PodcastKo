@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Podcast: Equatable, Codable {
+public struct Podcast: Equatable, Codable, Hashable {
     public let trackName: String?
     public let artistName: String?
     public let artworkUrl600: String?

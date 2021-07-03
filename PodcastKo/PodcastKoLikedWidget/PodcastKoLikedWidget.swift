@@ -8,63 +8,80 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
 
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+struct LikedPodcastsEntry: TimelineEntry {
+    let date = Date()
+    let likedPodcasts: [Podcast]
+}
+
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> LikedPodcastsEntry {
+        LikedPodcastsEntry(likedPodcasts: [])
     }
-
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    
+    func getSnapshot(in context: Context, completion: @escaping (LikedPodcastsEntry) -> Void) {
+        let entry = LikedPodcastsEntry(likedPodcasts: [])
         completion(entry)
     }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<LikedPodcastsEntry>) -> Void) {
+        let favPodcasts = AppUserDefaults.shared.getObjectWithKey(.favoritedPodcastKey, type: [Podcast].self)
+        let entry = LikedPodcastsEntry(likedPodcasts: favPodcasts ?? [])
+        let timeline = Timeline(entries: [entry], policy: .never)
         completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationIntent
+struct FavoriteListView: View {
+    var favoritePodcast: [Podcast]
+    
+    var body: some View {
+        ZStack {
+            
+            if let podcast = favoritePodcast.last {
+                
+                VStack(alignment: .center, spacing: 8) {
+                    Text(podcast.trackName ?? "")
+                        .font(.system(size: 10, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+
+                    Text(podcast.artistName ?? "")
+                        .font(.system(size: 6, weight: .regular, design: .default))
+                        .foregroundColor(Color.gray)
+                    
+                    Text("Your favorite podcast")
+                        .font(.system(size: 10, weight: .bold, design: .default))
+                        .foregroundColor(Color.black)
+                        .lineLimit(1)
+                        
+                }
+            } else {
+                Text("Theres no favorite podcast yet.")
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundColor(Color.black)
+                    .padding(.all, 8)
+            }
+        }
+    }
 }
 
-struct PodcastKoLikedWidgetEntryView : View {
-    var entry: Provider.Entry
-
+struct PodcastKoLikedEntryView: View {
+    let entry: Provider.Entry
+    
     var body: some View {
-        Text(entry.date, style: .time)
+        FavoriteListView(favoritePodcast: entry.likedPodcasts)
     }
 }
 
 @main
 struct PodcastKoLikedWidget: Widget {
-    let kind: String = "PodcastKoLikedWidget"
-
+    private let kind = "PodcastKoLikedWidget"
+    
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            PodcastKoLikedWidgetEntryView(entry: entry)
+        StaticConfiguration(
+            kind: kind,
+            provider: Provider()) { entry in
+            PodcastKoLikedEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
-    }
-}
-
-struct PodcastKoLikedWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        PodcastKoLikedWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

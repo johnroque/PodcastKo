@@ -169,6 +169,7 @@
 		4A4653CD24D280FC00A2A78F /* PodcastPlayerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayerUIView.swift; sourceTree = "<group>"; };
 		4A4653D024D3574A00A2A78F /* MusicPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerService.swift; sourceTree = "<group>"; };
 		4A4653D224D3E69600A2A78F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		4A4C2BE52691067500B5ED64 /* PodcastKoLikedWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PodcastKoLikedWidgetExtension.entitlements; sourceTree = "<group>"; };
 		4A5AF35624CCCCE700D56A0B /* PodcastsKo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsKo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A5AF35924CCCCE700D56A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A5AF35B24CCCCE700D56A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 		4A5AF34D24CCCCE700D56A0B = {
 			isa = PBXGroup;
 			children = (
+				4A4C2BE52691067500B5ED64 /* PodcastKoLikedWidgetExtension.entitlements */,
 				4A5AF35824CCCCE700D56A0B /* PodcastsKo */,
 				4A5C6CE52659364200589A07 /* PodcastKoCore */,
 				4A5C6CF02659364200589A07 /* PodcastKoCoreTests */,
@@ -976,6 +978,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PodcastKoLikedWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
 				INFOPLIST_FILE = PodcastKoLikedWidget/Info.plist;
@@ -998,6 +1001,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PodcastKoLikedWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DNZ5Z4EKKR;
 				INFOPLIST_FILE = PodcastKoLikedWidget/Info.plist;

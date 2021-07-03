@@ -40,7 +40,7 @@ class AppUserDefaults {
     
     /// Remove
     func removeDefaultsWithKey(_ key: AppUserDefaultsKeys) {
-        UserDefaults.standard.removeObject(forKey: key.stringValue)
+        defaults.removeObject(forKey: key.stringValue)
     }
     
     // Returns stored object (optional) if any.
