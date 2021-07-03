@@ -18,6 +18,8 @@ class AppUserDefaults {
         return AppUserDefaults()
     }()
     
+    let defaults = UserDefaults.init(suiteName: "group.com.johnroque.PodcastsKo")!
+    
     private init() {
     }
     
@@ -29,11 +31,11 @@ class AppUserDefaults {
         let encoded = try? encoder.encode(object)
         
         if encoded == nil {
-            UserDefaults.standard.set(object, forKey: key.stringValue)
+            defaults.set(object, forKey: key.stringValue)
             return
         }
         
-        UserDefaults.standard.set(encoded, forKey: key.stringValue)
+        defaults.set(encoded, forKey: key.stringValue)
     }
     
     /// Remove
@@ -43,12 +45,12 @@ class AppUserDefaults {
     
     // Returns stored object (optional) if any.
     func getObjectWithKey<T: Decodable>(_ key: AppUserDefaultsKeys, type: T.Type) -> T? {
-        if let savedData = UserDefaults.standard.data(forKey: key.stringValue) {
+        if let savedData = defaults.data(forKey: key.stringValue) {
             let object = try? JSONDecoder().decode(type, from: savedData)
             return object
         }
         
-        return UserDefaults.standard.object(forKey: key.stringValue) as? T
+        return defaults.object(forKey: key.stringValue) as? T
     }
 }
 
