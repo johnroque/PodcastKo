@@ -70,7 +70,6 @@
 		4A6CA76824DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76724DA8EF2005B1DC0 /* FavoritePodcastCollectionViewCell.swift */; };
 		4A6CA76A24DAB4C8005B1DC0 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76924DAB4C8005B1DC0 /* AppUserDefaults.swift */; };
 		4A6CA76C24DACDBB005B1DC0 /* FavoritesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6CA76B24DACDBB005B1DC0 /* FavoritesViewViewModel.swift */; };
-		4A7D75032691389A009FE95C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A7D75022691389A009FE95C /* SDWebImage */; };
 		4A926C1826628F6D00AD132F /* EpisodesFKGatewayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1726628F6D00AD132F /* EpisodesFKGatewayTests.swift */; };
 		4A926C1B2662D0E500AD132F /* FeedKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1A2662D0E500AD132F /* FeedKitClient.swift */; };
 		4A926C1E2662D15500AD132F /* FKEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A926C1D2662D15500AD132F /* FKEpisode.swift */; };
@@ -225,7 +224,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A7D75032691389A009FE95C /* SDWebImage in Frameworks */,
 				4A16B7DA2690D954005E664C /* SwiftUI.framework in Frameworks */,
 				4A16B7D82690D954005E664C /* WidgetKit.framework in Frameworks */,
 			);
@@ -694,7 +692,6 @@
 			);
 			name = PodcastKoLikedWidgetExtension;
 			packageProductDependencies = (
-				4A7D75022691389A009FE95C /* SDWebImage */,
 			);
 			productName = PodcastKoLikedWidgetExtension;
 			productReference = 4A16B7D62690D954005E664C /* PodcastKoLikedWidgetExtension.appex */;
@@ -1393,11 +1390,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A02575924D21071007A5B0C /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
-		};
-		4A7D75022691389A009FE95C /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4A02574E24D138D1007A5B0C /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
 		};
 		4A926C242662E08800AD132F /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
