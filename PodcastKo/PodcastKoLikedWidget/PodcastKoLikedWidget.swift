@@ -37,28 +37,34 @@ struct FavoriteListView: View {
     
     var body: some View {
         ZStack {
-            
+            Color.init(UIColor.systemBackground).edgesIgnoringSafeArea(.all)
             if let podcast = favoritePodcast.last {
-                
                 VStack(alignment: .center, spacing: 8) {
                     Text(podcast.trackName ?? "")
                         .font(.system(size: 10, weight: .bold, design: .default))
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.init(UIColor.label))
+                        .lineLimit(3)
+                        .minimumScaleFactor(8/10)
+                        .truncationMode(.middle)
 
                     Text(podcast.artistName ?? "")
-                        .font(.system(size: 6, weight: .regular, design: .default))
-                        .foregroundColor(Color.gray)
+                        .font(.system(size: 8, weight: .regular, design: .default))
+                        .foregroundColor(Color.init(UIColor.secondaryLabel))
+                        .truncationMode(.middle)
+                        .lineLimit(2)
                     
                     Text("Your favorite podcast")
-                        .font(.system(size: 10, weight: .bold, design: .default))
-                        .foregroundColor(Color.black)
-                        .lineLimit(1)
-                        
+                        .font(.system(size: 8, weight: .bold, design: .default))
+                        .foregroundColor(Color.init(UIColor.label))
+                        .lineLimit(2)
+                        .minimumScaleFactor(8/10)
+                        .truncationMode(.middle)
                 }
+                .padding(.all, 8)
             } else {
                 Text("Theres no favorite podcast yet.")
                     .font(.system(size: 16, weight: .bold, design: .default))
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.init(UIColor.label))
                     .padding(.all, 8)
             }
         }
